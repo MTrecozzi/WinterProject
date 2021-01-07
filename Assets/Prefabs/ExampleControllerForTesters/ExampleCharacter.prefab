@@ -393,8 +393,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   DiscreteCollisionEvents: 0
-  StepHandling: 0
-  MaxStepHeight: 0.5
+  StepHandling: 1
+  MaxStepHeight: 0.75
   AllowSteppingWithoutStableGrounding: 0
   MinRequiredStepDepth: 0.1
   LedgeAndDenivelationHandling: 0
