@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000002, guid: 049799c8950524a4da6d45f9d1fdea6a, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -293,6 +293,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ExampleCharacter
       objectReference: {fileID: 0}
+    - target: {fileID: 3867556699068378179, guid: 40478539ccfc90c47970a2e2959522a7, type: 3}
+      propertyPath: SprintSpeed
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40478539ccfc90c47970a2e2959522a7, type: 3}
 --- !u!4 &837799303 stripped
@@ -435,6 +439,26 @@ PrefabInstance:
     - target: {fileID: 6817123444318714464, guid: c23529e5b44f6a2438ab5e2ffe20d69f, type: 3}
       propertyPath: m_Name
       value: ExampleCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 6834822552136792852, guid: c23529e5b44f6a2438ab5e2ffe20d69f, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6834822552136792852, guid: c23529e5b44f6a2438ab5e2ffe20d69f, type: 3}
+      propertyPath: m_BackGroundColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6834822552136792852, guid: c23529e5b44f6a2438ab5e2ffe20d69f, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.2924528
+      objectReference: {fileID: 0}
+    - target: {fileID: 6834822552136792852, guid: c23529e5b44f6a2438ab5e2ffe20d69f, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.16009799
+      objectReference: {fileID: 0}
+    - target: {fileID: 6834822552136792852, guid: c23529e5b44f6a2438ab5e2ffe20d69f, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.0758722
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c23529e5b44f6a2438ab5e2ffe20d69f, type: 3}
