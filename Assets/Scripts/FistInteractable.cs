@@ -23,11 +23,11 @@ public class FistInteractable : MonoBehaviour, IHandleFistStuff
     {
     }
 
-    public void Push(Vector3 direction)
+    public void Push(Vector3 pos)
     {
-        direction.y = Mathf.Clamp(direction.y, 1, 10);
+        pos.y = Mathf.Clamp(pos.y, 1, 10);
 
-        movePosition = direction * 2f;
+        movePosition = pos * 2f;
         moving = true;
 
     }

@@ -90,6 +90,8 @@ namespace KinematicCharacterController.Examples
         private bool _shouldBeCrouching = false;
         private bool _isCrouching = false;
 
+
+
         private bool __shouldBeSprinting = false;
         private bool __isPrinting = false;
 

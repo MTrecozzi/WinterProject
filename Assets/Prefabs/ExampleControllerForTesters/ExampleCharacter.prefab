@@ -301,6 +301,7 @@ GameObject:
   - component: {fileID: 3867556699068378179}
   - component: {fileID: 3864973820163985859}
   - component: {fileID: 3764920317823717040}
+  - component: {fileID: 651498069}
   m_Layer: 9
   m_Name: ExampleCharacter
   m_TagString: Untagged
@@ -354,6 +355,7 @@ MonoBehaviour:
   StableMovementSharpness: 15
   OrientationSharpness: 20
   OrientationMethod: 1
+  SprintSpeed: 17
   MaxAirMoveSpeed: 10
   AirAccelerationSpeed: 30
   Drag: 0
@@ -428,6 +430,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &651498069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3764920317823717041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 215dbfe3801f3864fa6a93bf0022962d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 3764920317823717040}
+  character: {fileID: 3867556699068378179}
+  motor: {fileID: 3864973820163985859}
 --- !u!1 &8764030143900925223
 GameObject:
   m_ObjectHideFlags: 0

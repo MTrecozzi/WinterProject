@@ -31,7 +31,7 @@ public class FisterDamage : MonoBehaviour
 
         if(fistStuff != null)
         {
-            fistStuff.Push((other.gameObject.transform.position - playerPos.transform.position).normalized);
+            fistStuff.Push(transform.position);
             fistStuff.TakeDamage(damage);
 
         }
