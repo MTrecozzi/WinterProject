@@ -121,28 +121,28 @@ MonoBehaviour:
   m_AdvancedMode: 0
   shadows:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.9904576, z: 0.95676285, w: -0.47556937}
+    m_Value: {x: 0.9746628, y: 0.98954827, z: 1, w: -0.5383834}
   midtones:
-    m_OverrideState: 0
-    m_Value: {x: 0.9796867, y: 1, z: 0.95868033, w: -0.0832478}
+    m_OverrideState: 1
+    m_Value: {x: 0.9796867, y: 1, z: 0.95868033, w: -0.6281406}
   highlights:
-    m_OverrideState: 0
-    m_Value: {x: 0.9720324, y: 0.9824779, z: 1, w: -0.19322895}
+    m_OverrideState: 1
+    m_Value: {x: 0.9720324, y: 0.9824779, z: 1, w: 0.422349}
   shadowsStart:
     m_OverrideState: 1
-    m_Value: 0.84
+    m_Value: 0
     min: 0
   shadowsEnd:
     m_OverrideState: 1
-    m_Value: 3.1
+    m_Value: 2.71
     min: 0
   highlightsStart:
     m_OverrideState: 1
-    m_Value: 2.22
+    m_Value: 1.9
     min: 0
   highlightsEnd:
     m_OverrideState: 1
-    m_Value: 2.99
+    m_Value: 2.92
     min: 0
 --- !u!114 &4244504487258395940
 MonoBehaviour:
