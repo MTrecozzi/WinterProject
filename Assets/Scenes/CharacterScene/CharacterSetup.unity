@@ -135,6 +135,10 @@ PrefabInstance:
       value: FisterPrototype
       objectReference: {fileID: 0}
     - target: {fileID: 3532367030110320162, guid: fdefd29e1ec336b4891956217c39c9d0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3532367030110320162, guid: fdefd29e1ec336b4891956217c39c9d0, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -189,6 +193,10 @@ PrefabInstance:
     - target: {fileID: 3532367030110320167, guid: fdefd29e1ec336b4891956217c39c9d0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6761458322742002648, guid: fdefd29e1ec336b4891956217c39c9d0, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fdefd29e1ec336b4891956217c39c9d0, type: 3}
@@ -495,6 +503,10 @@ PrefabInstance:
     - target: {fileID: 6834822552136792852, guid: c23529e5b44f6a2438ab5e2ffe20d69f, type: 3}
       propertyPath: near clip plane
       value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847904315920228208, guid: c23529e5b44f6a2438ab5e2ffe20d69f, type: 3}
+      propertyPath: ObstructionLayers.m_Bits
+      value: 55
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c23529e5b44f6a2438ab5e2ffe20d69f, type: 3}
