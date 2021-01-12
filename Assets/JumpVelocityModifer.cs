@@ -8,7 +8,7 @@ public class JumpVelocityModifer : MonoBehaviour
 {
 
     public Rigidbody rb;
-    public ExampleCharacterController character;
+    public MyCharacterController character;
 
     public KinematicCharacterMotor motor;
 
