@@ -338,7 +338,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b71c27d11f9d684bb39b34d67382a3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reference: {fileID: 0}
 --- !u!4 &1187216765
 Transform:
   m_ObjectHideFlags: 0
@@ -421,6 +420,14 @@ PrefabInstance:
     - target: {fileID: 6817123444318714464, guid: 61acfd754d207254cae110850b950306, type: 3}
       propertyPath: m_Name
       value: MyExampleCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 6834822552136792852, guid: 61acfd754d207254cae110850b950306, type: 3}
+      propertyPath: field of view
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6834822552136792852, guid: 61acfd754d207254cae110850b950306, type: 3}
+      propertyPath: m_FOVAxisMode
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61acfd754d207254cae110850b950306, type: 3}
