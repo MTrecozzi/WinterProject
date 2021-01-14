@@ -12,7 +12,13 @@ public class SceneLoader : EditorWindow
     {
         EditorSceneManager.OpenScene("Assets/Scenes/CharacterScene/CharacterSetup.unity", OpenSceneMode.Additive);
     }
-    
+
+    [MenuItem("SceneLoader/ Load Grapple GUI")]
+    static void LoadGrappleGUI()
+    {
+        EditorSceneManager.OpenScene("Assets/Thirdparty/MT_Contributions/Grapple Snapple/Grapple UI.unity", OpenSceneMode.Additive);
+    }
+
     void Start()
     {
         

@@ -540,7 +540,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rayCastSystem: {fileID: 1623425175}
-  heightOffset: 1
   motor: {fileID: 2122631741}
   grappleSpeed: 20
 --- !u!114 &1623425175
