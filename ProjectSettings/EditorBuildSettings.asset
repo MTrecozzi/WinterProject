@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CharacterScene/CharacterSetup.unity
     guid: 1a130dc6ac0d4ef48ac1c20f143d0b51
+  - enabled: 1
+    path: Assets/Thirdparty/MT_Contributions/Grapple Snapple/Grapple UI.unity
+    guid: 2bdd36e7fdb97b440a603bc066405759
   m_configObjects: {}

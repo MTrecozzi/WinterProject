@@ -15,17 +15,17 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 0.039248843, g: 0.061707195, b: 0.16981131, a: 1}
+  m_FogColor: {r: 0.12793696, g: 0.10079208, b: 0.14150941, a: 1}
   m_FogMode: 2
-  m_FogDensity: 0.007
+  m_FogDensity: 0.006
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.46058297, g: 0.3410921, b: 0.3570242, a: 1}
-  m_AmbientEquatorColor: {r: 0.21733712, g: 0.27913624, b: 0.41509432, a: 1}
-  m_AmbientGroundColor: {r: 0.1723756, g: 0.08321581, b: 0.23181549, a: 1}
+  m_AmbientSkyColor: {r: 0.78431374, g: 0.5882353, b: 0.5921569, a: 1}
+  m_AmbientEquatorColor: {r: 0.21568628, g: 0.2784314, b: 0.41568628, a: 1}
+  m_AmbientGroundColor: {r: 0.10794253, g: 0.042007834, b: 0.1509434, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 1
-  m_SubtractiveShadowColor: {r: 0.154676, g: 0.060875755, b: 0.2264151, a: 1}
+  m_SubtractiveShadowColor: {r: 0.2924528, g: 0.20830366, b: 0.25781327, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.46
   m_FlareStrength: 1
@@ -35,10 +35,10 @@ RenderSettings:
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
-  m_ReflectionIntensity: 1
+  m_ReflectionIntensity: 0.532
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.095910974, g: 0.12007991, b: 0.16328296, a: 0.532}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000004, guid: dcd01aaa4f25b1747af523d91144de4f, type: 2}
+  m_LightingDataAsset: {fileID: 112000006, guid: dcd01aaa4f25b1747af523d91144de4f, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 94b4595f5dd3c414d8bec1ec23c56510, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -35310,7 +35310,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &697033934
 Transform:
   m_ObjectHideFlags: 0
@@ -86137,7 +86137,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1642071558}
   m_LocalRotation: {x: -0, y: 0.29709083, z: -0, w: 0.95484924}
-  m_LocalPosition: {x: -222.02112, y: 24.5, z: 44.9411}
+  m_LocalPosition: {x: -277.8, y: 24.5, z: 318.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 285397662}
