@@ -33,7 +33,7 @@ public class GrappleMessageReciever : MonoBehaviour
 
     private void ChangeCrosshairActivation(bool val)
     {
-        crosshair.enabled = val;
+        crosshair.gameObject.SetActive(val);
     }
 
 
