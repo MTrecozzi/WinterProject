@@ -312,4 +312,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crosshair: {fileID: 379809544}
-  reference: {fileID: 11400000, guid: 331aaf7e54e30bc4dbba424ca69e0042, type: 2}
+  CheckReference: {fileID: 11400000, guid: 331aaf7e54e30bc4dbba424ca69e0042, type: 2}
+  EnabledReference: {fileID: 11400000, guid: 621ae7b4c51e7204d9e13ad044802046, type: 2}

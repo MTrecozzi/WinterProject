@@ -28,6 +28,15 @@ public class FisterPrototype : MonoBehaviour, IMoverController
     public float hittingTime;
     public float lerpTime;
 
+    public float TimeTryingToHit = 0.5f;
+    public float TimeTryingToRest = 0.5f;
+    
+
+
+    private bool requestPunch = false;
+
+    private float toHittingTime = 0f;
+    private float toRestingTime = 0f;
 
 
     // Start is called before the first frame update
@@ -39,10 +48,14 @@ public class FisterPrototype : MonoBehaviour, IMoverController
     }
 
     // Update is called once per frame
-    void Update()
+
+
+    private void LateUpdate()
     {
-            
-            
+        if(Input.GetMouseButtonDown(0))
+        {
+            requestPunch = true;
+        }
     }
 
 
@@ -74,11 +87,11 @@ public class FisterPrototype : MonoBehaviour, IMoverController
         switch (fisterState)
         {
             case fistState.resting:
-
                 tempPos = Vector3.Lerp(transform.position, fistRester.position, speed);
-                if (Input.GetMouseButtonDown(0) || Input.GetMouseButton(0))
+                //Input.GetMouseButtonDown(0) || Input.GetMouseButton(0)
+                if (requestPunch)
                 {
-
+                    requestPunch = false;
                     StartedLerping(fistState.toHitting);
 
                 }
@@ -88,8 +101,8 @@ public class FisterPrototype : MonoBehaviour, IMoverController
 
                 tempPos = Vector3.Lerp(transform.position, fistTarget.position, 2f);
                 hittingTime += Time.deltaTime;
-
-                if ((hittingTime >= 0.25f && Input.GetMouseButton(0)) || !Input.GetMouseButton(0) || Input.GetMouseButtonUp(0))
+                //(hittingTime >= 0.01f && Input.GetMouseButton(0)) || !Input.GetMouseButton(0) || Input.GetMouseButtonUp(0)
+                if (hittingTime > 0.01f)
                 {
 
                     StartedLerping(fistState.toResting);
@@ -98,23 +111,25 @@ public class FisterPrototype : MonoBehaviour, IMoverController
                 break;
 
             case fistState.toResting:
-
+                toRestingTime += deltaTime;
                 tempPos = ReLerp(transform.position, fistRester.position, hitTime, lerpTime);
-                if (Vector3.Distance(transform.position, fistRester.position) <= 0.1)
+                if (toRestingTime > TimeTryingToHit || Vector3.Distance(transform.position, fistRester.position) <= 0.3f)
                 {
 
                     fisterState = fistState.resting;
+                    toRestingTime = 0f;
                 }
                 break;
 
             case fistState.toHitting:
-
+                toHittingTime += deltaTime;
                 tempPos = ReLerp(transform.position, fistTarget.position, hitTime, lerpTime);
-                if (Vector3.Distance(transform.position, fistTarget.position) <= 0.1)
+                if (toHittingTime > TimeTryingToRest || Vector3.Distance(transform.position, fistTarget.position) <= 0.3f)
                 {
 
                     fisterState = fistState.hitting;
                     hittingTime = 0;
+                    toHittingTime = 0f;
                 }
 
                 break;

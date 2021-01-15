@@ -7,11 +7,14 @@ using UnityEngine.UI;
 public class GrappleMessageReciever : MonoBehaviour
 {
     public Image crosshair;
-    public BinaryCrossSceneReference reference;
+    public BinaryCrossSceneReference CheckReference;
+    public BinaryCrossSceneReference EnabledReference;
+
 
     private void Awake()
     {
-        reference.BinaryMessage += ChangeCrossHairColor;
+        CheckReference.BinaryMessage += ChangeCrossHairColor;
+        EnabledReference.BinaryMessage += ChangeCrosshairActivation;
     }
 
     private void ChangeCrossHairColor(bool value)
@@ -26,6 +29,11 @@ public class GrappleMessageReciever : MonoBehaviour
             crosshair.color = Color.white;
         }
 
+    }
+
+    private void ChangeCrosshairActivation(bool val)
+    {
+        crosshair.enabled = val;
     }
 
 

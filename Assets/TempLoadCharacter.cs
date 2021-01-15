@@ -9,6 +9,8 @@ public class TempLoadCharacter : MonoBehaviour
     void Start()
     {
         SceneManager.LoadScene(1, LoadSceneMode.Additive);
+        SceneManager.LoadScene(2, LoadSceneMode.Additive);
+
     }
 
 }

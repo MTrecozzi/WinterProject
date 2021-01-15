@@ -18,6 +18,12 @@ public class GrapplingSystem : MonoBehaviour, ICharacterController
 
     Vector3 movementVector;
 
+    private bool GrappleEnabled = false;
+    public bool grappleEnabled
+    {
+        get { return GrappleEnabled; }
+        set { GrappleEnabled = value;  }
+    }
     private void Start()
     {
         defaultCharacterController = motor.CharacterController;
@@ -51,18 +57,19 @@ public class GrapplingSystem : MonoBehaviour, ICharacterController
 
     public void LateUpdate()
     {
-
-        if (Input.GetKeyDown(KeyCode.E))
+        if (GrappleEnabled)
         {
-            ShootGrapple();
-        }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                ShootGrapple();
+            }
 
             // if we are at the grapple point
             if ((pointToZipTo - motor.transform.position).magnitude <= 0.5 || Input.GetKeyUp(KeyCode.E))
             {
                 EndGrapple();
             }
-
+        }
     }
 
     public void StartGrapple()
