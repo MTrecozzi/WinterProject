@@ -76,7 +76,7 @@ public class MyExamplePlayer : MonoBehaviour
         // Handle toggling zoom level
         if (Input.GetMouseButtonDown(1))
         {
-            CharacterCamera.TargetDistance = (CharacterCamera.TargetDistance == 0f) ? CharacterCamera.DefaultDistance : 0f;
+            //CharacterCamera.TargetDistance = (CharacterCamera.TargetDistance == 0f) ? CharacterCamera.DefaultDistance : 0f;
         }
     }
 

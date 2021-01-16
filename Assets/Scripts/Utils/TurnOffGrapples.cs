@@ -8,10 +8,12 @@ public class TurnOffGrapples : MonoBehaviour
     public BinaryCrossSceneReference GrappleImageChannel;
     public BinaryCrossSceneReference GrappleActivatorChannel;
 
+    public bool GrappleBool = false;
+
 
     private void Start()
     {
-        GrappleImageChannel.InvokeMessage(false);
-        GrappleActivatorChannel.InvokeMessage(false);   
+        GrappleImageChannel.InvokeMessage(GrappleBool);
+        GrappleActivatorChannel.InvokeMessage(GrappleBool);   
     }
 }
