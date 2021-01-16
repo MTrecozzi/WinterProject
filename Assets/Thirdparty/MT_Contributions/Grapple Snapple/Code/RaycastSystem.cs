@@ -12,7 +12,17 @@ public class RaycastSystem : MonoBehaviour
 
     public int weaponDamage = 1;
 
-    public LayerMask mask;
+    public LayerMask UnlimitedHookMask;
+
+    public LayerMask LimitedHookMask;
+
+
+    private LayerMask CurrentHookMask;
+
+    private void Start()
+    {
+        CurrentHookMask = LimitedHookMask;
+    }
 
     [Header("GrappleChannel")]
     public BinaryCrossSceneReference reference;
@@ -30,7 +40,7 @@ public class RaycastSystem : MonoBehaviour
 
         RaycastHit hit;
 
-        if (Physics.Raycast(mainCameraRay, out hit, maxDistance, mask))
+        if (Physics.Raycast(mainCameraRay, out hit, maxDistance, CurrentHookMask))
         {
             Debug.Log(hit.transform.name);
         }
@@ -54,7 +64,7 @@ public class RaycastSystem : MonoBehaviour
 
         RaycastHit hit;
 
-        if (Physics.Raycast(mainCameraRay, out hit, shootDistance, mask))
+        if (Physics.Raycast(mainCameraRay, out hit, shootDistance, CurrentHookMask))
         {
             reference.InvokeMessage(true);
         }
