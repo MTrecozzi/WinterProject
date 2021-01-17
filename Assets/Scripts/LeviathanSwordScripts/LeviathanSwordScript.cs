@@ -29,9 +29,9 @@ public class LeviathanSwordScript : MonoBehaviour
     public bool throwing = false;
     public bool isResting = true;
     public bool grounded = false;
-    public bool zipping = false; 
+    public bool zipping = false;
 
-
+    public bool swordGrapple = false;
 
 
     public Vector3 HitPoint = default;
@@ -123,7 +123,7 @@ public class LeviathanSwordScript : MonoBehaviour
 
         if(grounded)
         {
-            if(Input.GetKeyDown(KeyCode.E))
+            if(Input.GetKeyDown(KeyCode.E) && swordGrapple)
             {
                 zipping = true;
                 startedHookShot = Time.time;

@@ -45,10 +45,6 @@ public class RaycastSystem : MonoBehaviour
             Debug.Log(hit.transform.name);
         }
 
-        if(hit.distance > shootDistance)
-        {
-            return new RaycastHit();
-        }
 
 
 
@@ -64,7 +60,7 @@ public class RaycastSystem : MonoBehaviour
 
         RaycastHit hit;
 
-        if (Physics.Raycast(mainCameraRay, out hit, shootDistance, CurrentHookMask))
+        if (Physics.Raycast(mainCameraRay, out hit, Mathf.Infinity, CurrentHookMask))
         {
             reference.InvokeMessage(true);
         }

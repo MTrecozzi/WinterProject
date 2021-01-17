@@ -41,7 +41,8 @@ public class GrapplingSystem : MonoBehaviour, ICharacterController
         RaycastHit hitFromRayCastSystem = rayCastSystem.CastRayFromScreen(Mathf.Infinity);
 
         pointToZipTo = hitFromRayCastSystem.point;
-
+        //Temp make it higher
+        pointToZipTo += new Vector3(0, 1, 0);
         // Zip to point
 
         // if we hit did hit something only then,
