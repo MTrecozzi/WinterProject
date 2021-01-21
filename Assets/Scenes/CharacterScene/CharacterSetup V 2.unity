@@ -195,6 +195,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 290845327}
     - target: {fileID: 1514983789090179484, guid: 389bf2decfbf21646bb24a5b1eede025, type: 3}
+      propertyPath: swordGrapple
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1514983789090179484, guid: 389bf2decfbf21646bb24a5b1eede025, type: 3}
       propertyPath: myCharacterController
       value: 
       objectReference: {fileID: 1792139290}
@@ -205,6 +209,10 @@ PrefabInstance:
     - target: {fileID: 3313320185920646716, guid: 389bf2decfbf21646bb24a5b1eede025, type: 3}
       propertyPath: m_Name
       value: LeviathanSwordPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 3313320185920646716, guid: 389bf2decfbf21646bb24a5b1eede025, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 389bf2decfbf21646bb24a5b1eede025, type: 3}
