@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 241615067}
   - component: {fileID: 140151264}
   - component: {fileID: 6463969052553445502}
+  - component: {fileID: 6386844049411255232}
   m_Layer: 0
   m_Name: CubeCollectable prefab
   m_TagString: Untagged
@@ -144,7 +145,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -180,7 +181,7 @@ Light:
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
@@ -188,3 +189,16 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &6386844049411255232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8561190082196957876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2047c1952809042963bc89bb4136be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectibleChannel: {fileID: 11400000, guid: 13d65aa512293784b86f7643a682bf35, type: 2}

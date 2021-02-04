@@ -24,6 +24,8 @@ public class TransformLogger : MonoBehaviour
         transformToLog = GameObject.FindGameObjectWithTag("Player").transform;
 
         positions = new List<Vector3>();
+
+        Debug.Log(Application.persistentDataPath + "/position.sav");
     }
 
     public void SaveData()
