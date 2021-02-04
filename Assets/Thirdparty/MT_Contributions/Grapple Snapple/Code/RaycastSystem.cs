@@ -12,17 +12,7 @@ public class RaycastSystem : MonoBehaviour
 
     public int weaponDamage = 1;
 
-    public LayerMask UnlimitedHookMask;
-
-    public LayerMask LimitedHookMask;
-
-
-    private LayerMask CurrentHookMask;
-
-    private void Start()
-    {
-        CurrentHookMask = LimitedHookMask;
-    }
+    public LayerMask layerMask;
 
     [Header("GrappleChannel")]
     public BinaryCrossSceneReference reference;
@@ -40,34 +30,15 @@ public class RaycastSystem : MonoBehaviour
 
         RaycastHit hit;
 
-        if (Physics.Raycast(mainCameraRay, out hit, maxDistance, CurrentHookMask))
+        if (Physics.Raycast(mainCameraRay, out hit, maxDistance, layerMask))
         {
             Debug.Log(hit.transform.name);
         }
-
-
-
 
         // look up Physics.RayCast using screen center / camera
         // if it has IInteractable, then interactable.Interact
 
         return hit;
-    }
-
-    private void LateUpdate()
-    {
-        Ray mainCameraRay = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-
-        RaycastHit hit;
-
-        if (Physics.Raycast(mainCameraRay, out hit, Mathf.Infinity, CurrentHookMask))
-        {
-            reference.InvokeMessage(true);
-        }
-        else
-        {
-            reference.InvokeMessage(false);
-        }
     }
 
 }

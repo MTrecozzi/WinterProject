@@ -20,6 +20,11 @@ public class GrappleSystemEnabler : MonoBehaviour
 
     }
 
+    private void Start()
+    {
+
+    }
+
 
     public void ActivateHookshot(bool value)
     {
