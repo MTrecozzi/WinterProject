@@ -46,7 +46,7 @@ public class GrapplingSystem : MonoBehaviour, ICharacterController
         // Zip to point
 
         // if we hit did hit something only then,
-        if (hitFromRayCastSystem.collider != null)
+        if (hitFromRayCastSystem.collider != null && hitFromRayCastSystem.transform.GetComponent<GrappleTargetComponent>() != null)
         {
             StartGrapple();
 

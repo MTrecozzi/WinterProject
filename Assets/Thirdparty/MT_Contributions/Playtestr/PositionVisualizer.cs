@@ -28,7 +28,10 @@ public class PositionVisualizer : MonoBehaviour
     {
         filePath = Application.persistentDataPath + "/position.sav";
 
-        visTransform = GameObject.Instantiate(vis).transform;
+        if (this.enabled)
+        {
+            visTransform = GameObject.Instantiate(vis).transform;
+        }
 
         LoadState();
 
