@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class NewLoadInitializer : MonoBehaviour
 {
+    public GameSceneSO mainLevel;
     public GameSceneSO CharacterSetUpScene;
     public GameSceneSO UIScene;
     public GameSceneSO GameManagementScene;
