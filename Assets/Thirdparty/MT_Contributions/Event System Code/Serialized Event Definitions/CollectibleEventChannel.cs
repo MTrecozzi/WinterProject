@@ -11,7 +11,7 @@ public class CollectibleEventChannel : ScriptableObject
 
     public void Invoke(Transform transform)
     {
-        CollectibleEvent.Invoke(transform);
+        CollectibleEvent?.Invoke(transform);
     }
 }
 

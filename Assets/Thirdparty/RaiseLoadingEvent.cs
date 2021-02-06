@@ -8,11 +8,6 @@ public class RaiseLoadingEvent : MonoBehaviour
     public LoadEventChannelSO loadingChannel;
     public GameSceneSO[] scenesToLoad;
 
-    public void Start()
-    {
-        RaiseLoadEvent();
-    }
-
     public void RaiseLoadEvent()
     {
         loadingChannel.RaiseEvent(scenesToLoad);
