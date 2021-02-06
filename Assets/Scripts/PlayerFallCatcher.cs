@@ -16,7 +16,7 @@ namespace KinematicCharacterController.Examples
         {
             if(Player.transform.position.y <= respawnLayer)
             {
-                Player.GetComponent<MyCharacterController>().MoveThePlayer(this.transform.position);
+                Player.GetComponent<MTCharacterController>().MoveThePlayer(this.transform.position);
 
             }
         }

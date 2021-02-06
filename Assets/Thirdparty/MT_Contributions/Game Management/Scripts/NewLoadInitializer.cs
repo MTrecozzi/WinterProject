@@ -15,4 +15,9 @@ public class NewLoadInitializer : MonoBehaviour
         SceneManager.LoadScene(UIScene.sceneName, LoadSceneMode.Additive);
         SceneManager.LoadScene(GameManagementScene.sceneName, LoadSceneMode.Additive);
     }
+
+    private void Update()
+    {
+        
+    }
 }
