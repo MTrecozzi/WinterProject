@@ -5,7 +5,7 @@ using UnityEngine;
 public class GrappleSystemEnabler : MonoBehaviour
 {
     public GrapplingSystem GrapplingSystem;
-    public MyCharacterCamera CharacterCamera;
+    public MTCharacterCamera CharacterCamera;
 
     public BinaryCrossSceneReference GrappleReference;
 
