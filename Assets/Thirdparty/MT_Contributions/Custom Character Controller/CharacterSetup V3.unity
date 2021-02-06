@@ -168,7 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GrappleImageChannel: {fileID: 11400000, guid: 331aaf7e54e30bc4dbba424ca69e0042, type: 2}
   GrappleActivatorChannel: {fileID: 11400000, guid: 621ae7b4c51e7204d9e13ad044802046, type: 2}
-  GrappleBool: 0
+  GrappleBool: 1
 --- !u!114 &297910208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -687,7 +687,7 @@ MonoBehaviour:
   MaxStableMoveSpeed: 10
   StableMovementSharpness: 15
   OrientationSharpness: 20
-  OrientationMethod: 0
+  OrientationMethod: 1
   SprintSpeed: 17
   MaxAirMoveSpeed: 10
   AirAccelerationSpeed: 30
