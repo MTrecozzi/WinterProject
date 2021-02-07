@@ -27,4 +27,10 @@ EditorBuildSettings:
     path: Assets/Thirdparty/MT_Contributions/Custom Character Controller/CharacterSetup
       V3.unity
     guid: 8d7866ea359f05e4fa70433f999fb573
+  - enabled: 1
+    path: Assets/Thirdparty/MT_Contributions/Main Menu/3D Main Menu Scene.unity
+    guid: 17e95753f00027f43a40bdbfa9759521
+  - enabled: 1
+    path: Assets/Thirdparty/MT_Contributions/Main Menu/Main Menu UI.unity
+    guid: 763ac994fddf3e74685cfc4ee3fba291
   m_configObjects: {}
