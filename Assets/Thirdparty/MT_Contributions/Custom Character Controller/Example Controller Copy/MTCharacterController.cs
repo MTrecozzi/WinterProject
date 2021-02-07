@@ -18,7 +18,7 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
     public float StableMovementSharpness = 15f;
     public float OrientationSharpness = 10f;
     public OrientationMethod OrientationMethod = OrientationMethod.TowardsCamera;
-    [Header("sprintung")]
+    [Header("Sprinting")]
     public float SprintSpeed = 15f;
 
     [Header("Air Movement")]
@@ -32,6 +32,12 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
     public float JumpScalableForwardSpeed = 10f;
     public float JumpPreGroundingGraceTime = 0f;
     public float JumpPostGroundingGraceTime = 0f;
+
+
+    [Header("DoubleJump")]
+    public bool doubleJumpEnabled = false;
+    public int doubleJumpCount = 1;
+    public int maxDoubleJumpCount = 1;
 
     [Header("Misc")]
     public List<Collider> IgnoredColliders = new List<Collider>();
@@ -203,6 +209,7 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
     }
 
     private Quaternion _tmpTransientRot;
+    
 
     /// <summary>
     /// (Called by KinematicCharacterMotor during its update cycle)
@@ -381,9 +388,30 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
                     _timeSinceJumpRequested += deltaTime;
                     if (_jumpRequested)
                     {
+
+                        //Debug.Log("Jump Requested: doubleJumpCount: " + doubleJumpCount + "!FoundAnyGround: " + !Motor.GroundingStatus.FoundAnyGround);
+
+                        if ((doubleJumpEnabled && doubleJumpCount > 0 && !Motor.GroundingStatus.FoundAnyGround))
+                        {
+
+                            //Debug.Log("Double Jump Code Running");
+
+                            Motor.ForceUnground();
+
+                                doubleJumpCount--;
+                                currentVelocity.y = JumpUpSpeed;
+                                _jumpRequested = false;
+                                _jumpConsumed = true;
+                                _jumpedThisFrame = true;
+
+                                return;
+                        }
+
                         // See if we actually are allowed to jump
                         if (!_jumpConsumed && ((AllowJumpingWhenSliding ? Motor.GroundingStatus.FoundAnyGround : Motor.GroundingStatus.IsStableOnGround) || _timeSinceLastAbleToJump <= JumpPostGroundingGraceTime))
                         {
+                            
+
                             // Calculate jump direction before ungrounding
                             Vector3 jumpDirection = Motor.CharacterUp;
                             if (Motor.GroundingStatus.FoundAnyGround && !Motor.GroundingStatus.IsStableOnGround)
@@ -394,6 +422,7 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
                             // Makes the character skip ground probing/snapping on its next update. 
                             // If this line weren't here, the character would remain snapped to the ground when trying to jump. Try commenting this line out and see.
                             Motor.ForceUnground();
+                            
 
                             // Add to the return velocity and reset jump state
                             currentVelocity += (jumpDirection * JumpUpSpeed) - Vector3.Project(currentVelocity, Motor.CharacterUp);
@@ -411,12 +440,16 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
                         _internalVelocityAdd = Vector3.zero;
                     }
 
-                    //Canceled jump early
-                    if (__jumpCanceled)
+                    //Halt Momentum on Get Jump Key Up, weird breakage occured
+
+                    /*
+                    if (__jumpCanceled && currentVelocity.y > 0)
                     {
-                        currentVelocity.y /= 3;
-                        __jumpCanceled = false;
-                    }
+                        Debug.Log("jUMP cANCELED");
+                        currentVelocity.y *= 0.3F;
+                    } */ 
+
+
 
 
                     break;
@@ -539,6 +572,7 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
 
     protected void OnLanded()
     {
+        doubleJumpCount = maxDoubleJumpCount;
     }
 
     protected void OnLeaveStableGround()
