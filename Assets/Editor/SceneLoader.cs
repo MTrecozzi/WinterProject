@@ -28,11 +28,23 @@ public class SceneLoader : EditorWindow
     [MenuItem("SceneLoader/ LoadMTWorkStation")]
     static void LoadMTWorkStation()
     {
-        LoadScenesFromSOArray("Assets/Scene Management/Scene Arrays/MT Work Station.asset");
+        //LoadScenesFromSOArray("Assets/Scene Management/Scene Arrays/MT Work Station.asset");
+
+        EditorSceneManager.OpenScene("Assets/Scenes/LevelDesign/LevelDesign11/LevelDesign11.unity", OpenSceneMode.Single);
+        EditorSceneManager.OpenScene("Assets/Thirdparty/MT_Contributions/Custom Character Controller/CharacterSetup V3.unity", OpenSceneMode.Additive);
+
+
+        EditorSceneManager.OpenScene("Assets/Thirdparty/MT_Contributions/Scenes/MT_Ability Preferences.unity", OpenSceneMode.Additive);
+        EditorSceneManager.OpenScene("Assets/Thirdparty/MT_Contributions/Playtestr/GameStateManagementScene.unity", OpenSceneMode.Additive);
+        EditorSceneManager.OpenScene("Assets/Thirdparty/MT_Contributions/Grapple Snapple/Grapple UI.unity", OpenSceneMode.Additive);
     }
 
     static void LoadScenesFromSOArray(string assetPath)
     {
+
+        
+
+
         var scenesToLoad = AssetDatabase.LoadAssetAtPath<GameSceneSOArray>(assetPath);
 
         for (int i = 0; i < scenesToLoad.scenes.Length; i++)
