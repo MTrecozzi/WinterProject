@@ -11,7 +11,7 @@ public class ChargeBeam : MonoBehaviour
     public BinaryCrossSceneReference ChargeBeamActivatedSO;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         ChargeBeamActivatedSO.BinaryMessage += ActivateAbility;
     }

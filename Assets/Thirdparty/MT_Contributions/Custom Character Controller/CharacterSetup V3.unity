@@ -163,12 +163,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 67991289}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa5700192a99e1848836ffb691b64b57, type: 3}
+  m_Script: {fileID: 11500000, guid: b72af49eced58c34fb5ae3ee2b05e735, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GrappleImageChannel: {fileID: 11400000, guid: 331aaf7e54e30bc4dbba424ca69e0042, type: 2}
-  GrappleActivatorChannel: {fileID: 11400000, guid: 621ae7b4c51e7204d9e13ad044802046, type: 2}
-  GrappleBool: 1
+  references:
+  - {fileID: 11400000, guid: 331aaf7e54e30bc4dbba424ca69e0042, type: 2}
+  - {fileID: 11400000, guid: 621ae7b4c51e7204d9e13ad044802046, type: 2}
+  enableOnStart: 0
 --- !u!114 &297910208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,6 +184,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Character: {fileID: 3764920316457078186}
   CharacterCamera: {fileID: 1455886633}
+--- !u!1 &510011035
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 510011036}
+  - component: {fileID: 510011037}
+  m_Layer: 0
+  m_Name: Toggle Charge Beam On Start
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &510011036
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510011035}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1307579907}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &510011037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510011035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b72af49eced58c34fb5ae3ee2b05e735, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  references:
+  - {fileID: 11400000, guid: 6de51b1a1c3f760468cb2ef5addc10d1, type: 2}
+  enableOnStart: 1
 --- !u!1 &677102372
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,6 +303,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 67991290}
+  - {fileID: 510011036}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
