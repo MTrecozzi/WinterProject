@@ -7,11 +7,6 @@ using System;
 
 
 
-public enum CharacterState
-{
-    Default,
-}
-
 public enum OrientationMethod
 {
     TowardsCamera,
@@ -77,8 +72,6 @@ public class MyCharacterController : MonoBehaviour, ICharacterController
     public Transform MeshRoot;
     public Transform CameraFollowPoint;
 
-    public CharacterState CurrentCharacterState { get; private set; }
-
     private Collider[] _probedColliders = new Collider[8];
     private RaycastHit[] _probedHits = new RaycastHit[8];
     private Vector3 _moveInputVector;
@@ -102,51 +95,10 @@ public class MyCharacterController : MonoBehaviour, ICharacterController
 
     private void Awake()
     {
-        // Handle initial state
-        TransitionToState(CharacterState.Default);
-
         // Assign the characterController to the motor
         Motor.CharacterController = this;
     }
 
-    /// <summary>
-    /// Handles movement state transitions and enter/exit callbacks
-    /// </summary>
-    public void TransitionToState(CharacterState newState)
-    {
-        CharacterState tmpInitialState = CurrentCharacterState;
-        OnStateExit(tmpInitialState, newState);
-        CurrentCharacterState = newState;
-        OnStateEnter(newState, tmpInitialState);
-    }
-
-    /// <summary>
-    /// Event when entering a state
-    /// </summary>
-    public void OnStateEnter(CharacterState state, CharacterState fromState)
-    {
-        switch (state)
-        {
-            case CharacterState.Default:
-                {
-                    break;
-                }
-        }
-    }
-
-    /// <summary>
-    /// Event when exiting a state
-    /// </summary>
-    public void OnStateExit(CharacterState state, CharacterState toState)
-    {
-        switch (state)
-        {
-            case CharacterState.Default:
-                {
-                    break;
-                }
-        }
-    }
 
     /// <summary>
     /// This is called every frame by ExamplePlayer in order to tell the character what its inputs are
@@ -164,10 +116,7 @@ public class MyCharacterController : MonoBehaviour, ICharacterController
         }
         Quaternion cameraPlanarRotation = Quaternion.LookRotation(cameraPlanarDirection, Motor.CharacterUp);
 
-        switch (CurrentCharacterState)
-        {
-            case CharacterState.Default:
-                {
+
                     // Move and look inputs
                     _moveInputVector = cameraPlanarRotation * moveInputVector;
 
@@ -222,11 +171,6 @@ public class MyCharacterController : MonoBehaviour, ICharacterController
                         __isPrinting = false;
                     }
 
-
-
-                    break;
-                }
-        }
     }
 
     /// <summary>
@@ -255,10 +199,7 @@ public class MyCharacterController : MonoBehaviour, ICharacterController
     /// </summary>
     public void UpdateRotation(ref Quaternion currentRotation, float deltaTime)
     {
-        switch (CurrentCharacterState)
-        {
-            case CharacterState.Default:
-                {
+
                     if (_lookInputVector.sqrMagnitude > 0f && OrientationSharpness > 0f)
                     {
                         // Smoothly interpolate from current to target look direction
@@ -298,9 +239,7 @@ public class MyCharacterController : MonoBehaviour, ICharacterController
                         Vector3 smoothedGravityDir = Vector3.Slerp(currentUp, Vector3.up, 1 - Mathf.Exp(-BonusOrientationSharpness * deltaTime));
                         currentRotation = Quaternion.FromToRotation(currentUp, smoothedGravityDir) * currentRotation;
                     }
-                    break;
-                }
-        }
+
     }
 
     /// <summary>
@@ -310,10 +249,6 @@ public class MyCharacterController : MonoBehaviour, ICharacterController
     /// </summary>
     public void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
     {
-        switch (CurrentCharacterState)
-        {
-            case CharacterState.Default:
-                {
                     // Ground movement
                     if (Motor.GroundingStatus.IsStableOnGround)
                     {
@@ -455,9 +390,7 @@ public class MyCharacterController : MonoBehaviour, ICharacterController
                     }
 
 
-                    break;
-                }
-        }
+
     }
 
     /// <summary>
@@ -466,10 +399,7 @@ public class MyCharacterController : MonoBehaviour, ICharacterController
     /// </summary>
     public void AfterCharacterUpdate(float deltaTime)
     {
-        switch (CurrentCharacterState)
-        {
-            case CharacterState.Default:
-                {
+
                     // Handle jump-related values
                     {
                         // Handle jumping pre-ground grace period
@@ -516,9 +446,7 @@ public class MyCharacterController : MonoBehaviour, ICharacterController
                             _isCrouching = false;
                         }
                     }
-                    break;
-                }
-        }
+
     }
 
     public void PostGroundingUpdate(float deltaTime)
@@ -559,14 +487,7 @@ public class MyCharacterController : MonoBehaviour, ICharacterController
 
     public void AddVelocity(Vector3 velocity)
     {
-        switch (CurrentCharacterState)
-        {
-            case CharacterState.Default:
-                {
                     _internalVelocityAdd += velocity;
-                    break;
-                }
-        }
     }
 
     public void ProcessHitStabilityReport(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, Vector3 atCharacterPosition, Quaternion atCharacterRotation, ref HitStabilityReport hitStabilityReport)
