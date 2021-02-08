@@ -8,6 +8,6 @@ public class GameSceneSO : ScriptableObject
 {
 	[Header("Information")]
 	public string sceneName;
-	public string shortDescription;
+	public string path;
 
 }
