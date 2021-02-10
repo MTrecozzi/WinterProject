@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DashState : MonoBehaviour, IVelocityState
+public class DashState : MovementState
 {
 
     public float dashEndMultiplier = 0.5f;
@@ -24,12 +24,13 @@ public class DashState : MonoBehaviour, IVelocityState
 
         t = 0;
         dir = transform.forward;
-        defaultController.velocityState = this;
+        defaultController.OverrideMovementState(this);
     }
 
     public void EndDash()
     {
-        defaultController.velocityState = null;
+
+        defaultController.SetDefaultMovementState();
     }
 
     // Start is called before the first frame update
@@ -48,7 +49,7 @@ public class DashState : MonoBehaviour, IVelocityState
         }
     }
 
-    public Vector3 GetVelocity(Vector3 currentVelocity, float deltaTime)
+    public override void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
     {
         t += deltaTime;
 
@@ -58,12 +59,15 @@ public class DashState : MonoBehaviour, IVelocityState
             // should cache pixel perfect desired end position, and snap there if possible after dash completion, although this wouldn't work if there's interference
 
             EndDash();
-            return currentVelocity * dashEndMultiplier;
-            
+
+            // !!!!!!!!!!!!!!!!
+            // if (jumpBuffered && doublejump is available, consume double jump to combine it with preserved dash momentum.
+
+                currentVelocity = currentVelocity * dashEndMultiplier;
+                return;    
         }
 
-        
-
-        return distance / timeToReach * dir.normalized;
+        // return dash velocity
+        currentVelocity = distance / timeToReach * dir.normalized;
     }
 }

@@ -14,8 +14,6 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
 {
     public KinematicCharacterMotor Motor;
 
-    public IVelocityState velocityState;
-
     [Header("Stable Movement")]
     public float MaxStableMoveSpeed = 10f;
     public float StableMovementSharpness = 15f;
@@ -69,6 +67,17 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
     {
         // Assign the characterController to the motor
         Motor.CharacterController = this;
+    }
+
+
+    public void SetDefaultMovementState()
+    {
+        Motor.CharacterController = this;
+    }
+
+    public void OverrideMovementState(ICharacterController controller)
+    {
+        Motor.CharacterController = controller;
     }
 
     // should be simplified
@@ -195,14 +204,6 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
     /// </summary>
     public void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
     {
-
-        if (velocityState != null)
-        {
-            currentVelocity = velocityState.GetVelocity(currentVelocity, deltaTime);
-
-            return;
-        }
-
         // Ground movement
         if (Motor.GroundingStatus.IsStableOnGround)
         {
