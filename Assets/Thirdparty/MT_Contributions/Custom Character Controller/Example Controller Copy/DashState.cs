@@ -6,6 +6,8 @@ using UnityEngine;
 public class DashState : MonoBehaviour, IVelocityState
 {
 
+    public float dashEndMultiplier = 0.5f;
+
     public float distance;
     public float timeToReach;
 
@@ -23,8 +25,6 @@ public class DashState : MonoBehaviour, IVelocityState
         t = 0;
         dir = transform.forward;
         defaultController.velocityState = this;
-
-        
     }
 
     public void EndDash()
@@ -58,7 +58,7 @@ public class DashState : MonoBehaviour, IVelocityState
             // should cache pixel perfect desired end position, and snap there if possible after dash completion, although this wouldn't work if there's interference
 
             EndDash();
-            return Vector3.zero;
+            return currentVelocity * dashEndMultiplier;
             
         }
 

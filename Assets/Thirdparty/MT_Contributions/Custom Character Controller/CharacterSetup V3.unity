@@ -685,12 +685,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Motor: {fileID: 3864973819887538906}
-  MaxStableMoveSpeed: 10
+  MaxStableMoveSpeed: 9
   StableMovementSharpness: 15
   OrientationSharpness: 20
   OrientationMethod: 1
-  SprintSpeed: 10
-  MaxAirMoveSpeed: 10
+  SprintSpeed: 9
+  MaxAirMoveSpeed: 9
   AirAccelerationSpeed: 30
   Drag: 0.05
   AllowJumpingWhenSliding: 1
@@ -745,6 +745,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87c237531b7ab55438f6ebc2251de55d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dashEndMultiplier: 0.3
   distance: 7
   timeToReach: 0.25
   defaultController: {fileID: 3764920316457078186}
