@@ -14,6 +14,8 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
 {
     public KinematicCharacterMotor Motor;
 
+    public IVelocityState velocityState;
+
     [Header("Stable Movement")]
     public float MaxStableMoveSpeed = 10f;
     public float StableMovementSharpness = 15f;
@@ -61,20 +63,13 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
     private bool _shouldBeCrouching = false;
     private bool _isCrouching = false;
 
-    private bool __jumpCanceled = false;
-
-    private bool __shouldBeSprinting = false;
     private bool __isPrinting = false;
-
-    private Vector3 lastInnerNormal = Vector3.zero;
-    private Vector3 lastOuterNormal = Vector3.zero;
 
     private void Awake()
     {
         // Assign the characterController to the motor
         Motor.CharacterController = this;
     }
-
 
     // should be simplified
 
@@ -114,10 +109,6 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
             _timeSinceJumpRequested = 0f;
             _jumpRequested = true;
         }
-        if (inputs.JumpUp)
-        {
-            __jumpCanceled = true;
-        }
 
         // Crouching input
         if (inputs.CrouchDown)
@@ -151,15 +142,6 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
 
 
 
-    }
-
-    /// <summary>
-    /// This is called every frame by the AI script in order to tell the character what its inputs are
-    /// </summary>
-    public void SetInputs(ref AICharacterInputs inputs)
-    {
-        _moveInputVector = inputs.MoveVector;
-        _lookInputVector = inputs.LookVector;
     }
 
     private Quaternion _tmpTransientRot;
@@ -197,24 +179,7 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
             Vector3 smoothedGravityDir = Vector3.Slerp(currentUp, -Gravity.normalized, 1 - Mathf.Exp(-BonusOrientationSharpness * deltaTime));
             currentRotation = Quaternion.FromToRotation(currentUp, smoothedGravityDir) * currentRotation;
         }
-        else if (BonusOrientationMethod == BonusOrientationMethod.TowardsGroundSlopeAndGravity)
-        {
-            if (Motor.GroundingStatus.IsStableOnGround)
-            {
-                Vector3 initialCharacterBottomHemiCenter = Motor.TransientPosition + (currentUp * Motor.Capsule.radius);
 
-                Vector3 smoothedGroundNormal = Vector3.Slerp(Motor.CharacterUp, Motor.GroundingStatus.GroundNormal, 1 - Mathf.Exp(-BonusOrientationSharpness * deltaTime));
-                currentRotation = Quaternion.FromToRotation(currentUp, smoothedGroundNormal) * currentRotation;
-
-                // Move the position to create a rotation around the bottom hemi center instead of around the pivot
-                Motor.SetTransientPosition(initialCharacterBottomHemiCenter + (currentRotation * Vector3.down * Motor.Capsule.radius));
-            }
-            else
-            {
-                Vector3 smoothedGravityDir = Vector3.Slerp(currentUp, -Gravity.normalized, 1 - Mathf.Exp(-BonusOrientationSharpness * deltaTime));
-                currentRotation = Quaternion.FromToRotation(currentUp, smoothedGravityDir) * currentRotation;
-            }
-        }
         else
         {
             Vector3 smoothedGravityDir = Vector3.Slerp(currentUp, Vector3.up, 1 - Mathf.Exp(-BonusOrientationSharpness * deltaTime));
@@ -230,6 +195,13 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
     /// </summary>
     public void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
     {
+
+        if (velocityState != null)
+        {
+            currentVelocity = velocityState.GetVelocity(currentVelocity, deltaTime);
+
+            return;
+        }
 
         // Ground movement
         if (Motor.GroundingStatus.IsStableOnGround)
@@ -380,15 +352,6 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
             currentVelocity += _internalVelocityAdd;
             _internalVelocityAdd = Vector3.zero;
         }
-
-        //Halt Momentum on Get Jump Key Up, weird breakage occured
-
-        /*
-        if (__jumpCanceled && currentVelocity.y > 0)
-        {
-            Debug.Log("jUMP cANCELED");
-            currentVelocity.y *= 0.3F;
-        } */
 
     }
 
