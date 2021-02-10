@@ -15,6 +15,8 @@ public class GrapplingSystem : MonoBehaviour, ICharacterController
     Vector3 pointToZipTo;
     public float grappleSpeed = 60f;
 
+    public BinaryCrossSceneReference grappleState;
+
 
     Vector3 movementVector;
 
@@ -88,6 +90,8 @@ public class GrapplingSystem : MonoBehaviour, ICharacterController
         Debug.Log(movementVector);
 
         motor.CharacterController = this;
+
+        grappleState.InvokeMessage(true);
     }
 
 
@@ -96,6 +100,8 @@ public class GrapplingSystem : MonoBehaviour, ICharacterController
         motor.CharacterController = defaultCharacterController;
         
         Debug.Log("Grapple Ended");
+
+        grappleState.InvokeMessage(true);
     }
 
     public void UpdateRotation(ref Quaternion currentRotation, float deltaTime)
