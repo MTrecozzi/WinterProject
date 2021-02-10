@@ -745,6 +745,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87c237531b7ab55438f6ebc2251de55d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 3764920316457078186}
   dashEndMultiplier: 0.3
   distance: 7
   timeToReach: 0.25
