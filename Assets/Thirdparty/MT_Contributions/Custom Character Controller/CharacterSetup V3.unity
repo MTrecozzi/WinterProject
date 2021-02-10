@@ -647,6 +647,8 @@ GameObject:
   - component: {fileID: 3864973819887538906}
   - component: {fileID: 3764920316457078185}
   - component: {fileID: 3764920316457078187}
+  - component: {fileID: 3764920316457078188}
+  - component: {fileID: 3764920316457078189}
   m_Layer: 7
   m_Name: MT_ExampleCharacter
   m_TagString: Player
@@ -683,13 +685,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Motor: {fileID: 3864973819887538906}
-  MaxStableMoveSpeed: 10
+  MaxStableMoveSpeed: 9
   StableMovementSharpness: 15
   OrientationSharpness: 20
   OrientationMethod: 1
-  SprintSpeed: 17
-  MaxAirMoveSpeed: 10
-  AirAccelerationSpeed: 30
+  SprintSpeed: 9
+  MaxAirMoveSpeed: 9
+  AirAccelerationSpeed: 100
   Drag: 0.05
   AllowJumpingWhenSliding: 1
   JumpUpSpeed: 11.5
@@ -700,7 +702,7 @@ MonoBehaviour:
   doubleJumpCount: 0
   maxDoubleJumpCount: 1
   IgnoredColliders: []
-  BonusOrientationMethod: 0
+  BonusOrientationMethod: 2
   BonusOrientationSharpness: 20
   Gravity: {x: 0, y: -35, z: 0}
   MeshRoot: {fileID: 3763697981043082268}
@@ -719,6 +721,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doubleJumpActivation: {fileID: 11400000, guid: a71cb70e67b22df42b621a92b185bf8b, type: 2}
   controller: {fileID: 3764920316457078186}
+--- !u!114 &3764920316457078188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3764920316457078184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eadcefd8e9a89a43879df4b4630b5c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3764920316457078189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3764920316457078184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87c237531b7ab55438f6ebc2251de55d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 3764920316457078186}
+  dashEndMultiplier: 0.3
+  distance: 7
+  timeToReach: 0.25
+  defaultController: {fileID: 3764920316457078186}
 --- !u!33 &3768549653880550582
 MeshFilter:
   m_ObjectHideFlags: 0
