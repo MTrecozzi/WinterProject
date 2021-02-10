@@ -15,6 +15,8 @@ public class DashState : MovementState
 
     public MTCharacterController defaultController;
 
+    public BinaryCrossSceneReference abilityEventReference;
+
     private Vector3 dir;
 
 
@@ -25,18 +27,15 @@ public class DashState : MovementState
         t = 0;
         dir = transform.forward;
         defaultController.OverrideMovementState(this);
+
+        abilityEventReference.InvokeMessage(true);
     }
 
     public void EndDash()
     {
 
+        abilityEventReference.InvokeMessage(false);
         defaultController.SetDefaultMovementState();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
     }
 
     private void Update()
