@@ -45,7 +45,7 @@ public class SceneLoader : EditorWindow
         //LoadScenesFromSOArray("Assets/Scene Management/Scene Arrays/MT Work Station.asset");
 
         //EditorSceneManager.OpenScene("Assets/Scenes/LevelDesign/LevelDesign11/LevelDesign11.unity", OpenSceneMode.Single);
-        EditorSceneManager.OpenScene("Assets/Thirdparty/MT_Contributions/Custom Character Controller/CharacterSetup V3.unity", OpenSceneMode.Additive);
+        EditorSceneManager.OpenScene("Assets/Scenes/CharacterScene/CharacterSetupTom V3.unity", OpenSceneMode.Additive);
 
 
         EditorSceneManager.OpenScene("Assets/Scenes/TOM Ability Preferences.unity", OpenSceneMode.Additive);
