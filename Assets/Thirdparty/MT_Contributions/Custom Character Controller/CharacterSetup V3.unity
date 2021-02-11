@@ -522,6 +522,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7119987707687262033, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: JumpUpSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7119987707687262033, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: JumpPostGroundingGraceTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7119987707687262035, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
       propertyPath: m_Name
       value: MT_ExampleCharacter

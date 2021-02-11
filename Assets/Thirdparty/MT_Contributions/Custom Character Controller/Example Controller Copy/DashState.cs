@@ -14,10 +14,11 @@ public class DashState : MovementState
     private float t;
 
     public MTCharacterController defaultController;
-
     public BinaryCrossSceneReference abilityEventReference;
 
     private Vector3 dir;
+
+    private bool initiallyGrounded = false;
 
 
 
@@ -29,6 +30,11 @@ public class DashState : MovementState
         defaultController.OverrideMovementState(this);
 
         abilityEventReference.InvokeMessage(true);
+
+        initiallyGrounded = defaultController.Motor.GroundingStatus.IsStableOnGround;
+
+        Debug.Log("InitiallyGrounded: " + initiallyGrounded);
+
     }
 
     public void EndDash()
@@ -65,6 +71,18 @@ public class DashState : MovementState
 
                 currentVelocity = currentVelocity * dashEndMultiplier;
                 return;    
+        }
+
+        if (!defaultController.Motor.GroundingStatus.IsStableOnGround && initiallyGrounded)
+        {
+
+            Debug.Log("TECH");
+
+            initiallyGrounded = false;
+            defaultController.ResetAbilities();
+
+            // shitty implementation, as it technically should just consume the standard jump
+            defaultController.jumpPool.currentCharges = defaultController.jumpPool.maxCharges + 1;
         }
 
         // return dash velocity
