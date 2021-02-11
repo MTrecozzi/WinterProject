@@ -14,6 +14,9 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
 {
     public KinematicCharacterMotor Motor;
 
+
+    public SharedAbilityPool abilityPool;
+
     [Header("Stable Movement")]
     public float MaxStableMoveSpeed = 10f;
     public float StableMovementSharpness = 15f;
@@ -304,14 +307,14 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
 
             //Debug.Log("Jump Requested: doubleJumpCount: " + doubleJumpCount + "!FoundAnyGround: " + !Motor.GroundingStatus.FoundAnyGround);
 
-            if ((doubleJumpEnabled && doubleJumpCount > 0 && !Motor.GroundingStatus.FoundAnyGround))
+            if ((doubleJumpEnabled && abilityPool.currentCharges > 0 && !Motor.GroundingStatus.FoundAnyGround))
             {
 
                 //Debug.Log("Double Jump Code Running");
 
                 Motor.ForceUnground();
 
-                doubleJumpCount--;
+                abilityPool.currentCharges--;
                 currentVelocity.y = JumpUpSpeed;
                 _jumpRequested = false;
                 _jumpConsumed = true;
@@ -462,7 +465,10 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
 
     protected void OnLanded()
     {
-        doubleJumpCount = maxDoubleJumpCount;
+
+        abilityPool.ResetCharges();
+
+        //doubleJumpCount = maxDoubleJumpCount;
     }
 
     protected void OnLeaveStableGround()
