@@ -248,6 +248,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7119987707687262035, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
   m_PrefabInstance: {fileID: 341227907}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1130418823 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7157289883682162721, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+  m_PrefabInstance: {fileID: 341227907}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130418816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d1bc5515e3ab954e80599c538834774, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1130418824 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7119987707687262033, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
@@ -468,7 +479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rayCastSystem: {fileID: 1455645973}
-  motor: {fileID: 0}
+  motor: {fileID: 1130418823}
   grappleSpeed: 25
   grappleState: {fileID: 11400000, guid: 6d2e9cbfa8ceb9747b9018189f6824d8, type: 2}
 --- !u!4 &2033980334
