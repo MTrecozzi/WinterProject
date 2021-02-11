@@ -650,6 +650,7 @@ GameObject:
   - component: {fileID: 3764920316457078187}
   - component: {fileID: 3764920316457078188}
   - component: {fileID: 3764920316457078189}
+  - component: {fileID: 3764920316457078190}
   m_Layer: 7
   m_Name: MT_ExampleCharacter
   m_TagString: Player
@@ -686,6 +687,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Motor: {fileID: 3864973819887538906}
+  abilityPool: {fileID: 3764920316457078190}
   MaxStableMoveSpeed: 9
   StableMovementSharpness: 15
   OrientationSharpness: 20
@@ -752,6 +754,20 @@ MonoBehaviour:
   timeToReach: 0.25
   defaultController: {fileID: 3764920316457078186}
   abilityEventReference: {fileID: 11400000, guid: 80b9afd015dc7fb4b9f347ac49e086fb, type: 2}
+--- !u!114 &3764920316457078190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3764920316457078184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cdcc0f6f9d254449805ffc4c7e62fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxCharges: 3
+  currentCharges: 0
 --- !u!33 &3768549653880550582
 MeshFilter:
   m_ObjectHideFlags: 0
