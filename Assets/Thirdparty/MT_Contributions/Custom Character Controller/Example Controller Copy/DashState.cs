@@ -40,12 +40,12 @@ public class DashState : MovementState
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && controller.abilityPool.currentCharges > 0)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && controller.dashPool.currentCharges > 0)
         {
 
             Debug.Log("Dash Started");
             StartDash(transform.forward);
-            controller.abilityPool.currentCharges--;
+            controller.dashPool.currentCharges--;
         }
     }
 

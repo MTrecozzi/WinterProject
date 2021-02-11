@@ -15,7 +15,8 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
     public KinematicCharacterMotor Motor;
 
 
-    public SharedAbilityPool abilityPool;
+    public AbilityPool jumpPool;
+    public AbilityPool dashPool;
 
     [Header("Stable Movement")]
     public float MaxStableMoveSpeed = 10f;
@@ -307,15 +308,16 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
 
             //Debug.Log("Jump Requested: doubleJumpCount: " + doubleJumpCount + "!FoundAnyGround: " + !Motor.GroundingStatus.FoundAnyGround);
 
-            if ((doubleJumpEnabled && abilityPool.currentCharges > 0 && !Motor.GroundingStatus.FoundAnyGround))
+            if ((doubleJumpEnabled && jumpPool.IsChargesLeft() && !Motor.GroundingStatus.FoundAnyGround))
             {
 
                 //Debug.Log("Double Jump Code Running");
 
                 Motor.ForceUnground();
-
-                abilityPool.currentCharges--;
                 currentVelocity.y = JumpUpSpeed;
+
+                jumpPool.currentCharges--;
+
                 _jumpRequested = false;
                 _jumpConsumed = true;
                 _jumpedThisFrame = true;
@@ -359,12 +361,25 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
 
     }
 
+    public void ResetAbilities()
+    {
+        dashPool.ResetCharges();
+        jumpPool.ResetCharges();
+    }
+
+
     /// <summary>
     /// (Called by KinematicCharacterMotor during its update cycle)
     /// This is called after the character has finished its movement update
     /// </summary>
     public void AfterCharacterUpdate(float deltaTime)
     {
+
+
+        if (Motor.GroundingStatus.IsStableOnGround)
+        {
+            ResetAbilities();
+        }
 
         // Handle jump-related values
         {
@@ -466,7 +481,8 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
     protected void OnLanded()
     {
 
-        abilityPool.ResetCharges();
+        dashPool.ResetCharges();
+        jumpPool.ResetCharges();
 
         //doubleJumpCount = maxDoubleJumpCount;
     }
