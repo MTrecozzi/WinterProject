@@ -3,36 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SharedAbilityPool : MonoBehaviour
+public class AbilityPool : MonoBehaviour
 {
 
     public int maxCharges;
     public int currentCharges;
 
-    public int chargesPerSprite = 2;
-    private int currentSprites;
-
-    public BinaryCrossSceneReference abilityPickUP;
-
-
     // Start is called before the first frame update
     void Start()
     {
         
-
-        abilityPickUP.BinaryMessage += GainSprite;
     }
 
-    private void GainSprite(bool obj)
+
+    public bool IsChargesLeft()
     {
-        currentSprites++;
-
-        if (currentSprites == chargesPerSprite)
-        {
-            currentSprites = 0;
-
-            maxCharges++;
-        }
+        return currentCharges > 0;
     }
 
     public void ResetCharges()
@@ -46,7 +32,6 @@ public class SharedAbilityPool : MonoBehaviour
         {
             currentCharges--;
             return true;
-            
         }
 
         return false;
