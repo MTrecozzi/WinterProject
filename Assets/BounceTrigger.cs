@@ -38,7 +38,10 @@ public class BounceTrigger : MonoBehaviour
             }
 
             controller.Motor.ForceUnground();
-            controller.Motor.BaseVelocity = new Vector3(0, Mathf.Sqrt(2 * -controller.Gravity.y * bounceHeight), 0);
+
+            float magnitudeOfFoce = Mathf.Sqrt(2 * -controller.Gravity.y * bounceHeight);
+
+            controller.Motor.BaseVelocity = transform.up.normalized * magnitudeOfFoce;
 
             controller.OnLanded();
 
