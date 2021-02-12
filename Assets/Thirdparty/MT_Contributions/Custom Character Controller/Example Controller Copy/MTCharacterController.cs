@@ -486,7 +486,7 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
     public void OnLanded()
     {
 
-        OnPlayerLanded.Invoke();
+        OnPlayerLanded?.Invoke();
 
         dashPool.ResetCharges();
         jumpPool.ResetCharges();
