@@ -483,7 +483,7 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
     {
     }
 
-    protected void OnLanded()
+    public void OnLanded()
     {
 
         OnPlayerLanded.Invoke();
