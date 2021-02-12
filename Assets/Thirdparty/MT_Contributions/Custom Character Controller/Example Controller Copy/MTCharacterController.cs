@@ -4,10 +4,6 @@ using UnityEngine;
 using KinematicCharacterController;
 using System;
 
-
-
-
-
 // To Do, have a much cleaner reference to an input class rather than all these input bools, create functionality for input 'consumption', or just use better code
 
 public class MTCharacterController : MonoBehaviour, ICharacterController
@@ -17,6 +13,9 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
 
     public AbilityPool jumpPool;
     public AbilityPool dashPool;
+
+    public event Action OnPlayerJump;
+    public event Action OnPlayerLanded;
 
     [Header("Stable Movement")]
     public float MaxStableMoveSpeed = 10f;
@@ -82,6 +81,12 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
     public void OverrideMovementState(ICharacterController controller)
     {
         Motor.CharacterController = controller;
+    }
+
+
+    private void OnDrawGizmos()
+    {
+        
     }
 
     // should be simplified
@@ -478,8 +483,10 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
     {
     }
 
-    protected void OnLanded()
+    public void OnLanded()
     {
+
+        OnPlayerLanded.Invoke();
 
         dashPool.ResetCharges();
         jumpPool.ResetCharges();
