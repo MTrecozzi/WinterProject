@@ -79,6 +79,9 @@ public class DashState : MovementState
             Debug.Log("TECH");
 
             initiallyGrounded = false;
+
+            Debug.LogWarning("COYOTE DASH: Replace with data collection logger");
+
             defaultController.ResetAbilities();
 
             // shitty implementation, as it technically should just consume the standard jump

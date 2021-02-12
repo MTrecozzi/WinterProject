@@ -18,6 +18,9 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
     public AbilityPool jumpPool;
     public AbilityPool dashPool;
 
+    public event Action OnPlayerJump;
+    public event Action OnPlayerLanded;
+
     [Header("Stable Movement")]
     public float MaxStableMoveSpeed = 10f;
     public float StableMovementSharpness = 15f;
@@ -480,6 +483,8 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
 
     protected void OnLanded()
     {
+
+        OnPlayerLanded.Invoke();
 
         dashPool.ResetCharges();
         jumpPool.ResetCharges();
