@@ -4,10 +4,6 @@ using UnityEngine;
 using KinematicCharacterController;
 using System;
 
-
-
-
-
 // To Do, have a much cleaner reference to an input class rather than all these input bools, create functionality for input 'consumption', or just use better code
 
 public class MTCharacterController : MonoBehaviour, ICharacterController
@@ -85,6 +81,12 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
     public void OverrideMovementState(ICharacterController controller)
     {
         Motor.CharacterController = controller;
+    }
+
+
+    private void OnDrawGizmos()
+    {
+        
     }
 
     // should be simplified

@@ -20,6 +20,7 @@ public class DashState : MovementState
 
     private bool initiallyGrounded = false;
 
+    private Vector3 dashVelocity;
 
 
     public void StartDash(Vector3 direction)
@@ -34,6 +35,8 @@ public class DashState : MovementState
         initiallyGrounded = defaultController.Motor.GroundingStatus.IsStableOnGround;
 
         Debug.Log("InitiallyGrounded: " + initiallyGrounded);
+
+        dashVelocity = distance / timeToReach * dir.normalized; // set vel initially
 
     }
 
@@ -55,6 +58,17 @@ public class DashState : MovementState
         }
     }
 
+    // something like this
+
+    public void SetHorizontalVelocity(Vector3 vel)
+    {
+        float y = dashVelocity.y;
+
+        dashVelocity = vel.normalized * (distance / timeToReach);
+
+        dashVelocity.y = y;
+    }
+
     public override void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
     {
         t += deltaTime;
@@ -69,7 +83,9 @@ public class DashState : MovementState
             // !!!!!!!!!!!!!!!!
             // if (jumpBuffered && doublejump is available, consume double jump to combine it with preserved dash momentum.
 
-                currentVelocity = currentVelocity * dashEndMultiplier;
+            dashVelocity = currentVelocity * dashEndMultiplier;
+
+            currentVelocity = dashVelocity;
                 return;    
         }
 
@@ -89,6 +105,50 @@ public class DashState : MovementState
         }
 
         // return dash velocity
-        currentVelocity = distance / timeToReach * dir.normalized;
+        currentVelocity = dashVelocity;
+    }
+
+
+    public override void OnMovementHit(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, ref HitStabilityReport hitStabilityReport)
+    {
+        
+        Debug.Log("Hit: " + hitCollider.name + " Dot Product = " + Vector3.Dot(-hitNormal, dashVelocity.normalized));
+
+        Vector3 surfaceParrallel = dashVelocity - hitNormal * Vector3.Dot(dashVelocity, hitNormal);
+
+        float slideMultiplier = 0.75f;
+
+        dashVelocity = surfaceParrallel.normalized * (distance / timeToReach) * slideMultiplier; // sliding against a wall sh
+
+        //!! Test Structure
+
+        /*
+         *  If incoming angle (calculated with dot product), is straight on, allow the option to go upwards or diagnally upwards
+         *  
+         *  else if coming at an angle, move a long a rnage of surface parrallel normals using the algorithm below
+         *  
+         *  perhaps the dash halting your upward momentum is breaking the flow, perhaps it halts downward momentum, but not upward momentum.
+         */
+
+
+        // make this a bool, aka dash slides against surfaces
+
+
+
+        // THIS ALGORITHM DOESN'T Account for Step Height! Will change direction of dash at even tiny short collisions, do a distance check vertically
+
+        // I guess check collision point against center of character, vertically
+        /* Something Like...
+         * if (Mathf.Abs( transform.position.y - hitPoint.y) <= 0.3f)
+        {
+
+        }
+         */
+
+
+
+
+
+
     }
 }
