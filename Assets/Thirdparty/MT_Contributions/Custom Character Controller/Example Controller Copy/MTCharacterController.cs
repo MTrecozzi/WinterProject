@@ -136,13 +136,17 @@ public class MTCharacterController : MovementState
 
         if (newMomentum.normalized == Vector3.up && horizontalMomentum.magnitude > MaxAirMoveSpeed + 1 && horizontalMomentum.magnitude > MaxStableMoveSpeed + 1)
         {
-            this.Motor.BaseVelocity = this.Motor.BaseVelocity + newMomentum;
+            // must set equal to Motor.BaseVelocity with y Reset + new Momentum
+
+            var neutralizedY = Motor.BaseVelocity;
+
+            neutralizedY.y = 0;
+
+            this.Motor.BaseVelocity = neutralizedY + newMomentum;
         } else
         {
             this.Motor.BaseVelocity = newMomentum;
-        }
-
-       
+        }       
     }
 
 
