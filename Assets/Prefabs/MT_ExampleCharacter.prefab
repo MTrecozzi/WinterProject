@@ -475,6 +475,7 @@ MonoBehaviour:
   character: {fileID: 7119987707687262033}
   OnPlayerLanded: {fileID: 11400000, guid: 66460e655810d954fa1648e3f9ccd92a, type: 2}
   OnPlayerJump: {fileID: 0}
+  OnPlayerDoubleJump: {fileID: 11400000, guid: c0d1ee2feaaa3434bad143732a5d0ae4, type: 2}
 --- !u!1 &7120048789354324965
 GameObject:
   m_ObjectHideFlags: 0
