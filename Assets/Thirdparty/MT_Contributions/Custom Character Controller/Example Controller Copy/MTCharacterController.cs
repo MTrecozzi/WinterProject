@@ -16,6 +16,7 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
 
     public event Action OnPlayerJump;
     public event Action OnPlayerLanded;
+    public event Action OnPlayerDoubleJump;
 
     [Header("Stable Movement")]
     public float MaxStableMoveSpeed = 10f;
@@ -320,6 +321,8 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
 
                 Motor.ForceUnground();
                 currentVelocity.y = JumpUpSpeed;
+
+                OnPlayerDoubleJump?.Invoke();
 
                 jumpPool.currentCharges--;
 
