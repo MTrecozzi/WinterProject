@@ -22,6 +22,15 @@ public class DashState : MovementState
 
     private Vector3 dashVelocity;
 
+    public override void InformStatePropulsionForce(Vector3 newMomentum)
+    {
+        // exit this state into character default
+        defaultController.SetDefaultMovementState();
+
+        // call on default state's default Implementation
+        base.InformStatePropulsionForce(newMomentum);
+    }
+
 
     public void StartDash(Vector3 direction)
     {

@@ -112,7 +112,8 @@ public class MTCharacterController : MovementState
 
     public override void InformStatePropulsionForce(Vector3 newMomentum)
     {
-        
+        this.Motor.ForceUnground();
+        this.Motor.BaseVelocity = newMomentum;
     }
 
 

@@ -37,14 +37,10 @@ public class BounceTrigger : MonoBehaviour
                 controller = other.transform.GetComponent<MTCharacterController>();
             }
 
-            controller.Motor.ForceUnground();
-
             float magnitudeOfFoce = Mathf.Sqrt(2 * -controller.Gravity.y * bounceHeight);
 
-            controller.Motor.BaseVelocity = transform.up.normalized * magnitudeOfFoce;
-
-
-            controller.SetPropulsionForce(new Vector3(0, 0, 0));
+            // using state dependent setPropulsionForce
+            controller.SetPropulsionForce(transform.up.normalized * magnitudeOfFoce);
 
             controller.OnLanded();
 
