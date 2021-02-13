@@ -89,6 +89,7 @@ public class MTCharacterController : MovementState
 
         for (int i = 0; i < passingThroughIgnoredColliders.Count; i++)
         {
+            // needs a dynamic algorithm that responds to colliders size
             if (Mathf.Abs((passingThroughIgnoredColliders[i].transform.position - transform.position).magnitude) >= 3f)
             {
 
