@@ -11,10 +11,14 @@ public class DashState : MovementState
     public float distance;
     public float timeToReach;
 
+    public float mushroomDashEndMult = 1f;
+
     private float t;
 
     public MTCharacterController defaultController;
     public BinaryCrossSceneReference abilityEventReference;
+
+    public LayerMask ignoreLayers;
 
     private Vector3 dir;
 
@@ -22,13 +26,32 @@ public class DashState : MovementState
 
     private Vector3 dashVelocity;
 
+    private bool mushroomDashed;
+
+    public override void InformStatePropulsionForce(Vector3 newMomentum)
+    {
+        // exit this state into character default
+        defaultController.SetDefaultMovementState();
+
+        if (newMomentum.normalized == Vector3.up)
+        {
+            newMomentum += dashVelocity * mushroomDashEndMult;
+            mushroomDashed = true;
+
+            // invoke mushroom dash event
+        }
+
+        // call on default state's default Implementation
+        base.InformStatePropulsionForce(newMomentum);
+    }
+
 
     public void StartDash(Vector3 direction)
     {
 
         t = 0;
         dir = transform.forward;
-        defaultController.OverrideMovementState(this);
+        defaultController.SetMovementState(this);
 
         abilityEventReference.InvokeMessage(true);
 
@@ -67,6 +90,20 @@ public class DashState : MovementState
         dashVelocity = vel.normalized * (distance / timeToReach);
 
         dashVelocity.y = y;
+    }
+
+    // Working as intended, just need to carry this over into the next state!
+    public override bool IsColliderValidForCollisions(Collider coll)
+    {
+        bool valid = base.IsColliderValidForCollisions(coll) && !(ignoreLayers == (ignoreLayers | (1 << coll.gameObject.layer)));
+
+        // if we detect a non valid collision while dashing, we queue it for the character controller to ignore regardless of states.
+        if (!valid)
+        {
+            controller.passingThroughIgnoredColliders.Add(coll);
+        }
+
+        return valid;
     }
 
     public override void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
