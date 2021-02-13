@@ -348,7 +348,16 @@ public class MTCharacterController : MovementState
                 //Debug.Log("Double Jump Code Running");
 
                 Motor.ForceUnground();
-                currentVelocity.y = JumpUpSpeed;
+
+                if (currentVelocity.y < JumpUpSpeed)
+                {
+                    currentVelocity.y = JumpUpSpeed;
+                } else
+                {
+                    // better jump algorithm then the below, if double jumping while moving upwards
+
+                    //currentVelocity.y += JumpUpSpeed;
+                }
 
                 OnPlayerDoubleJump?.Invoke();
 

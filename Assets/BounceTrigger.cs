@@ -9,6 +9,7 @@ public class BounceTrigger : MonoBehaviour
     public BinaryCrossSceneReference UxEvent;
 
     public float bounceHeight;
+    public float bufferedJumpHeight;
     //public float timeToHeight;
 
     private MTCharacterController controller;

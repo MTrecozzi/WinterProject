@@ -11,6 +11,8 @@ public class DashState : MovementState
     public float distance;
     public float timeToReach;
 
+    public float mushroomDashEndMult = 1f;
+
     private float t;
 
     public MTCharacterController defaultController;
@@ -31,7 +33,7 @@ public class DashState : MovementState
 
         if (newMomentum.normalized == Vector3.up)
         {
-            newMomentum += dashVelocity;
+            newMomentum += dashVelocity * mushroomDashEndMult;
             mushroomDashed = true;
 
             // invoke mushroom dash event
