@@ -326,7 +326,7 @@ MonoBehaviour:
   doubleJumpEnabled: 0
   doubleJumpCount: 0
   maxDoubleJumpCount: 1
-  IgnoredColliders: []
+  passingThroughIgnoredColliders: []
   BonusOrientationMethod: 2
   BonusOrientationSharpness: 20
   Gravity: {x: 0, y: -35, z: 0}
@@ -435,6 +435,9 @@ MonoBehaviour:
   mushroomDashEndMult: 0.6
   defaultController: {fileID: 7119987707687262033}
   abilityEventReference: {fileID: 11400000, guid: 80b9afd015dc7fb4b9f347ac49e086fb, type: 2}
+  ignoreLayers:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &7119987707687262037
 MonoBehaviour:
   m_ObjectHideFlags: 0
