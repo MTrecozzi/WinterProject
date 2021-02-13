@@ -28,7 +28,7 @@ public class DashState : MovementState
 
         t = 0;
         dir = transform.forward;
-        defaultController.OverrideMovementState(this);
+        defaultController.SetMovementState(this);
 
         abilityEventReference.InvokeMessage(true);
 

@@ -43,6 +43,9 @@ public class BounceTrigger : MonoBehaviour
 
             controller.Motor.BaseVelocity = transform.up.normalized * magnitudeOfFoce;
 
+
+            controller.SetPropulsionForce();
+
             controller.OnLanded();
 
             if (UxEvent != null)

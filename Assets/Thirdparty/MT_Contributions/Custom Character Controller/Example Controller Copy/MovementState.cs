@@ -6,7 +6,16 @@ using UnityEngine;
 public abstract class MovementState : MonoBehaviour, ICharacterController
 {
 
+<<<<<<< Updated upstream
     public MTCharacterController controller;
+=======
+
+    #region Encapsulated Disturbance Handlers, to be called by The Character Controller, which really should be seperated from the default Movment State
+    // currently the default movementstate is coupled with the movementstatemanager!
+    // movement state manager should handle things such as SetManagerPropulsionForce => currentState.SetPropulsionForce
+    public virtual void InformStatePropulsionForce() => controller.InformStatePropulsionForce(); // the default implementation for state propulsion
+    // the default is the current character way.
+>>>>>>> Stashed changes
 
 
     public virtual void Initialize() { }

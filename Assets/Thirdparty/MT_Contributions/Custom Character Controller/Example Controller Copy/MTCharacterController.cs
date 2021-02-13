@@ -6,7 +6,7 @@ using System;
 
 // To Do, have a much cleaner reference to an input class rather than all these input bools, create functionality for input 'consumption', or just use better code
 
-public class MTCharacterController : MonoBehaviour, ICharacterController
+public class MTCharacterController : MovementState
 {
     public KinematicCharacterMotor Motor;
 
@@ -17,6 +17,8 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
     public event Action OnPlayerJump;
     public event Action OnPlayerLanded;
     public event Action OnPlayerDoubleJump;
+
+    public MovementState curMovementState;
 
     [Header("Stable Movement")]
     public float MaxStableMoveSpeed = 10f;
@@ -69,27 +71,52 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
 
     private void Awake()
     {
+
+        curMovementState = this;
         // Assign the characterController to the motor
-        Motor.CharacterController = this;
+        Motor.CharacterController = curMovementState;
     }
 
 
     public void SetDefaultMovementState()
     {
-        Motor.CharacterController = this;
+        SetMovementState(this);
     }
 
-    public void OverrideMovementState(ICharacterController controller)
+    public void SetMovementState(MovementState newState)
     {
-        Motor.CharacterController = controller;
-    }
+        // clean up old state
+        curMovementState.CleanUp();
 
+        // currentState = newState
+        curMovementState = newState;
+        // initialize incoming state
+        curMovementState.Initialize();
+
+        // Motor.CharacterController = newState;
+        Motor.CharacterController = curMovementState;
+    }
 
     private void OnDrawGizmos()
     {
         
     }
 
+<<<<<<< Updated upstream
+=======
+    // this needs to be seperate responsibility
+    // we need to sperate the KinemaCharacter from the Movement State
+    public void SetPropulsionForce() // Tell the character to tell its current state to handle an incoming override momentum force
+    {
+        curMovementState.InformStatePropulsionForce();
+    }
+
+    public override void InformStatePropulsionForce()
+    {
+        
+    }
+
+>>>>>>> Stashed changes
     // should be simplified
 
     /// <summary>
@@ -170,8 +197,9 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
     /// (Called by KinematicCharacterMotor during its update cycle)
     /// This is called before the character begins its movement update
     /// </summary>
-    public void BeforeCharacterUpdate(float deltaTime)
+    public override void BeforeCharacterUpdate(float deltaTime)
     {
+
     }
 
     /// <summary>
@@ -179,7 +207,7 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
     /// This is where you tell your character what its rotation should be right now. 
     /// This is the ONLY place where you should set the character's rotation
     /// </summary>
-    public void UpdateRotation(ref Quaternion currentRotation, float deltaTime)
+    public override void UpdateRotation(ref Quaternion currentRotation, float deltaTime)
     {
 
         if (_lookInputVector.sqrMagnitude > 0f && OrientationSharpness > 0f)
@@ -212,7 +240,7 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
     /// This is where you tell your character what its velocity should be right now. 
     /// This is the ONLY place where you can set the character's velocity
     /// </summary>
-    public void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
+    public override void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
     {
         // Ground movement
         if (Motor.GroundingStatus.IsStableOnGround)
@@ -380,7 +408,7 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
     /// (Called by KinematicCharacterMotor during its update cycle)
     /// This is called after the character has finished its movement update
     /// </summary>
-    public void AfterCharacterUpdate(float deltaTime)
+    public override void AfterCharacterUpdate(float deltaTime)
     {
 
 
@@ -438,7 +466,7 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
 
     }
 
-    public void PostGroundingUpdate(float deltaTime)
+    public override void PostGroundingUpdate(float deltaTime)
     {
         // Handle landing and leaving ground
         if (Motor.GroundingStatus.IsStableOnGround && !Motor.LastGroundingStatus.IsStableOnGround)
@@ -451,7 +479,7 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
         }
     }
 
-    public bool IsColliderValidForCollisions(Collider coll)
+    public override bool IsColliderValidForCollisions(Collider coll)
     {
         if (IgnoredColliders.Count == 0)
         {
@@ -466,11 +494,11 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
         return true;
     }
 
-    public void OnGroundHit(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, ref HitStabilityReport hitStabilityReport)
+    public override void OnGroundHit(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, ref HitStabilityReport hitStabilityReport)
     {
     }
 
-    public void OnMovementHit(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, ref HitStabilityReport hitStabilityReport)
+    public override void OnMovementHit(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, ref HitStabilityReport hitStabilityReport)
     {
     }
 
@@ -482,7 +510,7 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
         _internalVelocityAdd += velocity;
     }
 
-    public void ProcessHitStabilityReport(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, Vector3 atCharacterPosition, Quaternion atCharacterRotation, ref HitStabilityReport hitStabilityReport)
+    public override void ProcessHitStabilityReport(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, Vector3 atCharacterPosition, Quaternion atCharacterRotation, ref HitStabilityReport hitStabilityReport)
     {
     }
 
@@ -501,7 +529,7 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
     {
     }
 
-    public void OnDiscreteCollisionDetected(Collider hitCollider)
+    public override void OnDiscreteCollisionDetected(Collider hitCollider)
     {
     }
 
