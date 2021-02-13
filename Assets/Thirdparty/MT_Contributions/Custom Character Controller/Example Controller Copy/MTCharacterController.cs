@@ -102,21 +102,20 @@ public class MTCharacterController : MovementState
         
     }
 
-<<<<<<< Updated upstream
-=======
+
     // this needs to be seperate responsibility
     // we need to sperate the KinemaCharacter from the Movement State
-    public void SetPropulsionForce() // Tell the character to tell its current state to handle an incoming override momentum force
+    public void SetPropulsionForce(Vector3 newMomentum) // Tell the character to tell its current state to handle an incoming override momentum force
     {
-        curMovementState.InformStatePropulsionForce();
+        curMovementState.InformStatePropulsionForce(newMomentum);
     }
 
-    public override void InformStatePropulsionForce()
+    public override void InformStatePropulsionForce(Vector3 newMomentum)
     {
         
     }
 
->>>>>>> Stashed changes
+
     // should be simplified
 
     /// <summary>
