@@ -24,6 +24,15 @@ public class BounceTrigger : MonoBehaviour
         
     }
 
+    public Vector3 GetLaunchSource()
+    {
+        float magnitudeOfFoce = Mathf.Sqrt(2 * -controller.Gravity.y * bounceHeight);
+
+        return transform.up.normalized * magnitudeOfFoce;
+
+
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         
