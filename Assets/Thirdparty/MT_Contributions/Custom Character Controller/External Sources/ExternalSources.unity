@@ -377,9 +377,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bounce Mushroom
       objectReference: {fileID: 0}
-    - target: {fileID: 3946597855585688649, guid: f786014ba95919a40bcba5c7891cde0d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f786014ba95919a40bcba5c7891cde0d, type: 3}
