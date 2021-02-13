@@ -119,7 +119,6 @@ public class MTCharacterController : MovementState
         
     }
 
-
     // this needs to be seperate responsibility
     // we need to sperate the KinemaCharacter from the Movement State
     public void SetPropulsionForce(Vector3 newMomentum) // Tell the character to tell its current state to handle an incoming override momentum force
@@ -130,7 +129,24 @@ public class MTCharacterController : MovementState
     public override void InformStatePropulsionForce(Vector3 newMomentum)
     {
         this.Motor.ForceUnground();
-        this.Motor.BaseVelocity = newMomentum;
+
+        Vector3 horizontalMomentum = Motor.BaseVelocity;
+
+        horizontalMomentum.y = 0;
+
+        if (newMomentum.normalized == Vector3.up && horizontalMomentum.magnitude > MaxAirMoveSpeed + 1 && horizontalMomentum.magnitude > MaxStableMoveSpeed + 1)
+        {
+            // must set equal to Motor.BaseVelocity with y Reset + new Momentum
+
+            var neutralizedY = Motor.BaseVelocity;
+
+            neutralizedY.y = 0;
+
+            this.Motor.BaseVelocity = neutralizedY + newMomentum;
+        } else
+        {
+            this.Motor.BaseVelocity = newMomentum;
+        }       
     }
 
 

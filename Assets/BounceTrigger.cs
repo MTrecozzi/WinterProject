@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class BounceTrigger : MonoBehaviour
 {
-
-
     public BinaryCrossSceneReference UxEvent;
 
     public float bounceHeight;
