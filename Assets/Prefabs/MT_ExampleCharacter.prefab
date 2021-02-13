@@ -305,9 +305,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d5193d464cc624db84869ab05e254e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 0}
   Motor: {fileID: 7157289883682162721}
   jumpPool: {fileID: 7119987707687262037}
   dashPool: {fileID: 7119987707687262036}
+  curMovementState: {fileID: 0}
   MaxStableMoveSpeed: 9
   StableMovementSharpness: 15
   OrientationSharpness: 20
@@ -430,6 +432,7 @@ MonoBehaviour:
   dashEndMultiplier: 0.3
   distance: 7
   timeToReach: 0.25
+  mushroomDashEndMult: 0.6
   defaultController: {fileID: 7119987707687262033}
   abilityEventReference: {fileID: 11400000, guid: 80b9afd015dc7fb4b9f347ac49e086fb, type: 2}
 --- !u!114 &7119987707687262037

@@ -47,7 +47,8 @@ public class MTCharacterController : MovementState
     public int maxDoubleJumpCount = 1;
 
     [Header("Misc")]
-    public List<Collider> IgnoredColliders = new List<Collider>();
+
+    public List<Collider> passingThroughIgnoredColliders = new List<Collider>();
     public BonusOrientationMethod BonusOrientationMethod = BonusOrientationMethod.None;
     public float BonusOrientationSharpness = 10f;
     public Vector3 Gravity = new Vector3(0, -30f, 0);
@@ -81,6 +82,22 @@ public class MTCharacterController : MovementState
     public void SetDefaultMovementState()
     {
         SetMovementState(this);
+    }
+
+    private void FixedUpdate()
+    {
+
+        for (int i = 0; i < passingThroughIgnoredColliders.Count; i++)
+        {
+            if (Mathf.Abs((passingThroughIgnoredColliders[i].transform.position - transform.position).magnitude) >= 3f)
+            {
+
+                Debug.Log("Collider Removed:");
+
+                passingThroughIgnoredColliders.RemoveAt(i);
+            }
+        }
+
     }
 
     public void SetMovementState(MovementState newState)
@@ -490,12 +507,12 @@ public class MTCharacterController : MovementState
 
     public override bool IsColliderValidForCollisions(Collider coll)
     {
-        if (IgnoredColliders.Count == 0)
+        if (passingThroughIgnoredColliders.Count == 0)
         {
             return true;
         }
 
-        if (IgnoredColliders.Contains(coll))
+        if (passingThroughIgnoredColliders.Contains(coll))
         {
             return false;
         }

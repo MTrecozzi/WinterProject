@@ -18,6 +18,8 @@ public class DashState : MovementState
     public MTCharacterController defaultController;
     public BinaryCrossSceneReference abilityEventReference;
 
+    public LayerMask ignoreLayers;
+
     private Vector3 dir;
 
     private bool initiallyGrounded = false;
@@ -88,6 +90,20 @@ public class DashState : MovementState
         dashVelocity = vel.normalized * (distance / timeToReach);
 
         dashVelocity.y = y;
+    }
+
+    // Working as intended, just need to carry this over into the next state!
+    public override bool IsColliderValidForCollisions(Collider coll)
+    {
+        bool valid = base.IsColliderValidForCollisions(coll) && !(ignoreLayers == (ignoreLayers | (1 << coll.gameObject.layer)));
+
+        // if we detect a non valid collision while dashing, we queue it for the character controller to ignore regardless of states.
+        if (!valid)
+        {
+            controller.passingThroughIgnoredColliders.Add(coll);
+        }
+
+        return valid;
     }
 
     public override void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)

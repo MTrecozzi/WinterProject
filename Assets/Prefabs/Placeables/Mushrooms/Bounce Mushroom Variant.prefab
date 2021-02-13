@@ -27,7 +27,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UxEvent: {fileID: 11400000, guid: 89442144d0181fd48a3d191a26b92a96, type: 2}
   bounceHeight: 5
-  controller: {fileID: 0}
+  bufferedJumpHeight: 0
 --- !u!1001 &8257937699492280135
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35,10 +35,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 666014849969816360, guid: eadf4bc34102efa44bc67c9c18ef9ab3, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 666014849969816365, guid: eadf4bc34102efa44bc67c9c18ef9ab3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7ff8aeade0ed42b459d3d1bc34173519, type: 2}
+    - target: {fileID: 666014851210107462, guid: eadf4bc34102efa44bc67c9c18ef9ab3, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4926717278907263758, guid: eadf4bc34102efa44bc67c9c18ef9ab3, type: 3}
       propertyPath: m_Name
       value: Bounce Mushroom
@@ -57,7 +65,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9054709801052368351, guid: eadf4bc34102efa44bc67c9c18ef9ab3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.231999
+      value: 12.231999
       objectReference: {fileID: 0}
     - target: {fileID: 9054709801052368351, guid: eadf4bc34102efa44bc67c9c18ef9ab3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -87,7 +95,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6817004907784955471, guid: eadf4bc34102efa44bc67c9c18ef9ab3, type: 3}
+    - {fileID: 7954326740561500012, guid: eadf4bc34102efa44bc67c9c18ef9ab3, type: 3}
+    - {fileID: 1335112451278227467, guid: eadf4bc34102efa44bc67c9c18ef9ab3, type: 3}
+    - {fileID: 1378872204943970502, guid: eadf4bc34102efa44bc67c9c18ef9ab3, type: 3}
+    - {fileID: 1176949207775890552, guid: eadf4bc34102efa44bc67c9c18ef9ab3, type: 3}
+    - {fileID: 838318846260448827, guid: eadf4bc34102efa44bc67c9c18ef9ab3, type: 3}
+    - {fileID: 4457966612813647495, guid: eadf4bc34102efa44bc67c9c18ef9ab3, type: 3}
+    - {fileID: 7827189134484942489, guid: eadf4bc34102efa44bc67c9c18ef9ab3, type: 3}
+    - {fileID: 2502607479917261224, guid: eadf4bc34102efa44bc67c9c18ef9ab3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: eadf4bc34102efa44bc67c9c18ef9ab3, type: 3}
 --- !u!1 &3946597855585688649 stripped
 GameObject:
