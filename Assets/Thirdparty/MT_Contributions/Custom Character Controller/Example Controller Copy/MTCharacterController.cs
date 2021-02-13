@@ -90,6 +90,11 @@ public class MTCharacterController : MonoBehaviour, ICharacterController
         
     }
 
+    public void SetPropulsionForce()
+    {
+
+    }
+
     // should be simplified
 
     /// <summary>

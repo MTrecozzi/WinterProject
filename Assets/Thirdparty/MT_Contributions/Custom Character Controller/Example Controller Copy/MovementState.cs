@@ -5,9 +5,13 @@ using UnityEngine;
 
 public abstract class MovementState : MonoBehaviour, ICharacterController
 {
-
+    
     public MTCharacterController controller;
 
+    #region Disturbance Handlers
+    public virtual void SetPropulsionForce() => controller.SetPropulsionForce();
+
+    #endregion
 
     public virtual void Initialize() { }
 

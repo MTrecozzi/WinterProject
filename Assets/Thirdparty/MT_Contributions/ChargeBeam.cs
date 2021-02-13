@@ -35,12 +35,22 @@ public class ChargeBeam : MonoBehaviour
         // should be able to pass custom physics layer as a parameter
         var hit = raycaster.CastRayFromScreen(100);
 
-        var destructable = hit.transform.GetComponent<IDestructable>();
+        IDestructable destructable;
 
-        if (destructable != null)
+        if (hit.transform != null)
         {
-            destructable.Destroy();
+            destructable = hit.transform.GetComponent<IDestructable>();
+
+            if (destructable != null)
+            {
+                destructable.Destroy();
+            }
+
         }
+
+        
+
+        
 
     }
 }
