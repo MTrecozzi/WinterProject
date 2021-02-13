@@ -22,10 +22,20 @@ public class DashState : MovementState
 
     private Vector3 dashVelocity;
 
+    private bool mushroomDashed;
+
     public override void InformStatePropulsionForce(Vector3 newMomentum)
     {
         // exit this state into character default
         defaultController.SetDefaultMovementState();
+
+        if (newMomentum.normalized == Vector3.up)
+        {
+            newMomentum += dashVelocity;
+            mushroomDashed = true;
+
+            // invoke mushroom dash event
+        }
 
         // call on default state's default Implementation
         base.InformStatePropulsionForce(newMomentum);
