@@ -11,6 +11,8 @@ public class DashState : MovementState
     public float distance;
     public float timeToReach;
 
+    public float mushroomDashEndMult = 1f;
+
     private float t;
 
     public MTCharacterController defaultController;
@@ -22,13 +24,32 @@ public class DashState : MovementState
 
     private Vector3 dashVelocity;
 
+    private bool mushroomDashed;
+
+    public override void InformStatePropulsionForce(Vector3 newMomentum)
+    {
+        // exit this state into character default
+        defaultController.SetDefaultMovementState();
+
+        if (newMomentum.normalized == Vector3.up)
+        {
+            newMomentum += dashVelocity * mushroomDashEndMult;
+            mushroomDashed = true;
+
+            // invoke mushroom dash event
+        }
+
+        // call on default state's default Implementation
+        base.InformStatePropulsionForce(newMomentum);
+    }
+
 
     public void StartDash(Vector3 direction)
     {
 
         t = 0;
         dir = transform.forward;
-        defaultController.OverrideMovementState(this);
+        defaultController.SetMovementState(this);
 
         abilityEventReference.InvokeMessage(true);
 

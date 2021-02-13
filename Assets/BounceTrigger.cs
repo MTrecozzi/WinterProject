@@ -9,6 +9,7 @@ public class BounceTrigger : MonoBehaviour
     public BinaryCrossSceneReference UxEvent;
 
     public float bounceHeight;
+    public float bufferedJumpHeight;
     //public float timeToHeight;
 
     private MTCharacterController controller;
@@ -37,11 +38,10 @@ public class BounceTrigger : MonoBehaviour
                 controller = other.transform.GetComponent<MTCharacterController>();
             }
 
-            controller.Motor.ForceUnground();
-
             float magnitudeOfFoce = Mathf.Sqrt(2 * -controller.Gravity.y * bounceHeight);
 
-            controller.Motor.BaseVelocity = transform.up.normalized * magnitudeOfFoce;
+            // using state dependent setPropulsionForce
+            controller.SetPropulsionForce(transform.up.normalized * magnitudeOfFoce);
 
             controller.OnLanded();
 
