@@ -249,6 +249,7 @@ GameObject:
   - component: {fileID: 7123243276955638593}
   - component: {fileID: 7147058739176126197}
   - component: {fileID: 7119987707687262033}
+  - component: {fileID: 3764920316457078195}
   - component: {fileID: 7157289883682162721}
   - component: {fileID: 7119987707687262034}
   - component: {fileID: 7119987707687262032}
@@ -332,6 +333,19 @@ MonoBehaviour:
   Gravity: {x: 0, y: -35, z: 0}
   MeshRoot: {fileID: 7118993999966641895}
   CameraFollowPoint: {fileID: 7123424157194382717}
+--- !u!114 &3764920316457078195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7119987707687262035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20129ddca6125b143b89ae394b4d8f42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _verticalOffset: 0.1
 --- !u!114 &7157289883682162721
 MonoBehaviour:
   m_ObjectHideFlags: 0
