@@ -72,7 +72,7 @@ public class DashState : MovementState
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && controller.dashPool.currentCharges > 0)
+        if (controller.player.controls.Standard.Dash.triggered && controller.dashPool.currentCharges > 0)
         {
 
             Debug.Log("Dash Started");

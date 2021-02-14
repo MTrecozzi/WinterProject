@@ -11,6 +11,8 @@ public class MTCharacterController : MovementState
     public KinematicCharacterMotor Motor;
 
 
+    public MTExamplePlayer player;
+
     public AbilityPool jumpPool;
     public AbilityPool dashPool;
 
