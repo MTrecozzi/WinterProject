@@ -50,6 +50,12 @@ public class BounceTrigger : MonoBehaviour
             // using state dependent setPropulsionForce
             controller.SetPropulsionForce(transform.up.normalized * magnitudeOfFoce);
 
+            if (!(transform.up.normalized == Vector3.up))
+            {
+                Debug.LogWarning("Crappy Air Dampening Implementation");
+                controller.DampenAirAccel();
+            }
+
             controller.OnLanded();
 
             if (UxEvent != null)

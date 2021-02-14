@@ -22,11 +22,17 @@ public class DashState : MovementState
 
     private Vector3 dir;
 
+    private Vector3 currentWallNormal;
+
     private bool initiallyGrounded = false;
 
     private Vector3 dashVelocity;
 
     private bool mushroomDashed;
+
+    private bool wallReoriented;
+
+    private bool endState;
 
     public override void InformStatePropulsionForce(Vector3 newMomentum)
     {
@@ -43,6 +49,17 @@ public class DashState : MovementState
 
         // call on default state's default Implementation
         base.InformStatePropulsionForce(newMomentum);
+    }
+
+    public override void Initialize()
+    {
+        t = 0;
+        dashVelocity = Vector3.zero;
+        mushroomDashed = false;
+        wallReoriented = false;
+        dashVelocity = Vector3.zero;
+        initiallyGrounded = false;
+        currentWallNormal = Vector3.zero;
     }
 
 
@@ -70,8 +87,11 @@ public class DashState : MovementState
         defaultController.SetDefaultMovementState();
     }
 
-    private void Update()
+    // input handled in fixed update
+    // since we're updating input in fixed update, when this code ran in update, it consumed multiple dashes per frame
+    private void FixedUpdate()
     {
+
         if (controller.player.controls.Standard.Dash.triggered && controller.dashPool.currentCharges > 0)
         {
 
@@ -105,10 +125,51 @@ public class DashState : MovementState
 
         return valid;
     }
+    
+    
+    // Perhaps we need an inform state wall collision, so that states can do an on wall enter type deal
+    // public override void InformStateWallCollision() { }
 
     public override void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
     {
         t += deltaTime;
+
+        // if we're wall jumping off of a wall
+        if (wallReoriented && currentWallNormal != Vector3.zero && controller.player.controls.Standard.Jump.triggered)
+        {
+
+            Debug.Log("WALL JUMPED");
+
+            EndDash();
+
+            // set the controller into a crappy air accel dampened state for a few seconds
+            controller.DampenAirAccel();
+
+            controller._jumpRequested = false;
+
+            Debug.LogWarning("JUMP BEING IMMEDIATELY CONSUMED AFTER STATE CHANGE: ERROR");
+
+            // don't reset abilities after wall jump
+            //controller.ResetAbilities();
+
+
+
+            // dash velocity = current movementum, appriately halted
+            dashVelocity = controller.Motor.BaseVelocity * dashEndMultiplier;
+
+            // add to dash velocity a force from the normal of the wall
+            dashVelocity += currentWallNormal.normalized * 10;
+
+            // add a jump to the wall jump
+            dashVelocity.y += controller.JumpUpSpeed;
+
+            Debug.Log("Current Wall Normal: " + currentWallNormal);
+
+            // currentVelocity = dashVelocity + wall Jump
+            controller.Motor.BaseVelocity = dashVelocity;
+
+            return;
+        }
 
         if (t > timeToReach)
         {
@@ -157,6 +218,20 @@ public class DashState : MovementState
 
         dashVelocity = surfaceParrallel.normalized * (distance / timeToReach) * slideMultiplier; // sliding against a wall sh
 
+        Debug.LogWarning("Not checking properly for if we're on a wall: Also Need new Logging System");
+
+        if (hitNormal.y == 0)
+        {
+            wallReoriented = true;
+            // Idiot! NOT currentWallNormal = surfaceParrallel.normalized;
+            currentWallNormal = hitNormal.normalized;
+
+        }
+
+
+        
+
+
         //!! Test Structure
 
         /*
@@ -188,4 +263,5 @@ public class DashState : MovementState
 
 
     }
+
 }
