@@ -154,8 +154,8 @@ public class DashState : MovementState
 
 
 
-            // dash velocity = current movementum, appriately halted
-            dashVelocity = controller.Motor.BaseVelocity * dashEndMultiplier;
+            // dash velocity = current movementum, halted less then usual
+            dashVelocity = controller.Motor.BaseVelocity * (0.54f);
 
             // add to dash velocity a force from the normal of the wall
             dashVelocity += currentWallNormal.normalized * 10;
