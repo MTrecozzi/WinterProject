@@ -522,6 +522,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7119987707687262033, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 297910208}
+    - target: {fileID: 7119987707687262033, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: dampTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7119987707687262033, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: dampenedAirAccel
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 7119987707687262035, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
       propertyPath: m_Name
       value: MT_ExampleCharacter
@@ -532,15 +544,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7123243276955638593, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.4152627
+      value: -0.66482496
       objectReference: {fileID: 0}
     - target: {fileID: 7123243276955638593, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.72
+      value: 2.2799997
       objectReference: {fileID: 0}
     - target: {fileID: 7123243276955638593, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.068519
+      value: -1.4802132
       objectReference: {fileID: 0}
     - target: {fileID: 7123243276955638593, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
       propertyPath: m_LocalRotation.w

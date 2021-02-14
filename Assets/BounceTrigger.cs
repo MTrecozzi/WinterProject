@@ -24,6 +24,15 @@ public class BounceTrigger : MonoBehaviour
         
     }
 
+    public Vector3 GetLaunchSource()
+    {
+        float magnitudeOfFoce = Mathf.Sqrt(2 * -controller.Gravity.y * bounceHeight);
+
+        return transform.up.normalized * magnitudeOfFoce;
+
+
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         
@@ -40,6 +49,12 @@ public class BounceTrigger : MonoBehaviour
 
             // using state dependent setPropulsionForce
             controller.SetPropulsionForce(transform.up.normalized * magnitudeOfFoce);
+
+            if (!(transform.up.normalized == Vector3.up))
+            {
+                Debug.LogWarning("Crappy Air Dampening Implementation");
+                controller.DampenAirAccel();
+            }
 
             controller.OnLanded();
 

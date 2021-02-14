@@ -60,19 +60,7 @@ public class GrapplingSystem : MonoBehaviour, ICharacterController
 
     public void LateUpdate()
     {
-        if (GrappleEnabled)
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                ShootGrapple();
-            }
 
-            // if we are at the grapple point
-            if ((pointToZipTo - motor.transform.position).magnitude <= 0.5 || Input.GetKeyUp(KeyCode.E))
-            {
-                EndGrapple();
-            }
-        }
     }
 
     public void StartGrapple()

@@ -14,11 +14,11 @@ public abstract class MovementState : MonoBehaviour, ICharacterController
     // currently the default movementstate is coupled with the movementstatemanager!
     // movement state manager should handle things such as SetManagerPropulsionForce => currentState.SetPropulsionForce
     public virtual void InformStatePropulsionForce(Vector3 newMomentum) => controller.InformStatePropulsionForce(newMomentum); // the default implementation for state propulsion
-                                                                                                 // the default is the current character way.
+                                                                                                                               // the default is the current character way.
 
     #endregion
 
-
+    //public virtual float GetAirAcceleration() => controller.AirAccelerationSpeed;
 
     public virtual void Initialize() { }
 

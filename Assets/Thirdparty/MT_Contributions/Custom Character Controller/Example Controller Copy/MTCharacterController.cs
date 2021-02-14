@@ -11,6 +11,8 @@ public class MTCharacterController : MovementState
     public KinematicCharacterMotor Motor;
 
 
+    public MTExamplePlayer player;
+
     public AbilityPool jumpPool;
     public AbilityPool dashPool;
 
@@ -19,6 +21,11 @@ public class MTCharacterController : MovementState
     public event Action OnPlayerDoubleJump;
 
     public MovementState curMovementState;
+
+    [Header("Temp Buffer System")]
+    public float dampenedAirAccel;
+    public float dampTime = 3f;
+    private float dampT;
 
     [Header("Stable Movement")]
     public float MaxStableMoveSpeed = 10f;
@@ -59,7 +66,7 @@ public class MTCharacterController : MovementState
     private RaycastHit[] _probedHits = new RaycastHit[8];
     private Vector3 _moveInputVector;
     private Vector3 _lookInputVector;
-    private bool _jumpRequested = false;
+    public bool _jumpRequested = false;
     private bool _jumpConsumed = false;
     private bool _jumpedThisFrame = false;
     private float _timeSinceJumpRequested = Mathf.Infinity;
@@ -82,6 +89,11 @@ public class MTCharacterController : MovementState
     public void SetDefaultMovementState()
     {
         SetMovementState(this);
+    }
+
+    public void DampenAirAccel()
+    {
+        dampT = dampTime;
     }
 
     private void FixedUpdate()
@@ -158,6 +170,7 @@ public class MTCharacterController : MovementState
     /// </summary>
     public void SetInputs(ref PlayerCharacterInputs inputs)
     {
+
         // Clamp input
         Vector3 moveInputVector = Vector3.ClampMagnitude(new Vector3(inputs.MoveAxisRight, 0f, inputs.MoveAxisForward), 1f);
 
@@ -276,6 +289,17 @@ public class MTCharacterController : MovementState
     /// </summary>
     public override void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
     {
+
+        if (dampT > 0)
+        {
+            dampT -= deltaTime;
+
+            if (dampT <= 0)
+            {
+                dampT = 0;
+            }
+        }
+
         // Ground movement
         if (Motor.GroundingStatus.IsStableOnGround)
         {
@@ -326,7 +350,10 @@ public class MTCharacterController : MovementState
             // Add move input
             if (_moveInputVector.sqrMagnitude > 0f)
             {
-                Vector3 addedVelocity = _moveInputVector * AirAccelerationSpeed * deltaTime;
+
+                float binaryAirAccel = dampT > 0 ? dampenedAirAccel : AirAccelerationSpeed;
+
+                Vector3 addedVelocity = _moveInputVector * binaryAirAccel * deltaTime;
 
                 Vector3 currentVelocityOnInputsPlane = Vector3.ProjectOnPlane(currentVelocity, Motor.CharacterUp);
 
@@ -395,6 +422,7 @@ public class MTCharacterController : MovementState
 
                 OnPlayerDoubleJump?.Invoke();
 
+                Debug.LogWarning("Double Jump Consumed: Not Intended On Wall Jump");
                 jumpPool.currentCharges--;
 
                 _jumpRequested = false;
@@ -506,6 +534,8 @@ public class MTCharacterController : MovementState
                 _isCrouching = false;
             }
         }
+
+
 
     }
 

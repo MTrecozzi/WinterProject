@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using KinematicCharacterController;
 using KinematicCharacterController.Examples;
-
-
+using UnityEngine.InputSystem;
 
 public class MTExamplePlayer : MonoBehaviour
 {
     public MTCharacterController Character;
     public MTCharacterCamera CharacterCamera;
+
+    public PlayerControls controls;
 
     private const string MouseXInput = "Mouse X";
     private const string MouseYInput = "Mouse Y";
@@ -19,6 +20,11 @@ public class MTExamplePlayer : MonoBehaviour
 
     private void Start()
     {
+
+        controls = new PlayerControls();
+
+        controls.Enable();
+
         Cursor.lockState = CursorLockMode.Locked;
 
         // Tell camera to follow transform
@@ -31,7 +37,7 @@ public class MTExamplePlayer : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (controls.Standard.Shoot.triggered)
         {
             Cursor.lockState = CursorLockMode.Locked;
         }
@@ -54,8 +60,17 @@ public class MTExamplePlayer : MonoBehaviour
     private void HandleCameraInput()
     {
         // Create the look input vector for the camera
-        float mouseLookAxisUp = Input.GetAxisRaw(MouseYInput);
-        float mouseLookAxisRight = Input.GetAxisRaw(MouseXInput);
+
+        var delta = controls.Standard.AimDelta.ReadValue<Vector2>();
+
+        delta *= 0.5f;
+
+        delta *= 0.1f;
+
+        float mouseLookAxisUp = delta.y;
+        float mouseLookAxisRight = delta.x;
+
+
         Vector3 lookInputVector = new Vector3(mouseLookAxisRight, mouseLookAxisUp, 0f);
 
         // Prevent moving the camera while the cursor isn't locked
@@ -65,7 +80,7 @@ public class MTExamplePlayer : MonoBehaviour
         }
 
         // Input for zooming the camera (disabled in WebGL because it can cause problems)
-        float scrollInput = -Input.GetAxis(MouseScrollInput);
+        float scrollInput = 0; // -Input.GetAxis(MouseScrollInput);
 #if UNITY_WEBGL
     scrollInput = 0f;
 #endif
@@ -73,11 +88,6 @@ public class MTExamplePlayer : MonoBehaviour
         // Apply inputs to the camera
         CharacterCamera.UpdateWithInput(Time.deltaTime, scrollInput, lookInputVector);
 
-        // Handle toggling zoom level
-        if (Input.GetMouseButtonDown(1))
-        {
-            //CharacterCamera.TargetDistance = (CharacterCamera.TargetDistance == 0f) ? CharacterCamera.DefaultDistance : 0f;
-        }
     }
 
     private void HandleCharacterInput()
@@ -85,17 +95,12 @@ public class MTExamplePlayer : MonoBehaviour
         PlayerCharacterInputs characterInputs = new PlayerCharacterInputs();
 
         // Build the CharacterInputs struct
-        characterInputs.MoveAxisForward = Input.GetAxisRaw(VerticalInput);
-        characterInputs.MoveAxisRight = Input.GetAxisRaw(HorizontalInput);
+        characterInputs.MoveAxisForward = controls.Standard.ControlStick.ReadValue<Vector2>().y;
+        characterInputs.MoveAxisRight = controls.Standard.ControlStick.ReadValue<Vector2>().x;
         characterInputs.CameraRotation = CharacterCamera.Transform.rotation;
-        characterInputs.JumpDown = Input.GetKeyDown(KeyCode.Space);
-        characterInputs.JumpUp = Input.GetKeyUp(KeyCode.Space);
-        characterInputs.CrouchDown = Input.GetKeyDown(KeyCode.LeftControl);
-        characterInputs.CrouchUp = Input.GetKeyUp(KeyCode.LeftControl);
-
-        characterInputs.SprintDown = Input.GetKeyDown(KeyCode.LeftShift);
-        characterInputs.SprintUp = Input.GetKeyUp(KeyCode.LeftShift);
-
+        characterInputs.JumpDown = controls.Standard.Jump.triggered;
+        
+        // not utilizing jump up right now
         // Apply inputs to character
         Character.SetInputs(ref characterInputs);
     }
