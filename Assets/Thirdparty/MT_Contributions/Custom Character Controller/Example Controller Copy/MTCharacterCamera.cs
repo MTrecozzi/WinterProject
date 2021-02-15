@@ -60,8 +60,17 @@ public class MTCharacterCamera : MonoBehaviour
         DefaultVerticalAngle = Mathf.Clamp(DefaultVerticalAngle, MinVerticalAngle, MaxVerticalAngle);
     }
 
+    public static MTCharacterCamera instance;
+
     void Awake()
     {
+
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else Destroy(gameObject);
+
         Transform = this.transform;
 
         _currentDistance = DefaultDistance;

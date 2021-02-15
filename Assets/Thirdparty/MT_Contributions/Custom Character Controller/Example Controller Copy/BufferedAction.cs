@@ -23,9 +23,6 @@ public class BufferedAction
     {
         Buffered = true;
         pressedTime = Time.time;
-
-        Debug.LogError("INPUT Called");
-
     }
 
     public void EatInput()
