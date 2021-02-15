@@ -145,8 +145,6 @@ public class DashState : MovementState
             // set the controller into a crappy air accel dampened state for a few seconds
             controller.DampenAirAccel();
 
-            controller._jumpRequested = false;
-
             Debug.LogWarning("JUMP BEING IMMEDIATELY CONSUMED AFTER STATE CHANGE: ERROR");
 
             // don't reset abilities after wall jump

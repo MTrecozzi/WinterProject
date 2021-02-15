@@ -12,12 +12,15 @@ public class MTExamplePlayer : MonoBehaviour
 
     public PlayerControls controls;
 
+    public BufferedAction Jump;
+
     private void Start()
     {
 
         controls = new PlayerControls();
-
         controls.Enable();
+
+        Jump = new BufferedAction();
 
         Cursor.lockState = CursorLockMode.Locked;
 
@@ -36,7 +39,16 @@ public class MTExamplePlayer : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
         }
 
+        HandleBuffers();
         HandleCharacterInput();
+    }
+
+    private void HandleBuffers()
+    {
+        if (controls.Standard.Jump.triggered) Jump.CallInput();
+
+        Jump.Tick();
+
     }
 
     private void LateUpdate()
@@ -92,7 +104,7 @@ public class MTExamplePlayer : MonoBehaviour
         characterInputs.MoveAxisForward = controls.Standard.ControlStick.ReadValue<Vector2>().y;
         characterInputs.MoveAxisRight = controls.Standard.ControlStick.ReadValue<Vector2>().x;
         characterInputs.CameraRotation = CharacterCamera.Transform.rotation;
-        characterInputs.JumpDown = controls.Standard.Jump.triggered;
+        characterInputs.JumpDown = Jump.Buffered;
         
         // not utilizing jump up right now
         // Apply inputs to character

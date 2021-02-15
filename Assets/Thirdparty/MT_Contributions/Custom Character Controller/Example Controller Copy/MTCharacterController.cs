@@ -9,8 +9,6 @@ using System;
 public class MTCharacterController : MovementState
 {
     public KinematicCharacterMotor Motor;
-
-
     public MTExamplePlayer player;
 
     public AbilityPool jumpPool;
@@ -66,11 +64,7 @@ public class MTCharacterController : MovementState
     private RaycastHit[] _probedHits = new RaycastHit[8];
     private Vector3 _moveInputVector;
     private Vector3 _lookInputVector;
-    public bool _jumpRequested = false;
-    private bool _jumpConsumed = false;
-    private bool _jumpedThisFrame = false;
-    private float _timeSinceJumpRequested = Mathf.Infinity;
-    private float _timeSinceLastAbleToJump = 0f;
+
     private Vector3 _internalVelocityAdd = Vector3.zero;
     private bool _shouldBeCrouching = false;
     private bool _isCrouching = false;
@@ -195,45 +189,6 @@ public class MTCharacterController : MovementState
                 _lookInputVector = _moveInputVector.normalized;
                 break;
         }
-
-        // Jumping input
-        if (inputs.JumpDown)
-        {
-            _timeSinceJumpRequested = 0f;
-            _jumpRequested = true;
-        }
-
-        // Crouching input
-        if (inputs.CrouchDown)
-        {
-            _shouldBeCrouching = true;
-
-            if (!_isCrouching)
-            {
-                _isCrouching = true;
-                Motor.SetCapsuleDimensions(0.5f, 1f, 0.5f);
-                MeshRoot.localScale = new Vector3(1f, 0.5f, 1f);
-            }
-        }
-        else if (inputs.CrouchUp)
-        {
-            _shouldBeCrouching = false;
-        }
-
-
-        // Sprint Input
-        if (inputs.SprintDown)
-        {
-            __isPrinting = true;
-
-
-        }
-        else if (inputs.SprintUp)
-        {
-            __isPrinting = false;
-        }
-
-
 
     }
 
@@ -395,11 +350,9 @@ public class MTCharacterController : MovementState
             currentVelocity *= (1f / (1f + (Drag * deltaTime)));
         }
 
-        // Handle jumping
-        _jumpedThisFrame = false;
-        _timeSinceJumpRequested += deltaTime;
 
-        if (player.controls.Standard.Jump.triggered)
+
+        if (player.Jump.Buffered)
         {
 
             //Debug.Log("Jump Requested: doubleJumpCount: " + doubleJumpCount + "!FoundAnyGround: " + !Motor.GroundingStatus.FoundAnyGround);
@@ -426,15 +379,13 @@ public class MTCharacterController : MovementState
                 Debug.LogWarning("Double Jump Consumed: Not Intended On Wall Jump");
                 jumpPool.currentCharges--;
 
-                _jumpRequested = false;
-                _jumpConsumed = true;
-                _jumpedThisFrame = true;
+                player.Jump.EatInput();
 
                 return;
             }
 
             // See if we actually are allowed to jump
-            if (!_jumpConsumed && ((AllowJumpingWhenSliding ? Motor.GroundingStatus.FoundAnyGround : Motor.GroundingStatus.IsStableOnGround) || _timeSinceLastAbleToJump <= JumpPostGroundingGraceTime))
+            if (((AllowJumpingWhenSliding ? Motor.GroundingStatus.FoundAnyGround : Motor.GroundingStatus.IsStableOnGround))) //  || _timeSinceLastAbleToJump <= JumpPostGroundingGraceTime
             {
 
 
@@ -452,9 +403,9 @@ public class MTCharacterController : MovementState
                 // Add to the return velocity and reset jump state
                 currentVelocity += (jumpDirection * JumpUpSpeed) - Vector3.Project(currentVelocity, Motor.CharacterUp);
                 currentVelocity += (_moveInputVector * JumpScalableForwardSpeed);
-                _jumpRequested = false;
-                _jumpConsumed = true;
-                _jumpedThisFrame = true;
+
+                player.Jump.EatInput();
+
             }
         }
 
@@ -483,60 +434,10 @@ public class MTCharacterController : MovementState
     public override void AfterCharacterUpdate(float deltaTime)
     {
 
-
         if (Motor.GroundingStatus.IsStableOnGround)
         {
             ResetAbilities();
         }
-
-        // Handle jump-related values
-        {
-            // Handle jumping pre-ground grace period
-            if (_jumpRequested && _timeSinceJumpRequested > JumpPreGroundingGraceTime)
-            {
-                _jumpRequested = false;
-            }
-
-            if (AllowJumpingWhenSliding ? Motor.GroundingStatus.FoundAnyGround : Motor.GroundingStatus.IsStableOnGround)
-            {
-                // If we're on a ground surface, reset jumping values
-                if (!_jumpedThisFrame)
-                {
-                    _jumpConsumed = false;
-                }
-                _timeSinceLastAbleToJump = 0f;
-            }
-            else
-            {
-                // Keep track of time since we were last able to jump (for grace period)
-                _timeSinceLastAbleToJump += deltaTime;
-            }
-        }
-
-        // Handle uncrouching
-        if (_isCrouching && !_shouldBeCrouching)
-        {
-            // Do an overlap test with the character's standing height to see if there are any obstructions
-            Motor.SetCapsuleDimensions(0.5f, 2f, 1f);
-            if (Motor.CharacterOverlap(
-                Motor.TransientPosition,
-                Motor.TransientRotation,
-                _probedColliders,
-                Motor.CollidableLayers,
-                QueryTriggerInteraction.Ignore) > 0)
-            {
-                // If obstructions, just stick to crouching dimensions
-                Motor.SetCapsuleDimensions(0.5f, 1f, 0.5f);
-            }
-            else
-            {
-                // If no obstructions, uncrouch
-                MeshRoot.localScale = new Vector3(1f, 1f, 1f);
-                _isCrouching = false;
-            }
-        }
-
-
 
     }
 
