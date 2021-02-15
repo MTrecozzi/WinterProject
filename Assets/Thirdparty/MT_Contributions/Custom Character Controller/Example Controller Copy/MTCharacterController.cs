@@ -398,7 +398,8 @@ public class MTCharacterController : MovementState
         // Handle jumping
         _jumpedThisFrame = false;
         _timeSinceJumpRequested += deltaTime;
-        if (_jumpRequested)
+
+        if (player.controls.Standard.Jump.triggered)
         {
 
             //Debug.Log("Jump Requested: doubleJumpCount: " + doubleJumpCount + "!FoundAnyGround: " + !Motor.GroundingStatus.FoundAnyGround);

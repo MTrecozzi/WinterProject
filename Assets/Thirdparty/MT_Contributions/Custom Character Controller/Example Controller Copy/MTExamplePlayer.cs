@@ -29,7 +29,7 @@ public class MTExamplePlayer : MonoBehaviour
         CharacterCamera.IgnoredColliders.AddRange(Character.GetComponentsInChildren<Collider>());
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (controls.Standard.Shoot.triggered)
         {
