@@ -17,7 +17,7 @@ public class WallRunState : MovementState
     public float gravity;
 
     [SerializeField]
-    private float curWallRunVelocity;
+    private float curWallRunVelocityX;
 
     [SerializeField]
     private Vector3 surfaceParralel;
@@ -40,7 +40,7 @@ public class WallRunState : MovementState
     {
         Debug.Log("WALL RUN STATE INITIALIZED");
 
-        curWallRunVelocity = wallRunInitialVelocity;
+        curWallRunVelocityX = wallRunInitialVelocity;
 
         curYVelocity = InitialYVelocity;
 
@@ -49,7 +49,7 @@ public class WallRunState : MovementState
     public override void CleanUp()
     {
 
-        curWallRunVelocity = 0f;
+        curWallRunVelocityX = 0f;
 
         Debug.Log("Wall Run Surface Ended");
         //surfaceNormal = Vector3.zero;
@@ -64,7 +64,7 @@ public class WallRunState : MovementState
         {
 
             Debug.LogWarning("INTERESTING: jumping before the wall run, during the smaller dash window, has greater effect of preserving momentum, cool!");
-            var velocity = (surfaceParralel.normalized * curWallRunVelocity) * 0.8f + surfaceNormal.normalized * 10f;
+            var velocity = (surfaceParralel.normalized * curWallRunVelocityX) * 0.8f + surfaceNormal.normalized * 10f;
 
             // add a jump to the wall jump
             velocity.y += controller.JumpUpSpeed;
@@ -75,7 +75,14 @@ public class WallRunState : MovementState
             controller.player.Jump.EatInput();
 
             controller.DampenAirAccel();
+
+        } else
+        {
+            var nonJumpVelocity = (surfaceParralel.normalized * Mathf.Min(controller.MaxAirMoveSpeed + 2, curWallRunVelocityX) * 0.8f);
+
+            controller.Motor.BaseVelocity = nonJumpVelocity;
         }
+
 
         controller.SetDefaultMovementState();
     }
@@ -87,15 +94,15 @@ public class WallRunState : MovementState
         var input = controller.player.controls.Standard;
 
         // idiot! Was setting velocity = wallRunInitial rather than wallRunCurrent
-        currentVelocity = (surfaceParralel.normalized * curWallRunVelocity); //  + (surfaceParralel.normalized * 0.5f * input.ControlStick.ReadValue<Vector2>().y * wallRunVelocity);
+        currentVelocity = (surfaceParralel.normalized * curWallRunVelocityX); //  + (surfaceParralel.normalized * 0.5f * input.ControlStick.ReadValue<Vector2>().y * wallRunVelocity);
 
-        currentVelocity.y = curYVelocity + (input.ControlStick.ReadValue<Vector2>().y * 6f);
+        currentVelocity.y = curYVelocity + Mathf.Min(0,  (input.ControlStick.ReadValue<Vector2>().y * 3f));
 
         curYVelocity -= Time.deltaTime * gravity * 2;
 
-        if (curWallRunVelocity > minWallRunVelocity)
+        if (curWallRunVelocityX > minWallRunVelocity)
         {
-            curWallRunVelocity -= Time.deltaTime * 6f;
+            curWallRunVelocityX -= Time.deltaTime * 6f;
         } else
         {
             EndState();
@@ -120,8 +127,13 @@ public class WallRunState : MovementState
         if (!Physics.Raycast(transform.position, surfaceNormal * -1, out hit, 2, mask))
         {
             EndState();
-        }
+        } else if (Physics.Raycast(transform.position, surfaceParralel, 2, mask))
+        {
+            // hit somethign while running
 
+            EndState();
+        }
+       
         //else { Debug.Log("HIT " + hit.transform.gameObject.name); }
         
     }
