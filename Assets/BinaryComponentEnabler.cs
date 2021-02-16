@@ -18,7 +18,7 @@ public class BinaryComponentEnabler : MonoBehaviour
 
     private void HandleAbilityMessage(bool obj)
     {
-        // abilityComponent.enabled = obj;
+        //abilityComponent. = obj;
     }
 
     // Update is called once per frame
