@@ -441,29 +441,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d5193d464cc624db84869ab05e254e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3764920316457078196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3764920316457078184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a53f9c248f9ba748bcf3f802ed22cbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 3764920316457078186}
-  wallRunInitialVelocity: 18
-  minWallRunVelocity: 10
-  wallRunDecayRate: 8
-  InitialYVelocity: 5
-  gravity: 2.8
-  curWallRunVelocityX: 0
-  surfaceParralel: {x: 0, y: 0, z: 0}
-  mask:
-    serializedVersion: 2
-    m_Bits: 1
 --- !u!4 &3801117360521736141
 Transform:
   m_ObjectHideFlags: 0
@@ -549,25 +526,9 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 297910208}
-    - target: {fileID: 7119987707687262033, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
-      propertyPath: dampTime
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7119987707687262033, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
-      propertyPath: dampenedAirAccel
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 7119987707687262035, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
       propertyPath: m_Name
       value: MT_ExampleCharacter
-      objectReference: {fileID: 0}
-    - target: {fileID: 7119987707687262038, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
-      propertyPath: wallRunState
-      value: 
-      objectReference: {fileID: 3764920316457078196}
-    - target: {fileID: 7119987707687262038, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
-      propertyPath: dotProductBonkCutOff
-      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 7123243276955638593, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
       propertyPath: m_RootOrder
