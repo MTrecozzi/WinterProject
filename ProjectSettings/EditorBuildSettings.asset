@@ -12,14 +12,8 @@ EditorBuildSettings:
     path: Assets/Scenes/BUILD FIRST SCENE/Initialization.unity
     guid: 21e8e2b11ed601a4ea6a72f2f6adebb3
   - enabled: 1
-    path: Assets/Scenes/LevelDesign/LevelDesign11/LevelDesign11.unity
-    guid: e321b6891c783fd4ea079659e3204e51
-  - enabled: 1
     path: Assets/Thirdparty/MT_Contributions/Grapple Snapple/Grapple UI.unity
     guid: 2bdd36e7fdb97b440a603bc066405759
-  - enabled: 1
-    path: Assets/Scenes/CharacterScene/CharacterSetup V 2.unity
-    guid: c571e9e0f94fa8c41a5a40c9cf517d3d
   - enabled: 1
     path: Assets/Thirdparty/MT_Contributions/Playtestr/GameStateManagementScene.unity
     guid: 0f2fd02695be2434b9a0cfe954ea8c80
@@ -33,5 +27,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Thirdparty/MT_Contributions/Main Menu/Main Menu UI.unity
     guid: 763ac994fddf3e74685cfc4ee3fba291
+  - enabled: 1
+    path: Assets/Scenes/TestingShrines/ShrineTest01.unity
+    guid: 92d900d8102b6cb4bbb29edc71e7c02b
+  - enabled: 1
+    path: Assets/Scenes/TestingShrines/ShrineTest02.unity
+    guid: 60044f745f296b444a733adda6a9fdd7
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: ecb8062c977fced4ca1d1b3f0af36302, type: 2}
