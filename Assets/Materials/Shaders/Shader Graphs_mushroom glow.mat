@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Shader Graphs_mushroom glow
+  m_Shader: {fileID: -6465566751694194690, guid: 2e073613be8a2fa4ea90257e50b09ae0, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_80677b3e250a47ce80c98feb143c9e0e: 0.56
+    m_Colors:
+    - Color_0c08c11f1fa64076ba30c45613e57fc4: {r: 0, g: 0, b: 0, a: 0}
+    - Color_bbbaab68e3514d2193b859e90f088fe0: {r: 0.2627451, g: 0.7058824, b: 0.85882354, a: 1}
+    - Color_eccf3436a001428090860346997a734d: {r: 0, g: 0, b: 0, a: 0}
+    - Vector3_7b204ce4d6484fb4948301fde401a44f: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []

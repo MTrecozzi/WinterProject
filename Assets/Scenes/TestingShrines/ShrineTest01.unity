@@ -9993,6 +9993,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1806404135}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1812510143 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 373575768996506247, guid: f58ec40c7982c6a45b27a3803b976f0e, type: 3}
+  m_PrefabInstance: {fileID: 897371853}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &1812510144
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1812510143}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 7.544487
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1812510146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1812510143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5e25873b90c00044bbfd8aee9cbf928, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1830149501
 GameObject:
   m_ObjectHideFlags: 0
