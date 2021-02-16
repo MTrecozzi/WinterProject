@@ -15,6 +15,8 @@ public class DashState : MovementState
 
     private float t;
 
+    public WallRunState wallRunState;
+
     public MTCharacterController defaultController;
     public BinaryCrossSceneReference abilityEventReference;
 
@@ -33,6 +35,13 @@ public class DashState : MovementState
     private bool wallReoriented;
 
     private bool endState;
+
+    private Vector3 surfaceParrallel;
+
+    private float initialDotProduct;
+
+    public float dotProductBonkCutOff = 0.7f;
+
 
     public override void InformStatePropulsionForce(Vector3 newMomentum)
     {
@@ -135,8 +144,10 @@ public class DashState : MovementState
         t += deltaTime;
 
         // if we're wall jumping off of a wall
-        if (wallReoriented && currentWallNormal != Vector3.zero && controller.player.controls.Standard.Jump.triggered)
+        if (wallReoriented && currentWallNormal != Vector3.zero && controller.player.Jump.Buffered)
         {
+
+            controller.player.Jump.EatInput();
 
             Debug.Log("WALL JUMPED");
 
@@ -145,17 +156,11 @@ public class DashState : MovementState
             // set the controller into a crappy air accel dampened state for a few seconds
             controller.DampenAirAccel();
 
-            controller._jumpRequested = false;
-
-            Debug.LogWarning("JUMP BEING IMMEDIATELY CONSUMED AFTER STATE CHANGE: ERROR");
-
             // don't reset abilities after wall jump
             //controller.ResetAbilities();
 
-
-
             // dash velocity = current movementum, halted less then usual
-            dashVelocity = controller.Motor.BaseVelocity * (0.54f);
+            dashVelocity *= (0.7f);
 
             // add to dash velocity a force from the normal of the wall
             dashVelocity += currentWallNormal.normalized * 10;
@@ -173,6 +178,18 @@ public class DashState : MovementState
 
         if (t > timeToReach)
         {
+
+            Debug.Log("WALL ORIENTED: " + wallReoriented);
+
+            if (wallReoriented && initialDotProduct < dotProductBonkCutOff) // && still on wall
+            {
+                wallRunState.StartState(surfaceParrallel, currentWallNormal);
+
+                // idiot! Messy returns, this state was being overriden because we didn't return and code kept running
+
+                return;
+
+            }
 
             // should cache pixel perfect desired end position, and snap there if possible after dash completion, although this wouldn't work if there's interference
 
@@ -212,21 +229,36 @@ public class DashState : MovementState
         
         Debug.Log("Hit: " + hitCollider.name + " Dot Product = " + Vector3.Dot(-hitNormal, dashVelocity.normalized));
 
-        Vector3 surfaceParrallel = dashVelocity - hitNormal * Vector3.Dot(dashVelocity, hitNormal);
+        surfaceParrallel = dashVelocity - hitNormal * Vector3.Dot(dashVelocity, hitNormal);
 
-        float slideMultiplier = 0.75f;
+        initialDotProduct = Vector3.Dot(-hitNormal, dashVelocity.normalized);
 
-        dashVelocity = surfaceParrallel.normalized * (distance / timeToReach) * slideMultiplier; // sliding against a wall sh
+        Debug.Log("INITIAL DOT PRODUCT: " + initialDotProduct);
 
-        Debug.LogWarning("Not checking properly for if we're on a wall: Also Need new Logging System");
+        Debug.LogWarning("TEMP, SAME IMPLEMENTATION FOR HEAD ON AND SIDE WALL DASHES, not starting custom head on collision yet");
+        // although the branching functionalit later on is changed by the fact that initialDotProduct is variable, it's checked on state end
 
-        if (hitNormal.y == 0)
+        if (initialDotProduct < dotProductBonkCutOff || initialDotProduct >= dotProductBonkCutOff)
         {
-            wallReoriented = true;
-            // Idiot! NOT currentWallNormal = surfaceParrallel.normalized;
-            currentWallNormal = hitNormal.normalized;
+            float slideMultiplier = 0.75f;
+
+            dashVelocity = surfaceParrallel.normalized * (distance / timeToReach) * slideMultiplier; // sliding against a wall sh
+
+            Debug.LogWarning("Not checking properly for if we're on a wall: Also Need new Logging System");
+
+            if (hitNormal.y == 0)
+            {
+                wallReoriented = true;
+                // Idiot! NOT currentWallNormal = surfaceParrallel.normalized;
+                currentWallNormal = hitNormal.normalized;
+            }
+        } else
+        {
 
         }
+       
+
+        
 
 
         

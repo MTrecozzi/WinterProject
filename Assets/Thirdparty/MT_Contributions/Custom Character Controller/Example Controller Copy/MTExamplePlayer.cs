@@ -12,18 +12,15 @@ public class MTExamplePlayer : MonoBehaviour
 
     public PlayerControls controls;
 
-    private const string MouseXInput = "Mouse X";
-    private const string MouseYInput = "Mouse Y";
-    private const string MouseScrollInput = "Mouse ScrollWheel";
-    private const string HorizontalInput = "Horizontal";
-    private const string VerticalInput = "Vertical";
+    public BufferedAction Jump;
 
     private void Start()
     {
 
         controls = new PlayerControls();
-
         controls.Enable();
+
+        Jump = new BufferedAction();
 
         Cursor.lockState = CursorLockMode.Locked;
 
@@ -35,14 +32,23 @@ public class MTExamplePlayer : MonoBehaviour
         CharacterCamera.IgnoredColliders.AddRange(Character.GetComponentsInChildren<Collider>());
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (controls.Standard.Shoot.triggered)
         {
             Cursor.lockState = CursorLockMode.Locked;
         }
 
+        HandleBuffers();
         HandleCharacterInput();
+    }
+
+    private void HandleBuffers()
+    {
+        if (controls.Standard.Jump.triggered) Jump.CallInput();
+
+        Jump.Tick();
+
     }
 
     private void LateUpdate()
@@ -98,7 +104,7 @@ public class MTExamplePlayer : MonoBehaviour
         characterInputs.MoveAxisForward = controls.Standard.ControlStick.ReadValue<Vector2>().y;
         characterInputs.MoveAxisRight = controls.Standard.ControlStick.ReadValue<Vector2>().x;
         characterInputs.CameraRotation = CharacterCamera.Transform.rotation;
-        characterInputs.JumpDown = controls.Standard.Jump.triggered;
+        characterInputs.JumpDown = Jump.Buffered;
         
         // not utilizing jump up right now
         // Apply inputs to character
