@@ -19,8 +19,6 @@ public class WallRunState : MovementState
     [SerializeField]
     private float curWallRunVelocityX;
 
-
-
     [SerializeField]
     private Vector3 surfaceParralel;
 
@@ -38,17 +36,20 @@ public class WallRunState : MovementState
 
     public override void Initialize()
     {
+
+
         Debug.Log("WALL RUN STATE INITIALIZED");
 
         curWallRunVelocityX = wallRunInitialVelocity;
 
         curYVelocity = InitialYVelocity;
 
+
+
     }
 
     public override void CleanUp()
     {
-
         curWallRunVelocityX = 0f;
 
         Debug.Log("Wall Run Surface Ended");
