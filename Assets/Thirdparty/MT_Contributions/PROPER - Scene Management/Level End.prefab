@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3835422492652137055}
   - component: {fileID: 1812510144}
   - component: {fileID: 1807191920126928604}
+  - component: {fileID: 4787795750824963047}
   m_Layer: 0
   m_Name: Level End
   m_TagString: Untagged
@@ -124,7 +125,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scenes:
   - {fileID: 11400000, guid: fa4d0e0f1a04edd4f9c6b7353c26ab95, type: 2}
-  - {fileID: 11400000, guid: 37c74ed5fa0031e4e84e61957f42d015, type: 2}
   - {fileID: 11400000, guid: 2bc6ffd6315ee2742b4abd18b7dc0ead, type: 2}
   - {fileID: 11400000, guid: 2ef12d95ecf5c5747b7084963bf11708, type: 2}
   - {fileID: 11400000, guid: 818f24c3e7a52a54d92345e4c105a62b, type: 2}
+--- !u!135 &4787795750824963047
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 373575768996506247}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 7.544487
+  m_Center: {x: 0, y: 0, z: 0}
