@@ -19,6 +19,8 @@ public class WallRunState : MovementState
     [SerializeField]
     private float curWallRunVelocityX;
 
+
+
     [SerializeField]
     private Vector3 surfaceParralel;
 
@@ -32,8 +34,6 @@ public class WallRunState : MovementState
         surfaceNormal = _surfaceNormal;
 
         controller.SetMovementState(this);
-
-
     }
 
     public override void Initialize()
@@ -60,6 +60,8 @@ public class WallRunState : MovementState
     // This is good logic, end states differently based on buffered inputs
     public void EndState()
     {
+        
+
         if (controller.player.Jump.Buffered)
         {
 
@@ -89,6 +91,9 @@ public class WallRunState : MovementState
 
     public override void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
     {
+
+        
+
         Debug.Log("Wall Run Update");
 
         var input = controller.player.controls.Standard;
