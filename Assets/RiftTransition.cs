@@ -21,12 +21,19 @@ public class RiftTransition : MonoBehaviour
         mySequence.Join(transform.DOScale(0, duration));
         mySequence.Join(transform.DOMoveY(transform.position.y - 10f, duration));
 
-        mySequence.Complete();
+        mySequence.AppendCallback(new TweenCallback(Log));
+
+        mySequence.Play();
     }
 
     public void Play()
     {
         mySequence.PlayForward();
+    }
+
+    public void Log()
+    {
+        Debug.Log("Sequence Ended");
     }
 
     public void Rewind()
