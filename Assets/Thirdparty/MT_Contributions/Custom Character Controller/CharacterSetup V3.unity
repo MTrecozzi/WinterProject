@@ -838,6 +838,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MT_ExampleCharacter
       objectReference: {fileID: 0}
+    - target: {fileID: 7119987707687262036, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: maxCharges
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7119987707687262038, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
       propertyPath: m_Enabled
       value: 1
