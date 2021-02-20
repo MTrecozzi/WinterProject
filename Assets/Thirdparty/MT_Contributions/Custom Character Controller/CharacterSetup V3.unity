@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000008, guid: 95e6294e36997e341b5ab0b3398bbc98, type: 2}
+  m_LightingDataAsset: {fileID: 112000006, guid: a9493622059fe734db32d9c2ed2f1e0e, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 94b4595f5dd3c414d8bec1ec23c56510, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -995,6 +995,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 297910208}
+    - target: {fileID: 7119987707687262034, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7119987707687262035, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
       propertyPath: m_Name
       value: MT_ExampleCharacter
@@ -1054,6 +1058,10 @@ PrefabInstance:
     - target: {fileID: 7123243276955638593, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7157289883682162721, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: HasPlanarConstraint
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
