@@ -29,13 +29,13 @@ public class DashResetter : MonoBehaviour
     private void FixedUpdate()
     {
 
-        if (t < 3f)
+        if (t < ResetTime)
         {
             t += Time.deltaTime;
 
-            if (t >= 3f)
+            if (t >= ResetTime)
             {
-                t = 3f;
+                t = ResetTime;
 
                 Activate();
             }
