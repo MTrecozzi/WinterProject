@@ -32,23 +32,24 @@ public class WallRunState : MovementState
         surfaceNormal = _surfaceNormal;
 
         controller.SetMovementState(this);
-
-
     }
 
     public override void Initialize()
     {
+
+
         Debug.Log("WALL RUN STATE INITIALIZED");
 
         curWallRunVelocityX = wallRunInitialVelocity;
 
         curYVelocity = InitialYVelocity;
 
+
+
     }
 
     public override void CleanUp()
     {
-
         curWallRunVelocityX = 0f;
 
         Debug.Log("Wall Run Surface Ended");
@@ -60,6 +61,8 @@ public class WallRunState : MovementState
     // This is good logic, end states differently based on buffered inputs
     public void EndState()
     {
+        
+
         if (controller.player.Jump.Buffered)
         {
 
@@ -89,6 +92,9 @@ public class WallRunState : MovementState
 
     public override void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
     {
+
+        
+
         Debug.Log("Wall Run Update");
 
         var input = controller.player.controls.Standard;

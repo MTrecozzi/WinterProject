@@ -341,6 +341,9 @@ public class MTCharacterController : MovementState
                 // Apply added velocity
                 currentVelocity += addedVelocity;
 
+                // Clam velocity if velocity <= threshold              
+               
+
             }
 
             // Gravity

@@ -14,7 +14,7 @@ public class SimpleBinaryAudioPlayer : MonoBehaviour
     public bool playOnEnd = false;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         audioSource.BinaryMessage += HandleSourceEvent;   
     }
