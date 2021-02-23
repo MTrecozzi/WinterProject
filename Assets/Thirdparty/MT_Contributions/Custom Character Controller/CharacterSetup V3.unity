@@ -1061,7 +1061,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7157289883682162721, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
       propertyPath: HasPlanarConstraint
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
@@ -1094,8 +1094,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6817123443610069830}
-  m_LocalRotation: {x: -0.10135735, y: 0.27319756, z: 0.028960044, w: 0.9561648}
-  m_LocalPosition: {x: -2.8186615, y: 6.8560405, z: 43.220158}
+  m_LocalRotation: {x: -0.13546668, y: 0.69400924, z: 0.13546665, w: 0.69400924}
+  m_LocalPosition: {x: -2.8186615, y: 6.8560405, z: 47.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1628580983}
