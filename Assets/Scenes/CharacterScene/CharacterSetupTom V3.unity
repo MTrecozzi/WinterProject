@@ -160,6 +160,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MT_ExampleCharacter (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7119987707687262036, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: maxCharges
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7119987707687262038, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -170,15 +174,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7123243276955638593, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.1
+      value: -7.1534066
       objectReference: {fileID: 0}
     - target: {fileID: 7123243276955638593, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.67
+      value: 6.02
       objectReference: {fileID: 0}
     - target: {fileID: 7123243276955638593, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.25
+      value: 132.45245
       objectReference: {fileID: 0}
     - target: {fileID: 7123243276955638593, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
       propertyPath: m_LocalRotation.w
