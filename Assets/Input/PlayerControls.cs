@@ -65,6 +65,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""GroundPound"",
+                    ""type"": ""Button"",
+                    ""id"": ""2fd995e0-4c81-4e8a-a6b6-b71959aa3d1a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -298,6 +306,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""AimDelta"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""30a03cfe-357c-4b58-8adc-7a96f39d2385"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GroundPound"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -312,6 +331,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Standard_AimStick = m_Standard.FindAction("AimStick", throwIfNotFound: true);
         m_Standard_Shoot = m_Standard.FindAction("Shoot", throwIfNotFound: true);
         m_Standard_AimDelta = m_Standard.FindAction("AimDelta", throwIfNotFound: true);
+        m_Standard_GroundPound = m_Standard.FindAction("GroundPound", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -367,6 +387,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Standard_AimStick;
     private readonly InputAction m_Standard_Shoot;
     private readonly InputAction m_Standard_AimDelta;
+    private readonly InputAction m_Standard_GroundPound;
     public struct StandardActions
     {
         private @PlayerControls m_Wrapper;
@@ -377,6 +398,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @AimStick => m_Wrapper.m_Standard_AimStick;
         public InputAction @Shoot => m_Wrapper.m_Standard_Shoot;
         public InputAction @AimDelta => m_Wrapper.m_Standard_AimDelta;
+        public InputAction @GroundPound => m_Wrapper.m_Standard_GroundPound;
         public InputActionMap Get() { return m_Wrapper.m_Standard; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -404,6 +426,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @AimDelta.started -= m_Wrapper.m_StandardActionsCallbackInterface.OnAimDelta;
                 @AimDelta.performed -= m_Wrapper.m_StandardActionsCallbackInterface.OnAimDelta;
                 @AimDelta.canceled -= m_Wrapper.m_StandardActionsCallbackInterface.OnAimDelta;
+                @GroundPound.started -= m_Wrapper.m_StandardActionsCallbackInterface.OnGroundPound;
+                @GroundPound.performed -= m_Wrapper.m_StandardActionsCallbackInterface.OnGroundPound;
+                @GroundPound.canceled -= m_Wrapper.m_StandardActionsCallbackInterface.OnGroundPound;
             }
             m_Wrapper.m_StandardActionsCallbackInterface = instance;
             if (instance != null)
@@ -426,6 +451,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @AimDelta.started += instance.OnAimDelta;
                 @AimDelta.performed += instance.OnAimDelta;
                 @AimDelta.canceled += instance.OnAimDelta;
+                @GroundPound.started += instance.OnGroundPound;
+                @GroundPound.performed += instance.OnGroundPound;
+                @GroundPound.canceled += instance.OnGroundPound;
             }
         }
     }
@@ -438,5 +466,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnAimStick(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnAimDelta(InputAction.CallbackContext context);
+        void OnGroundPound(InputAction.CallbackContext context);
     }
 }
