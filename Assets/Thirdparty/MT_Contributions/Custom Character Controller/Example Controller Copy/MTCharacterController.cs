@@ -20,6 +20,8 @@ public class MTCharacterController : MovementState
 
     public MovementState curMovementState;
 
+    public Queue<Vector3> velocityQueue = new Queue<Vector3>();
+
     [Header("Temp Buffer System")]
     public float dampenedAirAccel;
     public float dampTime = 3f;
@@ -116,6 +118,13 @@ public class MTCharacterController : MovementState
         curMovementState = newState;
         // initialize incoming state
         curMovementState.Initialize();
+
+        // velocityShiftQueue.Pop() if any
+
+        if (velocityQueue.Count > 0)
+        {
+            Motor.BaseVelocity = velocityQueue.Dequeue();
+        }
 
         // Motor.CharacterController = newState;
         Motor.CharacterController = curMovementState;
