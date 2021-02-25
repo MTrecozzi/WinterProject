@@ -50,6 +50,13 @@ public class GroundPoundState : MovementState
             controller.velocityQueue.Enqueue(new Vector3(0, groundPoundJumpVelocity, 0));
 
             Debug.LogWarning("Cross State 'Grace Periods Needed', so that ground pound jump buffer can last after the state, should be managed by PlayerControllerClass 100%, with API's for Enqueing such cross state transitional buffers");
+
+            // remember the dash canceled ground pound can only happing durring the initial ground pound state
+            Debug.LogWarning("Explore the backend for dash canceled ground pound -> modified dash state with less momentum halting at end of it! What code is required? Where is it organized? and managed?");
+
+            // do something cool for cancelling out of main ground pound land impact, with good buffering
+            // the best words here are, you complete a ground pound, what happens if you buffer a dash out of ground pound landing lag instead of a jump?
+            Debug.LogWarning("also explore a cool tech for full groundpound -> ground into dash cancel instead of jump input");
         }
     }
 
