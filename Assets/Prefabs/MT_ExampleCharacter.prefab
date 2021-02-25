@@ -558,7 +558,7 @@ MonoBehaviour:
   groundPoundVelocity: 45
   groundPoundJumpVelocity: 28
   prePound:
-    duration: 0.2
+    duration: 0.13
     t: 0
     active: 0
 --- !u!1 &7120048789354324965
