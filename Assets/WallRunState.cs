@@ -44,6 +44,10 @@ public class WallRunState : MovementState
 
         curYVelocity = InitialYVelocity;
 
+        Debug.LogWarning("Wall Run State should set player orientation overriden to forward along wall normal.");
+
+        //controller.OrientationMethod = OrientationMethod.TowardsMovement;
+
 
 
     }
