@@ -14,6 +14,8 @@ public class MTCharacterController : MovementState
     public AbilityPool jumpPool;
     public AbilityPool dashPool;
 
+    public event Action<ICharacterController, ICharacterController> OnStateChanged;
+
     public event Action OnPlayerJump;
     public event Action OnPlayerLanded;
     public event Action OnPlayerDoubleJump;
@@ -113,6 +115,8 @@ public class MTCharacterController : MovementState
     {
         // clean up old state
         curMovementState.CleanUp();
+
+        OnStateChanged?.Invoke(newState, curMovementState);
 
         // currentState = newState
         curMovementState = newState;

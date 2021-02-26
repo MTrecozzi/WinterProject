@@ -198,6 +198,10 @@ public class DashState : MovementState
             // !!!!!!!!!!!!!!!!
             // if (jumpBuffered && doublejump is available, consume double jump to combine it with preserved dash momentum.
 
+
+            // variable curDashEndMultiplier based on initially grounded, replace this with a queue system that other states can use
+            // to set up desired effects
+
             dashVelocity = currentVelocity * dashEndMultiplier;
 
             currentVelocity = dashVelocity;
@@ -217,6 +221,7 @@ public class DashState : MovementState
 
             // shitty implementation, as it technically should just consume the standard jump
             defaultController.jumpPool.currentCharges = defaultController.jumpPool.maxCharges + 1;
+
         }
 
         // return dash velocity
