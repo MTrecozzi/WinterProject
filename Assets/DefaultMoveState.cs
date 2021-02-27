@@ -445,10 +445,7 @@ public class DefaultMoveState : MovementState
 
 
 
-    public void MoveThePlayer(Vector3 pos)
-    {
-        Motor.SetPosition(pos);
-    }
+
 
 
 }

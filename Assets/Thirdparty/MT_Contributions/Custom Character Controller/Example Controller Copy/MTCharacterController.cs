@@ -22,6 +22,8 @@ public class MTCharacterController : MonoBehaviour
     public void SetMovementState(MovementState movementState) => manager.SetMovementState(movementState);
     public void SetDefaultMovementState() => manager.SetDefaultMovementState();
 
+    public MovementState curMovementState => manager.curMovementState;
+
     public OrientationMethod OrientationMethod = OrientationMethod.TowardsCamera;
 
     public MoveStateManager manager;
@@ -37,6 +39,9 @@ public class MTCharacterController : MonoBehaviour
     // make get only, with private set
     public Vector3 MoveInput => _moveInputVector;
     public Vector3 LookInput => _lookInputVector;
+
+    public void SetPropulsionForce(Vector3 vector3) => manager.SetPropulsionForce(vector3);
+    
 
     private Vector3 _moveInputVector;
     private Vector3 _lookInputVector;
@@ -78,6 +83,11 @@ public class MTCharacterController : MonoBehaviour
 
         HandleBuffers();
         HandleCharacterInput();
+    }
+
+    public void MoveThePlayer(Vector3 pos)
+    {
+        manager.Motor.SetPosition(pos);
     }
 
     private void HandleBuffers()
