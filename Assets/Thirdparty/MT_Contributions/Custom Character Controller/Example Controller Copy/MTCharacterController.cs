@@ -10,9 +10,6 @@ using System;
 
 public class MTCharacterController : MonoBehaviour
 {
-    
-    public MTExamplePlayer player;
-
     public Transform CameraFollowPoint;
 
     public event Action OnPlayerJump;

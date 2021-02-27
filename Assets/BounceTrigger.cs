@@ -60,12 +60,12 @@ public class BounceTrigger : MonoBehaviour
             if (!(transform.up.normalized == Vector3.up))
             {
                 Debug.LogWarning("Crappy Air Dampening Implementation");
-                controller.DampenAirAccel();
+                defaultMoveState.DampenAirAccel();
             }
 
             OnPlayerBounced?.Invoke();
 
-            controller.OnLanded();
+            defaultMoveState.OnLanded();
 
             if (UxEvent != null)
             {
