@@ -7,7 +7,7 @@ public abstract class MovementState : MonoBehaviour, ICharacterController
 {
 
     public MTCharacterController controller; // for input + state machine API
-    protected DefaultMoveState defaultMoveState; // default move state
+    public DefaultMoveState defaultMoveState; // default move state
     public KinematicCharacterMotor Motor;
 
 

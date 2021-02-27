@@ -6,10 +6,10 @@ using UnityEngine;
 
 public class MoveStateManager : MonoBehaviour
 {
-    private MovementState defaultMoveState;
+    public MovementState defaultMoveState;
     public MovementState curMovementState;
     public Queue<Vector3> velocityQueue = new Queue<Vector3>();
-    public event Action<ICharacterController, ICharacterController> OnStateChanged;
+    public event Action<MovementState, MovementState> OnStateChanged;
 
     public KinematicCharacterMotor Motor;
 
@@ -19,7 +19,6 @@ public class MoveStateManager : MonoBehaviour
     {
         curMovementState.InformStatePropulsionForce(newMomentum);
     }
-
 
     public void SetMovementState(MovementState newState)
     {

@@ -16,7 +16,7 @@ public class MTCharacterController : MonoBehaviour
     public event Action OnPlayerLanded;
     public event Action OnPlayerDoubleJump;
 
-    public void SetMovementState(MovementState movementState) => manager.SetMovementState(movementState);
+    public void SetMovementState(MovementState movementState)=> manager.SetMovementState(movementState);
     public void SetDefaultMovementState() => manager.SetDefaultMovementState();
 
     public MovementState curMovementState => manager.curMovementState;
@@ -27,7 +27,7 @@ public class MTCharacterController : MonoBehaviour
 
     public void ForceUnground() => manager.Motor.ForceUnground();
 
-    public MTCharacterCamera CharacterCamera;
+    private MTCharacterCamera CharacterCamera;
 
     public PlayerControls controls;
 
@@ -55,6 +55,8 @@ public class MTCharacterController : MonoBehaviour
 
     private void Start()
     {
+
+        CharacterCamera = MTCharacterCamera.instance;
 
         controls = new PlayerControls();
         controls.Enable();

@@ -254,16 +254,16 @@ GameObject:
   - component: {fileID: 8125643758259839832}
   - component: {fileID: 3764920316457078197}
   - component: {fileID: 7119987707687262037}
+  - component: {fileID: 7119987707687262036}
   - component: {fileID: 7119987707687262038}
   - component: {fileID: 3764920316457078196}
+  - component: {fileID: 8756796690775479565}
   - component: {fileID: 3764920316457078195}
   - component: {fileID: 7157289883682162721}
   - component: {fileID: 7119987707687262034}
   - component: {fileID: 7119987707687262039}
-  - component: {fileID: 7119987707687262036}
   - component: {fileID: 3764920316457078185}
-  - component: {fileID: 8710649073721160433}
-  - component: {fileID: 8756796690775479565}
+  - component: {fileID: 8160492240918828605}
   m_Layer: 7
   m_Name: MT_ExampleCharacter
   m_TagString: Player
@@ -316,7 +316,6 @@ MonoBehaviour:
   CameraFollowPoint: {fileID: 7123424157194382717}
   OrientationMethod: 1
   manager: {fileID: 3764920316457078187}
-  CharacterCamera: {fileID: 0}
 --- !u!114 &3764920316457078187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,8 +328,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5b0f8a39eb5ba344abf0ec252647a0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultMoveState: {fileID: 8125643758259839832}
   curMovementState: {fileID: 0}
-  Motor: {fileID: 0}
+  Motor: {fileID: 7157289883682162721}
 --- !u!114 &8125643758259839832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,32 +343,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85d5cee9395835a4ebfc5722dbf18309, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
-  Motor: {fileID: 0}
-  jumpPool: {fileID: 0}
-  dashPool: {fileID: 0}
-  dampenedAirAccel: 0
-  dampTime: 3
-  MaxStableMoveSpeed: 10
+  controller: {fileID: 7119987707687262033}
+  defaultMoveState: {fileID: 8125643758259839832}
+  Motor: {fileID: 7157289883682162721}
+  jumpPool: {fileID: 7119987707687262037}
+  dashPool: {fileID: 7119987707687262036}
+  dampenedAirAccel: 20
+  dampTime: 0.5
+  MaxStableMoveSpeed: 9
   StableMovementSharpness: 15
-  OrientationSharpness: 10
-  SprintSpeed: 15
-  MaxAirMoveSpeed: 15
-  AirAccelerationSpeed: 15
-  Drag: 0.1
-  AllowJumpingWhenSliding: 0
-  JumpUpSpeed: 10
-  JumpScalableForwardSpeed: 10
-  JumpPreGroundingGraceTime: 0
-  JumpPostGroundingGraceTime: 0
-  doubleJumpEnabled: 0
+  OrientationSharpness: 20
+  SprintSpeed: 9
+  MaxAirMoveSpeed: 9
+  AirAccelerationSpeed: 100
+  Drag: 0.05
+  AllowJumpingWhenSliding: 1
+  JumpUpSpeed: 15
+  JumpScalableForwardSpeed: 0
+  JumpPreGroundingGraceTime: 0.1
+  JumpPostGroundingGraceTime: 1
+  doubleJumpEnabled: 1
   doubleJumpCount: 1
   maxDoubleJumpCount: 1
   passingThroughIgnoredColliders: []
   BonusOrientationMethod: 0
-  BonusOrientationSharpness: 10
-  Gravity: {x: 0, y: -30, z: 0}
-  MeshRoot: {fileID: 0}
+  BonusOrientationSharpness: 20
+  Gravity: {x: 0, y: -35, z: 0}
+  MeshRoot: {fileID: 7118993999966641895}
 --- !u!114 &3764920316457078197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,6 +399,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxCharges: 2
   currentCharges: 0
+--- !u!114 &7119987707687262036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7119987707687262035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a579c7e8d178d5d42b29df31640f9231, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxCharges: 2
+  currentCharges: 0
 --- !u!114 &7119987707687262038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -411,7 +426,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 7119987707687262033}
-  Motor: {fileID: 0}
+  defaultMoveState: {fileID: 8125643758259839832}
+  Motor: {fileID: 7157289883682162721}
   dashEndMultiplier: 0.3
   distance: 7
   timeToReach: 0.25
@@ -435,7 +451,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 7119987707687262033}
-  Motor: {fileID: 0}
+  defaultMoveState: {fileID: 8125643758259839832}
+  Motor: {fileID: 7157289883682162721}
   wallRunInitialVelocity: 18
   minWallRunVelocity: 10
   wallRunDecayRate: 8
@@ -446,6 +463,27 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 1
+--- !u!114 &8756796690775479565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7119987707687262035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 769d835a463ee39458bcc323dd10e344, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 7119987707687262033}
+  defaultMoveState: {fileID: 8125643758259839832}
+  Motor: {fileID: 7157289883682162721}
+  groundPoundVelocity: 45
+  groundPoundJumpVelocity: 28
+  prePound:
+    duration: 0.13
+    t: 0
+    active: 0
 --- !u!114 &3764920316457078195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -529,20 +567,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eadcefd8e9a89a43879df4b4630b5c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7119987707687262036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7119987707687262035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a579c7e8d178d5d42b29df31640f9231, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxCharges: 2
-  currentCharges: 0
 --- !u!114 &3764920316457078185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -559,7 +583,7 @@ MonoBehaviour:
   OnPlayerLanded: {fileID: 11400000, guid: 66460e655810d954fa1648e3f9ccd92a, type: 2}
   OnPlayerJump: {fileID: 0}
   OnPlayerDoubleJump: {fileID: 11400000, guid: c0d1ee2feaaa3434bad143732a5d0ae4, type: 2}
---- !u!114 &8710649073721160433
+--- !u!114 &8160492240918828605
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -573,27 +597,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 7119987707687262033}
   system: {fileID: 3566769601656134016}
-  manager: {fileID: 0}
---- !u!114 &8756796690775479565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7119987707687262035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 769d835a463ee39458bcc323dd10e344, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 7119987707687262033}
-  Motor: {fileID: 0}
-  groundPoundVelocity: 45
-  groundPoundJumpVelocity: 28
-  prePound:
-    duration: 0.13
-    t: 0
-    active: 0
+  manager: {fileID: 3764920316457078187}
 --- !u!1 &7120048789354324965
 GameObject:
   m_ObjectHideFlags: 0
