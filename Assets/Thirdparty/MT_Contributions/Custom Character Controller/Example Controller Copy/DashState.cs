@@ -17,7 +17,6 @@ public class DashState : MovementState
 
     public WallRunState wallRunState;
 
-    public MTCharacterController defaultController;
     public BinaryCrossSceneReference abilityEventReference;
 
     public LayerMask ignoreLayers;
@@ -46,7 +45,7 @@ public class DashState : MovementState
     public override void InformStatePropulsionForce(Vector3 newMomentum)
     {
         // exit this state into character default
-        defaultController.SetDefaultMovementState();
+        controller.SetDefaultMovementState();
 
         if (newMomentum.normalized == Vector3.up)
         {
@@ -77,11 +76,11 @@ public class DashState : MovementState
 
         t = 0;
         dir = transform.forward;
-        defaultController.SetMovementState(this);
+        controller.SetMovementState(this);
 
         abilityEventReference.InvokeMessage(true);
 
-        initiallyGrounded = defaultController.Motor.GroundingStatus.IsStableOnGround;
+        initiallyGrounded = Motor.GroundingStatus.IsStableOnGround;
 
         Debug.Log("InitiallyGrounded: " + initiallyGrounded);
 
@@ -93,7 +92,7 @@ public class DashState : MovementState
     {
 
         abilityEventReference.InvokeMessage(false);
-        defaultController.SetDefaultMovementState();
+        controller.SetDefaultMovementState();
     }
 
     // input handled in fixed update
@@ -101,12 +100,12 @@ public class DashState : MovementState
     private void FixedUpdate()
     {
 
-        if (controller.player.controls.Standard.Dash.triggered && controller.dashPool.currentCharges > 0)
+        if (controller.controls.Standard.Dash.triggered && defaultMoveState.dashPool.currentCharges > 0)
         {
 
             Debug.Log("Dash Started");
             StartDash(transform.forward);
-            controller.dashPool.currentCharges--;
+            defaultMoveState.dashPool.currentCharges--;
         }
     }
 
@@ -129,7 +128,7 @@ public class DashState : MovementState
         // if we detect a non valid collision while dashing, we queue it for the character controller to ignore regardless of states.
         if (!valid)
         {
-            controller.passingThroughIgnoredColliders.Add(coll);
+            defaultMoveState.passingThroughIgnoredColliders.Add(coll);
         }
 
         return valid;
@@ -144,17 +143,17 @@ public class DashState : MovementState
         t += deltaTime;
 
         // if we're wall jumping off of a wall
-        if (wallReoriented && currentWallNormal != Vector3.zero && controller.player.Jump.Buffered)
+        if (wallReoriented && currentWallNormal != Vector3.zero && controller.Jump.Buffered)
         {
 
-            controller.player.Jump.EatInput();
+            controller.Jump.EatInput();
 
             Debug.Log("WALL JUMPED");
 
             EndDash();
 
             // set the controller into a crappy air accel dampened state for a few seconds
-            controller.DampenAirAccel();
+            defaultMoveState.DampenAirAccel();
 
             // don't reset abilities after wall jump
             //controller.ResetAbilities();
@@ -166,12 +165,12 @@ public class DashState : MovementState
             dashVelocity += currentWallNormal.normalized * 10;
 
             // add a jump to the wall jump
-            dashVelocity.y += controller.JumpUpSpeed;
+            dashVelocity.y += defaultMoveState.JumpUpSpeed;
 
             Debug.Log("Current Wall Normal: " + currentWallNormal);
 
             // currentVelocity = dashVelocity + wall Jump
-            controller.Motor.BaseVelocity = dashVelocity;
+            defaultMoveState.Motor.BaseVelocity = dashVelocity;
 
             return;
         }
@@ -208,7 +207,7 @@ public class DashState : MovementState
                 return;    
         }
 
-        if (!defaultController.Motor.GroundingStatus.IsStableOnGround && initiallyGrounded)
+        if (!Motor.GroundingStatus.IsStableOnGround && initiallyGrounded)
         {
 
             Debug.Log("TECH");
@@ -217,10 +216,10 @@ public class DashState : MovementState
 
             Debug.LogWarning("COYOTE DASH: Replace with data collection logger");
 
-            defaultController.ResetAbilities();
+            defaultMoveState.ResetAbilities();
 
             // shitty implementation, as it technically should just consume the standard jump
-            defaultController.jumpPool.currentCharges = defaultController.jumpPool.maxCharges + 1;
+            defaultMoveState.jumpPool.currentCharges = defaultMoveState.jumpPool.maxCharges + 1;
 
         }
 

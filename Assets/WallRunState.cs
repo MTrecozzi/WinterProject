@@ -67,29 +67,28 @@ public class WallRunState : MovementState
     {
         
 
-        if (controller.player.Jump.Buffered)
+        if (controller.Jump.Buffered)
         {
 
             Debug.LogWarning("INTERESTING: jumping before the wall run, during the smaller dash window, has greater effect of preserving momentum, cool!");
             var velocity = (surfaceParralel.normalized * curWallRunVelocityX) * 0.8f + surfaceNormal.normalized * 10f;
 
             // add a jump to the wall jump
-            velocity.y += controller.JumpUpSpeed;
+            velocity.y += defaultMoveState.JumpUpSpeed;
 
             Debug.LogWarning("Terrible Wall Run Implmenetation: WALL COLLISION / NORMAL / STATE Should BE CENTRALIZED");
-            controller.Motor.BaseVelocity = velocity;
+            defaultMoveState.Motor.BaseVelocity = velocity;
 
-            controller.player.Jump.EatInput();
+            controller.Jump.EatInput();
 
-            controller.DampenAirAccel();
+            defaultMoveState.DampenAirAccel();
 
         } else
         {
-            var nonJumpVelocity = (surfaceParralel.normalized * Mathf.Min(controller.MaxAirMoveSpeed + 2, curWallRunVelocityX) * 0.8f);
+            var nonJumpVelocity = (surfaceParralel.normalized * Mathf.Min(defaultMoveState.MaxAirMoveSpeed + 2, curWallRunVelocityX) * 0.8f);
 
-            controller.Motor.BaseVelocity = nonJumpVelocity;
+            defaultMoveState.Motor.BaseVelocity = nonJumpVelocity;
         }
-
 
         controller.SetDefaultMovementState();
     }
@@ -101,7 +100,7 @@ public class WallRunState : MovementState
 
         Debug.Log("Wall Run Update");
 
-        var input = controller.player.controls.Standard;
+        var input = controller.controls.Standard;
 
         // idiot! Was setting velocity = wallRunInitial rather than wallRunCurrent
         currentVelocity = (surfaceParralel.normalized * curWallRunVelocityX); //  + (surfaceParralel.normalized * 0.5f * input.ControlStick.ReadValue<Vector2>().y * wallRunVelocity);
@@ -118,14 +117,14 @@ public class WallRunState : MovementState
             EndState();
         }
 
-        if (controller.Motor.GroundingStatus.IsStableOnGround)
+        if (Motor.GroundingStatus.IsStableOnGround)
         {
             EndState();
         }
 
         
 
-        if (controller.player.Jump.Buffered)
+        if (controller.Jump.Buffered)
         {
             EndState();
         }

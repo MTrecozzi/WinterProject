@@ -20,7 +20,7 @@ public class GroundPoundState : MovementState
     public void SetState()
     {
 
-        if (controller.Motor.GroundingStatus.FoundAnyGround)
+        if (Motor.GroundingStatus.FoundAnyGround)
         {
             return;
         } else
@@ -34,20 +34,21 @@ public class GroundPoundState : MovementState
 
     public override void CleanUp()
     {
-        if (controller.player.Jump.Buffered)
+        if (controller.Jump.Buffered)
         {
             Debug.LogWarning("State Change Eats Velocity Input, Need a Cross State Queue System");
             // on state enter, we should check to see if an action is buffered, if so do that.
             // can we queue a func!?!?
             //controller.Motor.BaseVelocity
 
-            controller.player.Jump.EatInput();
+            controller.Jump.EatInput();
 
             Debug.LogWarning("Ugh, Force Unground, have this internally managed with...");
             // this would enforce better reusability and form
             Debug.LogWarning("External States should us an API to the main Controller, rather than direct acess");
-            controller.Motor.ForceUnground();
-            controller.velocityQueue.Enqueue(new Vector3(0, groundPoundJumpVelocity, 0));
+            Motor.ForceUnground();
+
+            controller.manager.velocityQueue.Enqueue(new Vector3(0, groundPoundJumpVelocity, 0));
 
             Debug.LogWarning("Cross State 'Grace Periods Needed', so that ground pound jump buffer can last after the state, should be managed by PlayerControllerClass 100%, with API's for Enqueing such cross state transitional buffers");
 
@@ -63,7 +64,7 @@ public class GroundPoundState : MovementState
     // this badddd, CENTRALIZE INPUT IDIOT
     private void FixedUpdate()
     {
-        if (controller.player.controls.Standard.GroundPound.triggered)
+        if (controller.controls.Standard.GroundPound.triggered)
         {
             SetState();
         }
@@ -94,7 +95,7 @@ public class GroundPoundState : MovementState
 
     public override void AfterCharacterUpdate(float deltaTime)
     {
-        if (controller.Motor.GroundingStatus.FoundAnyGround)
+        if (Motor.GroundingStatus.FoundAnyGround)
         {
             controller.SetDefaultMovementState();
         }
