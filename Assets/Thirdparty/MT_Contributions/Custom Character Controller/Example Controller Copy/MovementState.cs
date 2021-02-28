@@ -7,14 +7,17 @@ using UnityEngine;
 
 public class MovementStateTransition
 {
-    public MovementStateTransition(Func<bool> condition, MovementState toState)
+    public MovementStateTransition(MovementState fromState, Func<bool> condition, MovementState toState)
     {
         Condition = condition;
         ToState = toState;
+        FromState = fromState;
     }
 
     public Func<bool> Condition;
+    public MovementState FromState;
     public MovementState ToState;
+    
 }
 
 [System.Serializable]
