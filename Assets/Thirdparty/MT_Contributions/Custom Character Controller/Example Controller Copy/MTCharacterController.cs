@@ -32,6 +32,7 @@ public class MTCharacterController : MonoBehaviour
     public PlayerControls controls;
 
     public BufferedAction Jump;
+    public BufferedAction Dash;
 
     // make get only, with private set
     public Vector3 MoveInput => _moveInputVector;
@@ -94,6 +95,10 @@ public class MTCharacterController : MonoBehaviour
         if (controls.Standard.Jump.triggered) Jump.CallInput();
 
         Jump.Tick();
+
+        if (controls.Standard.Dash.triggered) Dash.CallInput();
+
+        Dash.Tick();
 
     }
 

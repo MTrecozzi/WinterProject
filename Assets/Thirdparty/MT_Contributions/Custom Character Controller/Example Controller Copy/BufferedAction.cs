@@ -1,6 +1,7 @@
 ﻿
 using UnityEngine;
 
+[System.Serializable]
 public class BufferedAction
 {
     public bool Buffered { get; private set; }
