@@ -14,7 +14,7 @@ public class BounceTrigger : MonoBehaviour
     //public float timeToHeight;
 
     private MTCharacterController controller;
-    private DefaultMoveState defaultMoveState;
+    private DefaultMoveStateBehaviour defaultMoveState;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +30,7 @@ public class BounceTrigger : MonoBehaviour
 
     public Vector3 GetLaunchSource()
     {
-        float magnitudeOfFoce = Mathf.Sqrt(2 * -defaultMoveState.Gravity.y * bounceHeight);
+        float magnitudeOfFoce = Mathf.Sqrt(2 * -defaultMoveState.defaultMoveState.Gravity.y * bounceHeight);
 
         return transform.up.normalized * magnitudeOfFoce;
 
@@ -47,10 +47,10 @@ public class BounceTrigger : MonoBehaviour
             if (controller == null || defaultMoveState == null)
             {
                 controller = other.transform.GetComponent<MTCharacterController>();
-                defaultMoveState = other.transform.GetComponent<DefaultMoveState>();
+                defaultMoveState = other.transform.GetComponent<DefaultMoveStateBehaviour>();
             }
 
-            float magnitudeOfFoce = Mathf.Sqrt(2 * -defaultMoveState.Gravity.y * bounceHeight);
+            float magnitudeOfFoce = Mathf.Sqrt(2 * -defaultMoveState.defaultMoveState.Gravity.y * bounceHeight);
 
             // using state dependent setPropulsionForce
             controller.SetPropulsionForce(transform.up.normalized * magnitudeOfFoce);
@@ -65,7 +65,7 @@ public class BounceTrigger : MonoBehaviour
 
             OnPlayerBounced?.Invoke();
 
-            defaultMoveState.OnLanded();
+            defaultMoveState.defaultMoveState.OnLanded();
 
             if (UxEvent != null)
             {

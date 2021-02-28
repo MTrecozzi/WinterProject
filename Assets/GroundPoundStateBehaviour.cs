@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class GroundPoundState : MovementState
 {
-
     public float groundPoundVelocity = 0f;
 
     public float groundPoundJumpVelocity = 15f;
@@ -14,7 +14,7 @@ public class GroundPoundState : MovementState
     // ux event for ground pound anticipation start, actual start, etc
 
     // will need to play nice with a queueing / buffer system
-    
+
     // do I create a class for a timed state buffer?
 
     public void SetState()
@@ -23,13 +23,14 @@ public class GroundPoundState : MovementState
         if (Motor.GroundingStatus.FoundAnyGround)
         {
             return;
-        } else
+        }
+        else
         {
             prePound.SetActive();
             controller.SetMovementState(this);
         }
 
-        
+
     }
 
     public override void CleanUp()
@@ -61,15 +62,6 @@ public class GroundPoundState : MovementState
         }
     }
 
-    // this badddd, CENTRALIZE INPUT IDIOT
-    private void FixedUpdate()
-    {
-        if (controller.controls.Standard.GroundPound.triggered)
-        {
-            SetState();
-        }
-    }
-
     public override void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
     {
 
@@ -77,7 +69,7 @@ public class GroundPoundState : MovementState
         bool poundPoundStart = prePound.Tick(deltaTime);
 
 
-        
+
 
         // needs smooth anticipation + acceleration towards final fast fall speed
 
@@ -90,7 +82,7 @@ public class GroundPoundState : MovementState
             // Easing of this velocity, in partnership / communication with the pre pound buffer, would make this feel good
             currentVelocity = new Vector3(0, -groundPoundVelocity, 0);
         }
-   
+
     }
 
     public override void AfterCharacterUpdate(float deltaTime)
@@ -98,6 +90,24 @@ public class GroundPoundState : MovementState
         if (Motor.GroundingStatus.FoundAnyGround)
         {
             controller.SetDefaultMovementState();
+        }
+    }
+}
+
+
+[SerializeField]
+public class GroundPoundStateBehaviour : MonoBehaviour
+{
+
+    public GroundPoundState groundPoundState;
+    public MTCharacterController controller;
+
+    // this badddd, CENTRALIZE INPUT IDIOT
+    private void FixedUpdate()
+    {
+        if (controller.controls.Standard.GroundPound.triggered)
+        {
+            groundPoundState.SetState();
         }
     }
 

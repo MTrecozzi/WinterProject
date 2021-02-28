@@ -17,11 +17,11 @@ public class DashResetter : MonoBehaviour
         t = ResetTime;
     }
 
-    public void Reset(DefaultMoveState defaultMove)
+    public void Reset(DefaultMoveStateBehaviour defaultMove)
     {
         if (active)
         {
-            defaultMove.dashPool.ResetCharges();
+            defaultMove.defaultMoveState.dashPool.ResetCharges();
             Deactivate();
         }
     }
@@ -60,7 +60,7 @@ public class DashResetter : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Reset(other.GetComponent<DefaultMoveState>());
+            Reset(other.GetComponent<DefaultMoveStateBehaviour>());
         }
     }
 }

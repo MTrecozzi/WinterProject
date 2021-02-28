@@ -253,6 +253,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &886619680 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1975687349682108382, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+  m_PrefabInstance: {fileID: 3409324364546798530}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1312597101
 GameObject:
   m_ObjectHideFlags: 0
@@ -838,17 +843,177 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: groundPoundState.Motor
+      value: 
+      objectReference: {fileID: 3864973819887538906}
+    - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: groundPoundState.controller
+      value: 
+      objectReference: {fileID: 3764920316457078197}
+    - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: groundPoundState.defaultMoveState
+      value: 
+      objectReference: {fileID: 3764920316457078195}
+    - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: groundPoundState.prePound.duration
+      value: 0.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: groundPoundState.groundPoundVelocity
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: groundPoundState.groundPoundJumpVelocity
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 676850064577808993, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: defaultMoveState.Drag
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 676850064577808993, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: defaultMoveState.Motor
+      value: 
+      objectReference: {fileID: 3864973819887538906}
+    - target: {fileID: 676850064577808993, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: defaultMoveState.MeshRoot
+      value: 
+      objectReference: {fileID: 886619680}
+    - target: {fileID: 676850064577808993, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: defaultMoveState.dampTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 676850064577808993, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: defaultMoveState.dashPool
+      value: 
+      objectReference: {fileID: 3764920316457078193}
+    - target: {fileID: 676850064577808993, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: defaultMoveState.jumpPool
+      value: 
+      objectReference: {fileID: 6264762221516790525}
+    - target: {fileID: 676850064577808993, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: defaultMoveState.Gravity.y
+      value: -35
+      objectReference: {fileID: 0}
+    - target: {fileID: 676850064577808993, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: defaultMoveState.controller
+      value: 
+      objectReference: {fileID: 3764920316457078197}
+    - target: {fileID: 676850064577808993, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: defaultMoveState.JumpUpSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 676850064577808993, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: defaultMoveState.SprintSpeed
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 676850064577808993, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: defaultMoveState.MaxAirMoveSpeed
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 676850064577808993, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: defaultMoveState.doubleJumpCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 676850064577808993, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: defaultMoveState.dampenedAirAccel
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 676850064577808993, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: defaultMoveState.defaultMoveState
+      value: 
+      objectReference: {fileID: 3764920316457078195}
+    - target: {fileID: 676850064577808993, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: defaultMoveState.doubleJumpEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 676850064577808993, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: defaultMoveState.MaxStableMoveSpeed
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 676850064577808993, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: defaultMoveState.AirAccelerationSpeed
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 676850064577808993, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: defaultMoveState.OrientationSharpness
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 676850064577808993, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: defaultMoveState.AllowJumpingWhenSliding
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 676850064577808993, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: defaultMoveState.StableMovementSharpness
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 676850064577808993, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: defaultMoveState.JumpScalableForwardSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 676850064577808993, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: defaultMoveState.JumpPreGroundingGraceTime
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 676850064577808993, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: defaultMoveState.JumpPostGroundingGraceTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1977068582809779818, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
       propertyPath: m_Name
       value: MT_ExampleCharacter Animations
       objectReference: {fileID: 0}
+    - target: {fileID: 1977068582809779823, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: dashState.Motor
+      value: 
+      objectReference: {fileID: 3864973819887538906}
+    - target: {fileID: 1977068582809779823, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: dashState.distance
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1977068582809779823, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: dashState.controller
+      value: 
+      objectReference: {fileID: 3764920316457078197}
+    - target: {fileID: 1977068582809779823, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: dashState.timeToReach
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1977068582809779823, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: dashState.wallRunState
+      value: 
+      objectReference: {fileID: 3764920316457078192}
+    - target: {fileID: 1977068582809779823, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: dashState.defaultMoveState
+      value: 
+      objectReference: {fileID: 3764920316457078195}
+    - target: {fileID: 1977068582809779823, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: dashState.dashEndMultiplier
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1977068582809779823, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: dashState.ignoreLayers.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 1977068582809779823, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: dashState.mushroomDashEndMult
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1977068582809779823, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: dashState.dotProductBonkCutOff
+      value: 0.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 1977068582809779823, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: dashState.abilityEventReference
+      value: 
+      objectReference: {fileID: 11400000, guid: 80b9afd015dc7fb4b9f347ac49e086fb, type: 2}
     - target: {fileID: 1980012064651850360, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1980012064651850360, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.2728667
+      value: 0.27286673
       objectReference: {fileID: 0}
     - target: {fileID: 1980012064651850360, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -856,7 +1021,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1980012064651850360, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.717293
+      value: 13.967293
       objectReference: {fileID: 0}
     - target: {fileID: 1980012064651850360, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -886,6 +1051,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5593221607368533133, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: wallRunState.Motor
+      value: 
+      objectReference: {fileID: 3864973819887538906}
+    - target: {fileID: 5593221607368533133, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: wallRunState.gravity
+      value: 2.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5593221607368533133, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: wallRunState.controller
+      value: 
+      objectReference: {fileID: 3764920316457078197}
+    - target: {fileID: 5593221607368533133, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: wallRunState.mask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5593221607368533133, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: wallRunState.InitialYVelocity
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5593221607368533133, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: wallRunState.defaultMoveState
+      value: 
+      objectReference: {fileID: 3764920316457078195}
+    - target: {fileID: 5593221607368533133, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: wallRunState.wallRunDecayRate
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5593221607368533133, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: wallRunState.minWallRunVelocity
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5593221607368533133, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: wallRunState.wallRunInitialVelocity
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 5593221607368533138, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: defaultMoveStateBehaviour
+      value: 
+      objectReference: {fileID: 3764920316457078195}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
 --- !u!1 &3764920316457078184 stripped
@@ -893,6 +1098,50 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1977068582809779818, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
   m_PrefabInstance: {fileID: 3409324364546798530}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3764920316457078192 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5593221607368533133, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+  m_PrefabInstance: {fileID: 3409324364546798530}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3764920316457078184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a53f9c248f9ba748bcf3f802ed22cbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3764920316457078193 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1977068582809779821, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+  m_PrefabInstance: {fileID: 3409324364546798530}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3764920316457078184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a579c7e8d178d5d42b29df31640f9231, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3764920316457078195 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 676850064577808993, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+  m_PrefabInstance: {fileID: 3409324364546798530}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3764920316457078184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85d5cee9395835a4ebfc5722dbf18309, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3764920316457078197 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1977068582809779816, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+  m_PrefabInstance: {fileID: 3409324364546798530}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3764920316457078184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54d5193d464cc624db84869ab05e254e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &3801117360521736141
 Transform:
   m_ObjectHideFlags: 0

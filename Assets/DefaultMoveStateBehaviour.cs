@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class DefaultMoveState : MovementState
 {
-
     public AbilityPool jumpPool;
     public AbilityPool dashPool;
 
@@ -60,23 +60,6 @@ public class DefaultMoveState : MovementState
     public void DampenAirAccel()
     {
         dampT = dampTime;
-    }
-
-    private void FixedUpdate()
-    {
-
-        for (int i = 0; i < passingThroughIgnoredColliders.Count; i++)
-        {
-            // needs a dynamic algorithm that responds to colliders size
-            if (Mathf.Abs((passingThroughIgnoredColliders[i].transform.position - transform.position).magnitude) >= 3f)
-            {
-
-                Debug.Log("Collider Removed:");
-
-                passingThroughIgnoredColliders.RemoveAt(i);
-            }
-        }
-
     }
 
     // here we have a state that wants to manipulate the motor itself
@@ -312,12 +295,7 @@ public class DefaultMoveState : MovementState
 
     }
 
-    private void Awake()
-    {
-        controller.manager.curMovementState = this;
-        // Assign the characterController to the motor
-        controller.manager.Motor.CharacterController = controller.manager.curMovementState;
-    }
+  
 
 
 
@@ -441,11 +419,54 @@ public class DefaultMoveState : MovementState
 
     public override void OnDiscreteCollisionDetected(Collider hitCollider)
     {
+
     }
 
+}
+
+public class DefaultMoveStateBehaviour : MonoBehaviour
+{
+
+    [SerializeField]
+    public DefaultMoveState defaultMoveState;
+
+    public MTCharacterController controller;
+
+    private void FixedUpdate()
+    {
+
+        for (int i = 0; i < defaultMoveState.passingThroughIgnoredColliders.Count; i++)
+        {
+            // needs a dynamic algorithm that responds to colliders size
+            if (Mathf.Abs((defaultMoveState.passingThroughIgnoredColliders[i].transform.position - controller.transform.position).magnitude) >= 3f)
+            {
+
+                Debug.Log("Collider Removed:");
+
+                defaultMoveState.passingThroughIgnoredColliders.RemoveAt(i);
+            }
+        }
+
+    }
+
+    private void Awake()
+    {
+        controller.manager.curMovementState = defaultMoveState;
+        // Assign the characterController to the motor
+        controller.manager.Motor.CharacterController = controller.manager.curMovementState;
+    }
+
+    public void IncrementTempJumps()
+    {
+        defaultMoveState.jumpPool.currentCharges = defaultMoveState.jumpPool.maxCharges + 1;
+    }
+
+    public void ResetAbilities() => defaultMoveState.ResetAbilities();
 
 
+    public void DampenAirAccel() => defaultMoveState.DampenAirAccel();
 
+    public KinematicCharacterMotor Motor => defaultMoveState.Motor;
 
 
 }

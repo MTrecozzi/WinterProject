@@ -3,8 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class DashState : MovementState
 {
+    [SerializeField]
+    public DashState dashState;
 
     public float dashEndMultiplier = 0.5f;
 
@@ -15,7 +18,7 @@ public class DashState : MovementState
 
     private float t;
 
-    public WallRunState wallRunState;
+    public WallRunStateBehaviour wallRunState;
 
     public BinaryCrossSceneReference abilityEventReference;
 
@@ -75,7 +78,7 @@ public class DashState : MovementState
     {
 
         t = 0;
-        dir = transform.forward;
+        dir = controller.transform.forward;
         controller.SetMovementState(this);
 
         abilityEventReference.InvokeMessage(true);
@@ -93,20 +96,6 @@ public class DashState : MovementState
 
         abilityEventReference.InvokeMessage(false);
         controller.SetDefaultMovementState();
-    }
-
-    // input handled in fixed update
-    // since we're updating input in fixed update, when this code ran in update, it consumed multiple dashes per frame
-    private void FixedUpdate()
-    {
-
-        if (controller.controls.Standard.Dash.triggered && defaultMoveState.dashPool.currentCharges > 0)
-        {
-
-            Debug.Log("Dash Started");
-            StartDash(transform.forward);
-            defaultMoveState.dashPool.currentCharges--;
-        }
     }
 
     // something like this
@@ -128,13 +117,13 @@ public class DashState : MovementState
         // if we detect a non valid collision while dashing, we queue it for the character controller to ignore regardless of states.
         if (!valid)
         {
-            defaultMoveState.passingThroughIgnoredColliders.Add(coll);
+            defaultMoveState.defaultMoveState.passingThroughIgnoredColliders.Add(coll);
         }
 
         return valid;
     }
-    
-    
+
+
     // Perhaps we need an inform state wall collision, so that states can do an on wall enter type deal
     // public override void InformStateWallCollision() { }
 
@@ -165,7 +154,7 @@ public class DashState : MovementState
             dashVelocity += currentWallNormal.normalized * 10;
 
             // add a jump to the wall jump
-            dashVelocity.y += defaultMoveState.JumpUpSpeed;
+            dashVelocity.y += defaultMoveState.defaultMoveState.JumpUpSpeed;
 
             Debug.Log("Current Wall Normal: " + currentWallNormal);
 
@@ -204,7 +193,7 @@ public class DashState : MovementState
             dashVelocity = currentVelocity * dashEndMultiplier;
 
             currentVelocity = dashVelocity;
-                return;    
+            return;
         }
 
         if (!Motor.GroundingStatus.IsStableOnGround && initiallyGrounded)
@@ -219,7 +208,10 @@ public class DashState : MovementState
             defaultMoveState.ResetAbilities();
 
             // shitty implementation, as it technically should just consume the standard jump
-            defaultMoveState.jumpPool.currentCharges = defaultMoveState.jumpPool.maxCharges + 1;
+
+            defaultMoveState.IncrementTempJumps();
+
+            //defaultMoveState.jumpPool.currentCharges = defaultMoveState.jumpPool.maxCharges + 1;
 
         }
 
@@ -230,7 +222,7 @@ public class DashState : MovementState
 
     public override void OnMovementHit(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, ref HitStabilityReport hitStabilityReport)
     {
-        
+
         Debug.Log("Hit: " + hitCollider.name + " Dot Product = " + Vector3.Dot(-hitNormal, dashVelocity.normalized));
 
         surfaceParrallel = dashVelocity - hitNormal * Vector3.Dot(dashVelocity, hitNormal);
@@ -256,16 +248,17 @@ public class DashState : MovementState
                 // Idiot! NOT currentWallNormal = surfaceParrallel.normalized;
                 currentWallNormal = hitNormal.normalized;
             }
-        } else
+        }
+        else
         {
 
         }
-       
-
-        
 
 
-        
+
+
+
+
 
 
         //!! Test Structure
@@ -293,11 +286,27 @@ public class DashState : MovementState
         }
          */
 
-
-
-
-
-
     }
+}
+
+public class DashStateBehaviour : MonoBehaviour
+{
+
+    public DashState dashState;
+
+    // input handled in fixed update
+    // since we're updating input in fixed update, when this code ran in update, it consumed multiple dashes per frame
+    private void FixedUpdate()
+    {
+
+        if (dashState.controller.controls.Standard.Dash.triggered && dashState.defaultMoveState.defaultMoveState.dashPool.currentCharges > 0)
+        {
+
+            Debug.Log("Dash Started");
+            dashState.StartDash(dashState.controller.transform.forward);
+            dashState.defaultMoveState.defaultMoveState.dashPool.currentCharges--;
+        }
+    }
+
 
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class WallRunState : MovementState
 {
 
@@ -15,6 +16,8 @@ public class WallRunState : MovementState
     public float InitialYVelocity = 2f;
 
     public float gravity;
+
+
 
     [SerializeField]
     private float curWallRunVelocityX;
@@ -65,7 +68,7 @@ public class WallRunState : MovementState
     // This is good logic, end states differently based on buffered inputs
     public void EndState()
     {
-        
+
 
         if (controller.Jump.Buffered)
         {
@@ -74,7 +77,7 @@ public class WallRunState : MovementState
             var velocity = (surfaceParralel.normalized * curWallRunVelocityX) * 0.8f + surfaceNormal.normalized * 10f;
 
             // add a jump to the wall jump
-            velocity.y += defaultMoveState.JumpUpSpeed;
+            velocity.y += defaultMoveState.defaultMoveState.JumpUpSpeed;
 
             Debug.LogWarning("Terrible Wall Run Implmenetation: WALL COLLISION / NORMAL / STATE Should BE CENTRALIZED");
             defaultMoveState.Motor.BaseVelocity = velocity;
@@ -83,9 +86,10 @@ public class WallRunState : MovementState
 
             defaultMoveState.DampenAirAccel();
 
-        } else
+        }
+        else
         {
-            var nonJumpVelocity = (surfaceParralel.normalized * Mathf.Min(defaultMoveState.MaxAirMoveSpeed + 2, curWallRunVelocityX) * 0.8f);
+            var nonJumpVelocity = (surfaceParralel.normalized * Mathf.Min(defaultMoveState.defaultMoveState.MaxAirMoveSpeed + 2, curWallRunVelocityX) * 0.8f);
 
             defaultMoveState.Motor.BaseVelocity = nonJumpVelocity;
         }
@@ -96,7 +100,7 @@ public class WallRunState : MovementState
     public override void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
     {
 
-        
+
 
         Debug.Log("Wall Run Update");
 
@@ -105,14 +109,15 @@ public class WallRunState : MovementState
         // idiot! Was setting velocity = wallRunInitial rather than wallRunCurrent
         currentVelocity = (surfaceParralel.normalized * curWallRunVelocityX); //  + (surfaceParralel.normalized * 0.5f * input.ControlStick.ReadValue<Vector2>().y * wallRunVelocity);
 
-        currentVelocity.y = curYVelocity + Mathf.Min(0,  (input.ControlStick.ReadValue<Vector2>().y * 3f));
+        currentVelocity.y = curYVelocity + Mathf.Min(0, (input.ControlStick.ReadValue<Vector2>().y * 3f));
 
         curYVelocity -= Time.deltaTime * gravity * 2;
 
         if (curWallRunVelocityX > minWallRunVelocity)
         {
             curWallRunVelocityX -= Time.deltaTime * 6f;
-        } else
+        }
+        else
         {
             EndState();
         }
@@ -121,8 +126,6 @@ public class WallRunState : MovementState
         {
             EndState();
         }
-
-        
 
         if (controller.Jump.Buffered)
         {
@@ -133,17 +136,27 @@ public class WallRunState : MovementState
 
         RaycastHit hit;
 
-        if (!Physics.Raycast(transform.position, surfaceNormal * -1, out hit, 2, mask))
+        if (!Physics.Raycast(controller.transform.position, surfaceNormal * -1, out hit, 2, mask))
         {
             EndState();
-        } else if (Physics.Raycast(transform.position, surfaceParralel, 2, mask))
+        }
+        else if (Physics.Raycast(controller.transform.position, surfaceParralel, 2, mask))
         {
             // hit somethign while running
 
             EndState();
         }
-       
+
         //else { Debug.Log("HIT " + hit.transform.gameObject.name); }
-        
+
     }
+}
+
+public class WallRunStateBehaviour : MonoBehaviour
+{
+    [SerializeField]
+    public WallRunState wallRunState;
+
+    public void StartState(Vector3 _surfaceParrallel, Vector3 _curWallNormal) => wallRunState.StartState(_surfaceParrallel, _curWallNormal);
+
 }

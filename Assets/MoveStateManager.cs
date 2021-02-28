@@ -6,12 +6,23 @@ using UnityEngine;
 
 public class MoveStateManager : MonoBehaviour
 {
+
+
+    public DefaultMoveStateBehaviour defaultMoveStateBehaviour;
+
     public MovementState defaultMoveState;
     public MovementState curMovementState;
     public Queue<Vector3> velocityQueue = new Queue<Vector3>();
     public event Action<MovementState, MovementState> OnStateChanged;
 
     public KinematicCharacterMotor Motor;
+
+    private void Awake()
+    {
+        Debug.LogWarning("Because Movement States can't be accessed through the inspector, I'm going through a mono reference to get defaultMoveState state");
+
+        defaultMoveState = defaultMoveStateBehaviour.defaultMoveState;
+    }
 
     // this needs to be seperate responsibility
     // we need to sperate the KinemaCharacter from the Movement State

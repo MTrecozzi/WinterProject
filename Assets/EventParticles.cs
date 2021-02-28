@@ -27,7 +27,7 @@ public class EventParticles : MonoBehaviour
 
     private void HandleStateChanged(ICharacterController arg1, ICharacterController arg2)
     {
-        if (arg2.GetType() == typeof(WallRunState) || arg1.GetType() == typeof(WallRunState))
+        if (arg2.GetType() == typeof(WallRunStateBehaviour) || arg1.GetType() == typeof(WallRunStateBehaviour))
         {
             PlayParticle();
         }
