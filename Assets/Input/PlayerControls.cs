@@ -279,7 +279,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""id"": ""cb8db89d-487e-4a63-8c6b-b5fd4c8b844c"",
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
-                    ""processors"": ""ScaleVector2"",
+                    ""processors"": ""ScaleVector2(x=0.25,y=0.25)"",
                     ""groups"": """",
                     ""action"": ""AimDelta"",
                     ""isComposite"": false,
