@@ -844,11 +844,35 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: lagState.Motor
+      value: 
+      objectReference: {fileID: 3864973819887538906}
+    - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: lagState.controller
+      value: 
+      objectReference: {fileID: 3764920316457078197}
+    - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
       propertyPath: groundPoundState.Motor
       value: 
       objectReference: {fileID: 3864973819887538906}
     - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: lagState.buffer.duration
+      value: 0.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: groundPoundLagState.Motor
+      value: 
+      objectReference: {fileID: 3864973819887538906}
+    - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: lagState.defaultMoveState
+      value: 
+      objectReference: {fileID: 3764920316457078195}
+    - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
       propertyPath: groundPoundState.controller
+      value: 
+      objectReference: {fileID: 3764920316457078197}
+    - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: groundPoundLagState.controller
       value: 
       objectReference: {fileID: 3764920316457078197}
     - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
@@ -859,6 +883,14 @@ PrefabInstance:
       propertyPath: groundPoundState.prePound.duration
       value: 0.13
       objectReference: {fileID: 0}
+    - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: groundPoundLagState.buffer.duration
+      value: 0.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: groundPoundLagState.defaultMoveState
+      value: 
+      objectReference: {fileID: 3764920316457078195}
     - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
       propertyPath: groundPoundState.groundPoundVelocity
       value: 45

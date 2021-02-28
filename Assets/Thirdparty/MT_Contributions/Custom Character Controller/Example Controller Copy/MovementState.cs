@@ -1,7 +1,21 @@
 using KinematicCharacterController;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+
+public class MovementStateTransition
+{
+    public MovementStateTransition(Func<bool> condition, MovementState toState)
+    {
+        Condition = condition;
+        ToState = toState;
+    }
+
+    public Func<bool> Condition;
+    public MovementState ToState;
+}
 
 [System.Serializable]
 public abstract class MovementState : ICharacterController
@@ -10,6 +24,21 @@ public abstract class MovementState : ICharacterController
     public MTCharacterController controller; // for input + state machine API
     public DefaultMoveStateBehaviour defaultMoveState; // default move state
     public KinematicCharacterMotor Motor;
+
+    public List<MovementStateTransition> transitions = new List<MovementStateTransition>();
+
+    public MovementState()
+    {
+
+    }
+
+    public MovementState(MTCharacterController controller, DefaultMoveStateBehaviour defaultMoveState, KinematicCharacterMotor Motor)
+    {
+        this.controller = controller;
+        this.defaultMoveState = defaultMoveState;
+        this.Motor = Motor;
+    }
+
 
 
     #region Encapsulated Disturbance Handlers, to be called by The Character Controller, which really should be seperated from the default Movment State

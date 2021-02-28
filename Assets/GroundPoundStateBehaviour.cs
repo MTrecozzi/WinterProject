@@ -9,29 +9,12 @@ public class GroundPoundState : MovementState
 
     public float groundPoundJumpVelocity = 15f;
 
-    public StateBuffer prePound;
-
     // ux event for ground pound anticipation start, actual start, etc
 
     // will need to play nice with a queueing / buffer system
 
     // do I create a class for a timed state buffer?
 
-    public void SetState()
-    {
-
-        if (Motor.GroundingStatus.FoundAnyGround)
-        {
-            return;
-        }
-        else
-        {
-            prePound.SetActive();
-            controller.SetMovementState(this);
-        }
-
-
-    }
 
     public override void CleanUp()
     {
@@ -65,19 +48,6 @@ public class GroundPoundState : MovementState
     public override void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
     {
 
-        // use this for UX and buffers
-        bool poundPoundStart = prePound.Tick(deltaTime);
-
-
-
-
-        // needs smooth anticipation + acceleration towards final fast fall speed
-
-        if (prePound.active)
-        {
-            currentVelocity = new Vector3(0, 0, 0);
-        }
-        else
         {
             // Easing of this velocity, in partnership / communication with the pre pound buffer, would make this feel good
             currentVelocity = new Vector3(0, -groundPoundVelocity, 0);
@@ -94,6 +64,30 @@ public class GroundPoundState : MovementState
     }
 }
 
+[System.Serializable]
+public class LagTransition : MovementState
+{
+    [SerializeField]
+    public StateBuffer buffer;
+
+    public override void Initialize()
+    {
+        buffer.Reset();
+        buffer.SetActive();
+    }
+
+    public override void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
+    {
+        currentVelocity = Vector3.zero;
+
+        // if the buffer expires this frame
+        if (buffer.Tick(deltaTime))
+        {
+            controller.manager.SetNextState();
+        }
+    }
+
+}
 
 [SerializeField]
 public class GroundPoundStateBehaviour : MonoBehaviour
@@ -101,13 +95,37 @@ public class GroundPoundStateBehaviour : MonoBehaviour
 
     public GroundPoundState groundPoundState;
     public MTCharacterController controller;
+    [SerializeField]
+    public LagTransition groundPoundLagState;
+
+    //private MovementStateTransition GroundPoundInitialJump;
+
+    private void Awake()
+    {
+        //GroundPoundInitialJump = new MovementStateTransition(InitialGroundPoundJumpCheck, new DashState());
+        //groundPoundLagState.transitions.Add(GroundPoundInitialJump);
+    }
+
+    public bool InitialGroundPoundJumpCheck()
+    {
+        return controller.Jump.Buffered && !groundPoundLagState.Motor.GroundingStatus.IsStableOnGround;
+    }
 
     // this badddd, CENTRALIZE INPUT IDIOT
     private void FixedUpdate()
     {
         if (controller.controls.Standard.GroundPound.triggered)
         {
-            groundPoundState.SetState();
+
+            Debug.LogWarning("Replace with a LagTransition of duration 0.13, that queues into ground pound unless interrupted by inputs");
+
+
+            controller.manager.SetMovementState(groundPoundLagState);
+            controller.manager.stateQueue.Enqueue(groundPoundState);
+
+
+
+            //groundPoundState.SetState();
         }
     }
 
