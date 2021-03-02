@@ -838,9 +838,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: enableLongJump
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1977068582809779818, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
       propertyPath: m_Name
       value: MT_ExampleCharacter Animations
+      objectReference: {fileID: 0}
+    - target: {fileID: 1977068582809779819, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: m_Constraints
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 1980012064651850360, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
       propertyPath: m_RootOrder
