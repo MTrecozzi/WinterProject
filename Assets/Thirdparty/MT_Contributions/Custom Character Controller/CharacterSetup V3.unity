@@ -852,6 +852,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3764920316457078197}
     - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: groundPoundJump.Motor
+      value: 
+      objectReference: {fileID: 3864973819887538906}
+    - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
       propertyPath: groundPoundState.Motor
       value: 
       objectReference: {fileID: 3864973819887538906}
@@ -868,11 +872,35 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3764920316457078195}
     - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: groundPoundJump.controller
+      value: 
+      objectReference: {fileID: 3764920316457078197}
+    - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: groundPoundLandingLag.Motor
+      value: 
+      objectReference: {fileID: 3864973819887538906}
+    - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
       propertyPath: groundPoundState.controller
       value: 
       objectReference: {fileID: 3764920316457078197}
     - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: groundPoundCanceledJump.Motor
+      value: 
+      objectReference: {fileID: 3864973819887538906}
+    - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
       propertyPath: groundPoundLagState.controller
+      value: 
+      objectReference: {fileID: 3764920316457078197}
+    - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: groundPoundJump.IJumpForwardVel
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: groundPoundJump.defaultMoveState
+      value: 
+      objectReference: {fileID: 3764920316457078195}
+    - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: groundPoundLandingLag.controller
       value: 
       objectReference: {fileID: 3764920316457078197}
     - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
@@ -880,8 +908,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3764920316457078195}
     - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: groundPoundCanceledJump.controller
+      value: 
+      objectReference: {fileID: 3764920316457078197}
+    - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
       propertyPath: groundPoundState.prePound.duration
       value: 0.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: groundPoundJump.velocityMagnitude.y
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
       propertyPath: groundPoundLagState.buffer.duration
@@ -896,8 +932,36 @@ PrefabInstance:
       value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: groundPoundLandingLag.buffer.duration
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: groundPoundLandingLag.defaultMoveState
+      value: 
+      objectReference: {fileID: 3764920316457078195}
+    - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: groundPoundCanceledJump.IJumpForwardVel
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: groundPoundCanceledJump.IJumpDownwardVel
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: groundPoundCanceledJump.defaultMoveState
+      value: 
+      objectReference: {fileID: 3764920316457078195}
+    - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
       propertyPath: groundPoundState.groundPoundJumpVelocity
       value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: groundPoundCanceledJump.velocityMagnitude.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: groundPoundCanceledJump.velocityMagnitude.y
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 676850064577808993, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
       propertyPath: defaultMoveState.Drag

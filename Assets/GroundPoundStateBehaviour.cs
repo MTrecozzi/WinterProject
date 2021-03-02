@@ -2,48 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// could literally be replaced with Constant Velocity State
 [System.Serializable]
 public class GroundPoundState : MovementState
 {
     public float groundPoundVelocity = 0f;
-
-    public float groundPoundJumpVelocity = 15f;
-
-    // ux event for ground pound anticipation start, actual start, etc
-
-    // will need to play nice with a queueing / buffer system
-
-    // do I create a class for a timed state buffer?
-
-
-    public override void CleanUp()
-    {
-        if (controller.Jump.Buffered)
-        {
-            Debug.LogWarning("State Change Eats Velocity Input, Need a Cross State Queue System");
-            // on state enter, we should check to see if an action is buffered, if so do that.
-            // can we queue a func!?!?
-            //controller.Motor.BaseVelocity
-
-            controller.Jump.EatInput();
-
-            Debug.LogWarning("Ugh, Force Unground, have this internally managed with...");
-            // this would enforce better reusability and form
-            Debug.LogWarning("External States should us an API to the main Controller, rather than direct acess");
-            Motor.ForceUnground();
-
-            controller.manager.velocityQueue.Enqueue(new Vector3(0, groundPoundJumpVelocity, 0));
-
-            Debug.LogWarning("Cross State 'Grace Periods Needed', so that ground pound jump buffer can last after the state, should be managed by PlayerControllerClass 100%, with API's for Enqueing such cross state transitional buffers");
-
-            // remember the dash canceled ground pound can only happing durring the initial ground pound state
-            Debug.LogWarning("Explore the backend for dash canceled ground pound -> modified dash state with less momentum halting at end of it! What code is required? Where is it organized? and managed?");
-
-            // do something cool for cancelling out of main ground pound land impact, with good buffering
-            // the best words here are, you complete a ground pound, what happens if you buffer a dash out of ground pound landing lag instead of a jump?
-            Debug.LogWarning("also explore a cool tech for full groundpound -> ground into dash cancel instead of jump input");
-        }
-    }
 
     public override void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
     {
@@ -64,31 +28,66 @@ public class LagTransition : MovementState
 
     public override void Initialize()
     {
-        buffer.Reset();
-        buffer.SetActive();
+        buffer.SetStartTime();
     }
 
     public override void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
     {
         currentVelocity = Vector3.zero;
+    }
 
-        // if the buffer expires this frame
-        if (buffer.Tick(deltaTime))
+}
+
+[System.Serializable]
+public class ConstantVelocityState : MovementState
+{
+    public Vector2 velocityMagnitude;
+
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        if (velocityMagnitude.y > 0)
         {
-            controller.manager.SetNextState();
+            controller.manager.Motor.ForceUnground();
         }
     }
 
+    public override void UpdateRotation(ref Quaternion currentRotation, float deltaTime)
+    {
+        return;
+    }
+
+    public override void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
+    {
+        
+        currentVelocity = controller.transform.forward.normalized *velocityMagnitude.x
+            + Vector3.up * velocityMagnitude.y;
+    }
 }
 
 [SerializeField]
 public class GroundPoundStateBehaviour : MonoBehaviour
 {
+    
+    public MTCharacterController controller;
+
+    [Header("Movement States")]
 
     public GroundPoundState groundPoundState;
-    public MTCharacterController controller;
+
     [SerializeField]
     public LagTransition groundPoundLagState;
+
+    [SerializeField]
+    public ConstantVelocityState groundPoundCanceledJump;
+
+    [SerializeField]
+    public LagTransition groundPoundLandingLag;
+
+    [SerializeField]
+    public ConstantVelocityState groundPoundJump;
 
     //private MovementStateTransition GroundPoundInitialJump;
 
@@ -96,7 +95,69 @@ public class GroundPoundStateBehaviour : MonoBehaviour
     {
         // this is really cool, the MovementState is its own logical unity, the behaviour manages it and can be used to 
         // compose its transitions without interference.
-        controller.manager.AddTransition(groundPoundState, IsGrounded, controller.manager.defaultMoveState);
+
+        Debug.LogWarning("Transition from groundPoundState to groundPoundLagState on grounded, instead of defaultState as is currently implemented");
+        controller.manager.AddTransition(groundPoundState, IsGrounded, groundPoundLandingLag);
+
+        // add transition from ground pound landing lag to normal if t > 0
+        controller.manager.AddTransition(groundPoundLandingLag, GroundPoundTimedOut, controller.manager.defaultMoveState);
+
+        // add transition from ground pound landing lag to constant vel groundPoundJump
+        controller.manager.AddTransition(groundPoundLandingLag, JumpInputBuffered, groundPoundJump);
+        controller.manager.AddTransition(groundPoundJump, FrameHasPassed, controller.manager.defaultMoveState);
+
+        // Can't do this! as currently movement states need monobehaviour references set through the inspector
+        Debug.LogWarning("Need to create a 'bind movement state to manager' system that populates the state with the appropriate controller, default move state" +
+            ", and manager");
+        //groundPoundCanceledJump = new ConstantVelocityState();
+
+        // add a transition from initial lag into downward momentum, if we get jump input during groundPound
+        controller.manager.AddTransition(groundPoundLagState, JumpCanceledInitialGroundPound, groundPoundCanceledJump);
+        controller.manager.AddTransition(groundPoundLagState, InitialLagStateEnded, groundPoundState);
+
+        // add transition from downward velocity to default state (to carry that velocity + control) after a frame has passed
+        controller.manager.AddTransition(groundPoundCanceledJump, FrameHasPassed, controller.manager.defaultMoveState);
+    }
+
+    public bool InitialLagStateEnded()
+    {
+        bool validTransition = groundPoundLagState.buffer.StateEned();
+
+        return validTransition;
+    }
+
+    public bool JumpInputBuffered()
+    {
+        var validTransition = controller.Jump.Buffered;
+
+        if (validTransition)
+        {
+            controller.Jump.EatInput();
+        }
+
+        return validTransition;
+    }
+
+    public bool GroundPoundTimedOut()
+    {
+        return groundPoundLandingLag.buffer.StateEned();
+    }
+
+    public bool JumpCanceledInitialGroundPound()
+    {
+        bool validTransition = controller.Jump.Buffered;
+
+        if (validTransition)
+        {
+            controller.Jump.EatInput();
+        }
+
+        return validTransition;
+    }
+
+    public bool FrameHasPassed()
+    {
+        return true;
     }
 
     public bool IsGrounded()
@@ -119,8 +180,6 @@ public class GroundPoundStateBehaviour : MonoBehaviour
 
 
             controller.manager.SetMovementState(groundPoundLagState);
-            controller.manager.stateQueue.Enqueue(groundPoundState);
-
 
 
             //groundPoundState.SetState();
@@ -136,35 +195,13 @@ public class StateBuffer
     [SerializeField]
     private float t;
 
-    public bool active = false;
-
-    public bool Tick(float deltaTIme)
+    public void SetStartTime()
     {
-
-        if (!active) return false;
-
-        t += Time.deltaTime;
-
-        bool evnt = t >= duration;
-
-        if (t >= duration)
-        {
-            t = 0;
-            active = false;
-        }
-
-        return evnt;
+        t = Time.time;
     }
 
-    public void SetActive()
+    public bool StateEned()
     {
-        active = true;
+        return Time.time > t + duration;
     }
-
-    public void Reset()
-    {
-        t = 0;
-    }
-
-
 }
