@@ -6,10 +6,18 @@ using UnityEngine;
 
 public class MoveStateManager : MonoBehaviour
 {
+
+
+    private List<MovementStateTransition> _stateTransitions = new List<MovementStateTransition>();
+
+    public MovementState CurrentState => curMovementState;
+    // should be made private
+    public MovementState curMovementState;
+
     public DefaultMoveStateBehaviour defaultMoveStateBehaviour;
 
     public MovementState defaultMoveState;
-    public MovementState curMovementState;
+    
     public Queue<Vector3> velocityQueue = new Queue<Vector3>();
     public event Action<MovementState, MovementState> OnStateChanged;
 
@@ -23,8 +31,18 @@ public class MoveStateManager : MonoBehaviour
         defaultMoveState = defaultMoveStateBehaviour.defaultMoveState;
     }
 
+    // now we can add transitions, but now we have to check and make the switches
+    public void AddTransition(MovementState from, MovementState to, Func<bool> condition)
+    {
+        var stateTransition = new MovementStateTransition(from, condition, to);
+        _stateTransitions.Add(stateTransition);
+    }
+
     private void FixedUpdate()
     {
+
+        CheckForConditions();
+
         if (curMovementState != null)
         {
             for (int i = 0; i < curMovementState.transitions.Count; i++)
@@ -41,6 +59,33 @@ public class MoveStateManager : MonoBehaviour
         {
             Debug.LogError("Cur MovementState is null");
         }
+    }
+
+    public void CheckForConditions()
+    {
+        MovementStateTransition transition = CheckForTransition();
+
+        if (transition != null)
+        {
+            // then we want to switch to new state
+            SetMovementState(transition.ToState);
+        }
+    }
+
+    private MovementStateTransition CheckForTransition()
+    {
+        foreach (var transition in _stateTransitions)
+        {
+            // if we find a transition who's condition has been met, we'll return it
+            // if dictionaries are more performant, it'll be worth looking into
+            if (transition.FromState == curMovementState && transition.Condition())
+            {
+                // if we are in the desired from state of the transition, and the condition of the transition is met, return this transition from our list.
+                return transition;
+            }
+        }
+
+        return null;
     }
 
     // this needs to be seperate responsibility
