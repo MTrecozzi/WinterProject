@@ -28,7 +28,7 @@ public abstract class MovementState : ICharacterController
     public DefaultMoveStateBehaviour defaultMoveState; // default move state
     public KinematicCharacterMotor Motor;
 
-    public List<MovementStateTransition> transitions = new List<MovementStateTransition>();
+
 
     public MovementState()
     {

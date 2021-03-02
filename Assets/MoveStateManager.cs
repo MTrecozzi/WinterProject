@@ -41,24 +41,6 @@ public class MoveStateManager : MonoBehaviour
     private void FixedUpdate()
     {
 
-        CheckForConditions();
-
-        if (curMovementState != null)
-        {
-            for (int i = 0; i < curMovementState.transitions.Count; i++)
-            {
-                if (curMovementState.transitions[i].Condition() == true)
-                {
-                    Debug.Log("TRANSITION TRUE: Transition to " + curMovementState.transitions[i].ToString());
-
-                    SetMovementState(curMovementState.transitions[i].ToState);
-                }
-            }
-
-        } else
-        {
-            Debug.LogError("Cur MovementState is null");
-        }
     }
 
     public void CheckForConditions()
