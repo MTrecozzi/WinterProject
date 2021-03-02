@@ -7,17 +7,109 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3764920316457078187, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: defaultMoveStateBehaviour
+      value: 
+      objectReference: {fileID: 676850064577808993}
+    - target: {fileID: 3764920316457078196, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: wallRunState.Motor
+      value: 
+      objectReference: {fileID: 1942035794502983960}
+    - target: {fileID: 3764920316457078196, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: wallRunState.gravity
+      value: 2.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3764920316457078196, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: wallRunState.controller
+      value: 
+      objectReference: {fileID: 1977068582809779816}
+    - target: {fileID: 3764920316457078196, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: wallRunState.mask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3764920316457078196, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: wallRunState.InitialYVelocity
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3764920316457078196, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: wallRunState.defaultMoveState
+      value: 
+      objectReference: {fileID: 676850064577808993}
+    - target: {fileID: 3764920316457078196, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: wallRunState.wallRunDecayRate
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3764920316457078196, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: wallRunState.minWallRunVelocity
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3764920316457078196, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: wallRunState.wallRunInitialVelocity
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 7119987707687262033, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: Dash.bufferDuration
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7119987707687262033, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: Jump.bufferDuration
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 7119987707687262035, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
       propertyPath: m_Name
-      value: MT_ExampleCharacter Animations Variant
+      value: MT_ExampleCharacter Animations
       objectReference: {fileID: 0}
+    - target: {fileID: 7119987707687262038, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: dashState.Motor
+      value: 
+      objectReference: {fileID: 1942035794502983960}
+    - target: {fileID: 7119987707687262038, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: dashState.distance
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7119987707687262038, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: dashState.controller
+      value: 
+      objectReference: {fileID: 1977068582809779816}
+    - target: {fileID: 7119987707687262038, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: dashState.timeToReach
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7119987707687262038, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: dashState.wallRunState
+      value: 
+      objectReference: {fileID: 5593221607368533133}
+    - target: {fileID: 7119987707687262038, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: dashState.defaultMoveState
+      value: 
+      objectReference: {fileID: 676850064577808993}
+    - target: {fileID: 7119987707687262038, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: dashState.dashEndMultiplier
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7119987707687262038, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: dashState.ignoreLayers.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 7119987707687262038, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: dashState.mushroomDashEndMult
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7119987707687262038, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: dashState.dotProductBonkCutOff
+      value: 0.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 7119987707687262038, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: dashState.abilityEventReference
+      value: 
+      objectReference: {fileID: 11400000, guid: 80b9afd015dc7fb4b9f347ac49e086fb, type: 2}
     - target: {fileID: 7123243276955638593, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7123243276955638593, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.2728667
+      value: 0.27286673
       objectReference: {fileID: 0}
     - target: {fileID: 7123243276955638593, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -25,7 +117,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7123243276955638593, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.717293
+      value: 13.967293
       objectReference: {fileID: 0}
     - target: {fileID: 7123243276955638593, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -55,5 +147,264 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8125643758259839832, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: defaultMoveState.Drag
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 8125643758259839832, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: defaultMoveState.Motor
+      value: 
+      objectReference: {fileID: 1942035794502983960}
+    - target: {fileID: 8125643758259839832, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: defaultMoveState.MeshRoot
+      value: 
+      objectReference: {fileID: 1975687349682108382}
+    - target: {fileID: 8125643758259839832, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: defaultMoveState.dampTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8125643758259839832, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: defaultMoveState.dashPool
+      value: 
+      objectReference: {fileID: 1977068582809779821}
+    - target: {fileID: 8125643758259839832, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: defaultMoveState.jumpPool
+      value: 
+      objectReference: {fileID: 1977068582809779820}
+    - target: {fileID: 8125643758259839832, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: defaultMoveState.Gravity.y
+      value: -35
+      objectReference: {fileID: 0}
+    - target: {fileID: 8125643758259839832, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: defaultMoveState.controller
+      value: 
+      objectReference: {fileID: 1977068582809779816}
+    - target: {fileID: 8125643758259839832, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: defaultMoveState.JumpUpSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8125643758259839832, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: defaultMoveState.SprintSpeed
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8125643758259839832, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: defaultMoveState.MaxAirMoveSpeed
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8125643758259839832, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: defaultMoveState.dampenedAirAccel
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8125643758259839832, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: defaultMoveState.defaultMoveState
+      value: 
+      objectReference: {fileID: 676850064577808993}
+    - target: {fileID: 8125643758259839832, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: defaultMoveState.doubleJumpEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8125643758259839832, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: defaultMoveState.MaxStableMoveSpeed
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8125643758259839832, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: defaultMoveState.AirAccelerationSpeed
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8125643758259839832, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: defaultMoveState.OrientationSharpness
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8125643758259839832, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: defaultMoveState.AllowJumpingWhenSliding
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8125643758259839832, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: defaultMoveState.JumpScalableForwardSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8125643758259839832, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: defaultMoveState.JumpPreGroundingGraceTime
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8125643758259839832, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: defaultMoveState.JumpPostGroundingGraceTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8756796690775479565, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: enableLongJump
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8756796690775479565, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: groundPoundJump.Motor
+      value: 
+      objectReference: {fileID: 1942035794502983960}
+    - target: {fileID: 8756796690775479565, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: initialLagState.Motor
+      value: 
+      objectReference: {fileID: 1942035794502983960}
+    - target: {fileID: 8756796690775479565, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: groundPoundState.Motor
+      value: 
+      objectReference: {fileID: 1942035794502983960}
+    - target: {fileID: 8756796690775479565, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: groundPoundLagState.Motor
+      value: 
+      objectReference: {fileID: 1942035794502983960}
+    - target: {fileID: 8756796690775479565, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: groundPoundJump.controller
+      value: 
+      objectReference: {fileID: 1977068582809779816}
+    - target: {fileID: 8756796690775479565, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: initialLagState.controller
+      value: 
+      objectReference: {fileID: 1977068582809779816}
+    - target: {fileID: 8756796690775479565, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: groundPoundLandingLag.Motor
+      value: 
+      objectReference: {fileID: 1942035794502983960}
+    - target: {fileID: 8756796690775479565, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: groundPoundState.controller
+      value: 
+      objectReference: {fileID: 1977068582809779816}
+    - target: {fileID: 8756796690775479565, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: groundPoundCanceledJump.Motor
+      value: 
+      objectReference: {fileID: 1942035794502983960}
+    - target: {fileID: 8756796690775479565, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: groundPoundLagState.controller
+      value: 
+      objectReference: {fileID: 1977068582809779816}
+    - target: {fileID: 8756796690775479565, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: initialLagState.buffer.duration
+      value: 0.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 8756796690775479565, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: groundPoundJump.defaultMoveState
+      value: 
+      objectReference: {fileID: 676850064577808993}
+    - target: {fileID: 8756796690775479565, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: groundPoundLandingLag.controller
+      value: 
+      objectReference: {fileID: 1977068582809779816}
+    - target: {fileID: 8756796690775479565, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: initialLagState.defaultMoveState
+      value: 
+      objectReference: {fileID: 676850064577808993}
+    - target: {fileID: 8756796690775479565, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: groundPoundState.defaultMoveState
+      value: 
+      objectReference: {fileID: 676850064577808993}
+    - target: {fileID: 8756796690775479565, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: groundPoundCanceledJump.controller
+      value: 
+      objectReference: {fileID: 1977068582809779816}
+    - target: {fileID: 8756796690775479565, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: groundPoundJump.velocityMagnitude.y
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 8756796690775479565, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: groundPoundLagState.buffer.duration
+      value: 0.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 8756796690775479565, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: groundPoundLagState.defaultMoveState
+      value: 
+      objectReference: {fileID: 676850064577808993}
+    - target: {fileID: 8756796690775479565, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: groundPoundState.groundPoundVelocity
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8756796690775479565, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: groundPoundLandingLag.buffer.duration
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8756796690775479565, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: groundPoundLandingLag.defaultMoveState
+      value: 
+      objectReference: {fileID: 676850064577808993}
+    - target: {fileID: 8756796690775479565, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: groundPoundCanceledJump.defaultMoveState
+      value: 
+      objectReference: {fileID: 676850064577808993}
+    - target: {fileID: 8756796690775479565, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: groundPoundCanceledJump.velocityMagnitude.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8756796690775479565, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: groundPoundCanceledJump.velocityMagnitude.y
+      value: -5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+--- !u!114 &1977068582809779816 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7119987707687262033, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+  m_PrefabInstance: {fileID: 8764201130829736249}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54d5193d464cc624db84869ab05e254e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &676850064577808993 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8125643758259839832, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+  m_PrefabInstance: {fileID: 8764201130829736249}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85d5cee9395835a4ebfc5722dbf18309, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1977068582809779820 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7119987707687262037, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+  m_PrefabInstance: {fileID: 8764201130829736249}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a579c7e8d178d5d42b29df31640f9231, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1977068582809779821 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7119987707687262036, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+  m_PrefabInstance: {fileID: 8764201130829736249}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a579c7e8d178d5d42b29df31640f9231, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5593221607368533133 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3764920316457078196, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+  m_PrefabInstance: {fileID: 8764201130829736249}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a53f9c248f9ba748bcf3f802ed22cbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1942035794502983960 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7157289883682162721, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+  m_PrefabInstance: {fileID: 8764201130829736249}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d1bc5515e3ab954e80599c538834774, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1975687349682108382 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7118993999966641895, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+  m_PrefabInstance: {fileID: 8764201130829736249}
+  m_PrefabAsset: {fileID: 0}

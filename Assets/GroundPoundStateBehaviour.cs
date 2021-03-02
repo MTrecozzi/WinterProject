@@ -73,12 +73,14 @@ public class GroundPoundStateBehaviour : MonoBehaviour
     
     public MTCharacterController controller;
 
+    public bool enableLongJump;
+
     [Header("Movement States")]
 
     public GroundPoundState groundPoundState;
 
     [SerializeField]
-    public LagTransition groundPoundLagState;
+    public LagTransition initialLagState;
 
     [SerializeField]
     public ConstantVelocityState groundPoundCanceledJump;
@@ -111,9 +113,17 @@ public class GroundPoundStateBehaviour : MonoBehaviour
             ", and manager");
         //groundPoundCanceledJump = new ConstantVelocityState();
 
+        
+        
+
+        if (enableLongJump)
+        {
+            controller.manager.AddTransition(initialLagState, JumpCanceledInitialGroundPound, groundPoundCanceledJump);
+        }
+
         // add a transition from initial lag into downward momentum, if we get jump input during groundPound
-        controller.manager.AddTransition(groundPoundLagState, JumpCanceledInitialGroundPound, groundPoundCanceledJump);
-        controller.manager.AddTransition(groundPoundLagState, InitialLagStateEnded, groundPoundState);
+        controller.manager.AddTransition(initialLagState, InitialLagStateEnded, groundPoundState);
+        
 
         // add transition from downward velocity to default state (to carry that velocity + control) after a frame has passed
         controller.manager.AddTransition(groundPoundCanceledJump, FrameHasPassed, controller.manager.defaultMoveState);
@@ -121,7 +131,7 @@ public class GroundPoundStateBehaviour : MonoBehaviour
 
     public bool InitialLagStateEnded()
     {
-        bool validTransition = groundPoundLagState.buffer.StateEned();
+        bool validTransition = initialLagState.buffer.StateEned();
 
         return validTransition;
     }
@@ -167,7 +177,7 @@ public class GroundPoundStateBehaviour : MonoBehaviour
 
     public bool InitialGroundPoundJumpCheck()
     {
-        return controller.Jump.Buffered && !groundPoundLagState.Motor.GroundingStatus.IsStableOnGround;
+        return controller.Jump.Buffered && !initialLagState.Motor.GroundingStatus.IsStableOnGround;
     }
 
     // this badddd, CENTRALIZE INPUT IDIOT
@@ -179,7 +189,7 @@ public class GroundPoundStateBehaviour : MonoBehaviour
             Debug.LogWarning("Replace with a LagTransition of duration 0.13, that queues into ground pound unless interrupted by inputs");
 
 
-            controller.manager.SetMovementState(groundPoundLagState);
+            controller.manager.SetMovementState(initialLagState);
 
 
             //groundPoundState.SetState();
