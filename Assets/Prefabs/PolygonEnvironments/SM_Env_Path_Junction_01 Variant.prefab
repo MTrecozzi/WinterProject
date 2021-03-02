@@ -22,7 +22,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 162854, guid: 3d64129ea690b5840a03b5f2f5c4b588, type: 3}
       propertyPath: m_Name
-      value: SM_Env_Path_Junction_01
+      value: SM_Env_Path_Junction_01 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 498808, guid: 3d64129ea690b5840a03b5f2f5c4b588, type: 3}
       propertyPath: m_RootOrder
@@ -30,15 +30,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 498808, guid: 3d64129ea690b5840a03b5f2f5c4b588, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 498808, guid: 3d64129ea690b5840a03b5f2f5c4b588, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 498808, guid: 3d64129ea690b5840a03b5f2f5c4b588, type: 3}
       propertyPath: m_LocalScale.z
-      value: 3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 498808, guid: 3d64129ea690b5840a03b5f2f5c4b588, type: 3}
       propertyPath: m_LocalPosition.x

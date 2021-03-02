@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 196380, guid: ea3006685c5815f429d7310b7eb965ca, type: 3}
       propertyPath: m_Name
-      value: SM_Bld_Shop_Cover_01
+      value: SM_Bld_Shop_Cover_01 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 498912, guid: ea3006685c5815f429d7310b7eb965ca, type: 3}
       propertyPath: m_RootOrder
@@ -17,15 +17,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 498912, guid: ea3006685c5815f429d7310b7eb965ca, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 498912, guid: ea3006685c5815f429d7310b7eb965ca, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 498912, guid: ea3006685c5815f429d7310b7eb965ca, type: 3}
       propertyPath: m_LocalScale.z
-      value: 3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 498912, guid: ea3006685c5815f429d7310b7eb965ca, type: 3}
       propertyPath: m_LocalPosition.x

@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 181870, guid: a7995c77c0122324ca14027eaff6b47f, type: 3}
       propertyPath: m_Name
-      value: SM_Env_Road_Median_01
+      value: SM_Env_Road_Median_01 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 486122, guid: a7995c77c0122324ca14027eaff6b47f, type: 3}
       propertyPath: m_RootOrder
@@ -17,15 +17,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 486122, guid: a7995c77c0122324ca14027eaff6b47f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 486122, guid: a7995c77c0122324ca14027eaff6b47f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 486122, guid: a7995c77c0122324ca14027eaff6b47f, type: 3}
       propertyPath: m_LocalScale.z
-      value: 3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 486122, guid: a7995c77c0122324ca14027eaff6b47f, type: 3}
       propertyPath: m_LocalPosition.x
