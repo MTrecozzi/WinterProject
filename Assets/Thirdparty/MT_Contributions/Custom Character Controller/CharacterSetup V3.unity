@@ -1033,7 +1033,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1977068582809779823, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
       propertyPath: dashState.dotProductBonkCutOff
-      value: 0.95
+      value: 0.98
       objectReference: {fileID: 0}
     - target: {fileID: 1977068582809779823, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
       propertyPath: dashState.abilityEventReference

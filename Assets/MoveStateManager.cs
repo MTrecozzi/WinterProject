@@ -31,12 +31,18 @@ public class MoveStateManager : MonoBehaviour
         defaultMoveState = defaultMoveStateBehaviour.defaultMoveState;
     }
 
-    // now we can add transitions, but now we have to check and make the switches
     public void AddTransition(MovementState from, Func<bool> condition, MovementState to)
     {
         var stateTransition = new MovementStateTransition(from, condition, to);
         _stateTransitions.Add(stateTransition);
     }
+
+    public void AddTransition(MovementStateTransition transition)
+    {
+        _stateTransitions.Add(transition);
+    }
+
+
 
     /// <summary>
     ///  This is currently being called each frame by the default movement state, sloppy implementation, but it gives us precision
@@ -55,11 +61,17 @@ public class MoveStateManager : MonoBehaviour
 
     private MovementStateTransition CheckForTransition()
     {
+
+        Debug.LogWarning("Tricky Destination Handled code, transition.Condition()" +
+            " is calling code that may decide to handle itself, if this is the case," +
+            " this method much return null ( don't transition our selves, because the check itself took care of it), which it currently does" +
+            "return null right now");
+
         foreach (var transition in _stateTransitions)
         {
             // if we find a transition who's condition has been met, we'll return it
             // if dictionaries are more performant, it'll be worth looking into
-            if (transition.FromState == curMovementState && transition.Condition())
+            if (transition.FromState == curMovementState && transition.Condition() && !transition.destinationHandled)
             {
                 // if we are in the desired from state of the transition, and the condition of the transition is met, return this transition from our list.
                 return transition;
@@ -92,7 +104,11 @@ public class MoveStateManager : MonoBehaviour
         // clean up old state
         curMovementState.CleanUp();
 
-        OnStateChanged?.Invoke(newState, curMovementState);
+        if (curMovementState != null)
+        {
+            OnStateChanged?.Invoke(newState, curMovementState);
+        }
+        
 
         // currentState = newState
         curMovementState = newState;

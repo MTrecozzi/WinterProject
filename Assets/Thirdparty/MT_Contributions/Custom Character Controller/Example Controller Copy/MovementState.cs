@@ -17,6 +17,8 @@ public class MovementStateTransition
     public Func<bool> Condition;
     public MovementState FromState;
     public MovementState ToState;
+
+    public bool destinationHandled = false;
     
 }
 
