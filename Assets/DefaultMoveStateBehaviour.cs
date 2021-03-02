@@ -346,6 +346,7 @@ public class DefaultMoveState : MovementState
     /// </summary>
     public override void AfterCharacterUpdate(float deltaTime)
     {
+        controller.manager.CheckForConditions();
 
         if (Motor.GroundingStatus.IsStableOnGround)
         {

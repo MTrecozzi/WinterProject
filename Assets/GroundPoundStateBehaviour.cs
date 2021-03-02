@@ -54,14 +54,6 @@ public class GroundPoundState : MovementState
         }
 
     }
-
-    public override void AfterCharacterUpdate(float deltaTime)
-    {
-        if (Motor.GroundingStatus.FoundAnyGround)
-        {
-            controller.SetDefaultMovementState();
-        }
-    }
 }
 
 [System.Serializable]
@@ -102,8 +94,14 @@ public class GroundPoundStateBehaviour : MonoBehaviour
 
     private void Awake()
     {
-        //GroundPoundInitialJump = new MovementStateTransition(InitialGroundPoundJumpCheck, new DashState());
-        //groundPoundLagState.transitions.Add(GroundPoundInitialJump);
+        // this is really cool, the MovementState is its own logical unity, the behaviour manages it and can be used to 
+        // compose its transitions without interference.
+        controller.manager.AddTransition(groundPoundState, IsGrounded, controller.manager.defaultMoveState);
+    }
+
+    public bool IsGrounded()
+    {
+        return controller.manager.Motor.GroundingStatus.FoundAnyGround;
     }
 
     public bool InitialGroundPoundJumpCheck()

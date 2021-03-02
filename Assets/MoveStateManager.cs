@@ -32,17 +32,16 @@ public class MoveStateManager : MonoBehaviour
     }
 
     // now we can add transitions, but now we have to check and make the switches
-    public void AddTransition(MovementState from, MovementState to, Func<bool> condition)
+    public void AddTransition(MovementState from, Func<bool> condition, MovementState to)
     {
         var stateTransition = new MovementStateTransition(from, condition, to);
         _stateTransitions.Add(stateTransition);
     }
 
-    private void FixedUpdate()
-    {
-
-    }
-
+    /// <summary>
+    ///  This is currently being called each frame by the default movement state, sloppy implementation, but it gives us precision
+    ///  over when in the loop the manager checks to do transition checks.
+    /// </summary>
     public void CheckForConditions()
     {
         MovementStateTransition transition = CheckForTransition();
