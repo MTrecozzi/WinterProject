@@ -73,6 +73,19 @@ public class DashState : MovementState
         currentWallNormal = Vector3.zero;
     }
 
+    public override void UpdateRotation(ref Quaternion currentRotation, float deltaTime)
+    {
+        if (wallReoriented == false)
+        {
+            base.UpdateRotation(ref currentRotation, deltaTime);
+        } else
+        {
+            currentRotation = Quaternion.LookRotation(surfaceParrallel);
+        }
+
+        
+    }
+
 
     public void StartDash(Vector3 direction)
     {
