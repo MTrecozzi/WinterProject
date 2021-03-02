@@ -106,7 +106,6 @@ public class DashState : MovementState
 
     public void EndDash()
     {
-
         abilityEventReference.InvokeMessage(false);
         controller.SetDefaultMovementState();
     }
@@ -307,19 +306,9 @@ public class DashStateBehaviour : MonoBehaviour
 
     public DashState dashState;
 
-    // input handled in fixed update
-    // since we're updating input in fixed update, when this code ran in update, it consumed multiple dashes per frame
-    private void FixedUpdate()
+    private void Awake()
     {
-
-        if (dashState.controller.controls.Standard.Dash.triggered && dashState.defaultMoveState.defaultMoveState.dashPool.currentCharges > 0)
-        {
-
-            Debug.Log("Dash Started");
-            dashState.StartDash(dashState.controller.transform.forward);
-            dashState.defaultMoveState.defaultMoveState.dashPool.currentCharges--;
-        }
+        // Set State Transitions here through dashState.controller Reference
     }
-
 
 }

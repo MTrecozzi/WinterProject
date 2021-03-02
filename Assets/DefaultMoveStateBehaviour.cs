@@ -425,6 +425,7 @@ public class DefaultMoveState : MovementState
 
 }
 
+[RequireComponent(typeof(DashStateBehaviour))]
 public class DefaultMoveStateBehaviour : MonoBehaviour
 {
 
@@ -432,6 +433,37 @@ public class DefaultMoveStateBehaviour : MonoBehaviour
     public DefaultMoveState defaultMoveState;
 
     public MTCharacterController controller;
+
+    private DashState dashStateReference;
+
+    private void Awake()
+    {
+
+        controller.manager.AddTransition(defaultMoveState, CheckDash, dashStateReference);
+
+        dashStateReference = GetComponent<DashStateBehaviour>().dashState;
+
+        controller.manager.curMovementState = defaultMoveState;
+        controller.manager.Motor.CharacterController = controller.manager.curMovementState;
+
+
+    }
+
+    public bool CheckDash()
+    {
+        bool validTransition = controller.Dash.Buffered && dashStateReference.defaultMoveState.defaultMoveState.dashPool.currentCharges > 0;
+
+        if (validTransition)
+        {
+            controller.Dash.EatInput();
+
+            Debug.Log("Dash Started");
+            dashStateReference.StartDash(dashStateReference.controller.transform.forward);
+            dashStateReference.defaultMoveState.defaultMoveState.dashPool.currentCharges--;
+        }
+
+        return validTransition;
+    }
 
     private void FixedUpdate()
     {
@@ -450,12 +482,7 @@ public class DefaultMoveStateBehaviour : MonoBehaviour
 
     }
 
-    private void Awake()
-    {
-        controller.manager.curMovementState = defaultMoveState;
-        // Assign the characterController to the motor
-        controller.manager.Motor.CharacterController = controller.manager.curMovementState;
-    }
+
 
     public void IncrementTempJumps()
     {
