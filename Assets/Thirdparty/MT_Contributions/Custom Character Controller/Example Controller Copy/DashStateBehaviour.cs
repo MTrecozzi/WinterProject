@@ -16,7 +16,7 @@ public class DashState : MovementState
 
     public float mushroomDashEndMult = 1f;
 
-    private float t;
+    public float t;
 
     public WallRunStateBehaviour wallRunState;
 
@@ -265,39 +265,7 @@ public class DashState : MovementState
         {
 
         }
-
-
-
-
-
-
-
-
-        //!! Test Structure
-
-        /*
-         *  If incoming angle (calculated with dot product), is straight on, allow the option to go upwards or diagnally upwards
-         *  
-         *  else if coming at an angle, move a long a rnage of surface parrallel normals using the algorithm below
-         *  
-         *  perhaps the dash halting your upward momentum is breaking the flow, perhaps it halts downward momentum, but not upward momentum.
-         */
-
-
-        // make this a bool, aka dash slides against surfaces
-
-
-
-        // THIS ALGORITHM DOESN'T Account for Step Height! Will change direction of dash at even tiny short collisions, do a distance check vertically
-
-        // I guess check collision point against center of character, vertically
-        /* Something Like...
-         * if (Mathf.Abs( transform.position.y - hitPoint.y) <= 0.3f)
-        {
-
-        }
-         */
-
+  
     }
 }
 
@@ -309,6 +277,46 @@ public class DashStateBehaviour : MonoBehaviour
     private void Awake()
     {
         // Set State Transitions here through dashState.controller Reference
+    }
+
+    public bool CheckDashStateEnded()
+    {
+        Debug.LogWarning("Should Use a Bool property instead that read only returns whether t > time to reach");
+        bool validTransition = dashState.t >= dashState.timeToReach;
+
+        if (validTransition)
+        {
+            
+        }
+
+
+        return validTransition;
+    }
+
+    public bool CheckDashStateValidWallJump()
+    {
+        bool validTransition = false;
+
+        if (validTransition)
+        {
+
+        }
+
+        return validTransition;
+    }
+
+    private bool dummyCheck()
+    {
+        // set the valid transition equal to our conditional checks
+        bool validTransition = false;
+
+        if (validTransition) // if our transition is valid, make any necessary on exit initializations
+        {
+
+        }
+
+        // alert the Move State Manager whether we're transitioning
+        return validTransition;
     }
 
 }
