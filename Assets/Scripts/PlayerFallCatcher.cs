@@ -11,7 +11,7 @@ namespace KinematicCharacterController.Examples
 
         public GameObject Player;
         public int respawnLayer = -200;
-
+        
         private void Update()
         {
             if(Player.transform.position.y <= respawnLayer)
