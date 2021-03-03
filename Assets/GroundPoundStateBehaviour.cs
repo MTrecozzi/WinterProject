@@ -102,11 +102,11 @@ public class GroundPoundStateBehaviour : MonoBehaviour
         controller.manager.AddTransition(groundPoundState, IsGrounded, groundPoundLandingLag);
 
         // add transition from ground pound landing lag to normal if t > 0
-        controller.manager.AddTransition(groundPoundLandingLag, GroundPoundTimedOut, controller.manager.defaultMoveState);
+        controller.manager.AddTransition(groundPoundLandingLag, GroundPoundTimedOut, controller.manager.defaultMoveStateBehaviour.defaultMoveState);
 
         // add transition from ground pound landing lag to constant vel groundPoundJump
         controller.manager.AddTransition(groundPoundLandingLag, JumpInputBuffered, groundPoundJump);
-        controller.manager.AddTransition(groundPoundJump, FrameHasPassed, controller.manager.defaultMoveState);
+        controller.manager.AddTransition(groundPoundJump, FrameHasPassed, controller.manager.defaultMoveStateBehaviour.defaultMoveState);
 
         // Can't do this! as currently movement states need monobehaviour references set through the inspector
         Debug.LogWarning("Need to create a 'bind movement state to manager' system that populates the state with the appropriate controller, default move state" +
@@ -126,7 +126,7 @@ public class GroundPoundStateBehaviour : MonoBehaviour
         
 
         // add transition from downward velocity to default state (to carry that velocity + control) after a frame has passed
-        controller.manager.AddTransition(groundPoundCanceledJump, FrameHasPassed, controller.manager.defaultMoveState);
+        controller.manager.AddTransition(groundPoundCanceledJump, FrameHasPassed, controller.manager.defaultMoveStateBehaviour.defaultMoveState);
     }
 
     public bool InitialLagStateEnded()
