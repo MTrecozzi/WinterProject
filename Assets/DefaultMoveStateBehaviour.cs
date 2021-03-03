@@ -438,13 +438,14 @@ public class DefaultMoveStateBehaviour : MonoBehaviour
 
     private void Awake()
     {
-
-        controller.manager.AddTransition(defaultMoveState, CheckDash, dashStateReference);
-
         dashStateReference = GetComponent<DashStateBehaviour>().dashState;
 
-        controller.manager.curMovementState = defaultMoveState;
-        controller.manager.Motor.CharacterController = controller.manager.curMovementState;
+        var transition = new MovementStateTransition(defaultMoveState, CheckDash, dashStateReference);
+        transition.destinationHandled = true;
+
+        controller.manager.AddTransition(transition);
+
+        
 
 
     }

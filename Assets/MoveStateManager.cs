@@ -6,8 +6,6 @@ using UnityEngine;
 
 public class MoveStateManager : MonoBehaviour
 {
-
-
     private List<MovementStateTransition> _stateTransitions = new List<MovementStateTransition>();
 
     public MovementState CurrentState => curMovementState;
@@ -15,20 +13,16 @@ public class MoveStateManager : MonoBehaviour
     public MovementState curMovementState;
 
     public DefaultMoveStateBehaviour defaultMoveStateBehaviour;
-
-    public MovementState defaultMoveState;
     
-    public Queue<Vector3> velocityQueue = new Queue<Vector3>();
-    public event Action<MovementState, MovementState> OnStateChanged;
+    public event Action<Type,Type> OnStateChanged;
 
     public Queue<MovementState> stateQueue = new Queue<MovementState>();
     public KinematicCharacterMotor Motor;
 
     private void Awake()
     {
-        Debug.LogWarning("Because Movement States can't be accessed through the inspector, I'm going through a mono reference to get defaultMoveState state");
-
-        defaultMoveState = defaultMoveStateBehaviour.defaultMoveState;
+        curMovementState = defaultMoveStateBehaviour.defaultMoveState;
+        Motor.CharacterController = curMovementState;
     }
 
     public void AddTransition(MovementState from, Func<bool> condition, MovementState to)
@@ -88,39 +82,33 @@ public class MoveStateManager : MonoBehaviour
         curMovementState.InformStatePropulsionForce(newMomentum);
     }
 
-    public void SetNextState()
-    {
-        if (stateQueue.Count > 0)
-        {
-            SetMovementState(stateQueue.Dequeue());
-        } else
-        {
-            SetDefaultMovementState();
-        }
-    }
 
     public void SetMovementState(MovementState newState)
     {
         // clean up old state
-        curMovementState.CleanUp();
+
+        if (curMovementState == null)
+        {
+            Debug.LogError("CUR MOVE STATE NULL");
+        }
+
+        if (newState == null)
+        {
+            Debug.LogError("NEW STATE NULL");
+        }
+
 
         if (curMovementState != null)
         {
-            OnStateChanged?.Invoke(newState, curMovementState);
+            curMovementState.CleanUp();
+            OnStateChanged?.Invoke(newState.GetType(), curMovementState.GetType());
+
         }
-        
 
         // currentState = newState
         curMovementState = newState;
         // initialize incoming state
         curMovementState.Initialize();
-
-        // velocityShiftQueue.Pop() if any
-
-        if (velocityQueue.Count > 0)
-        {
-            Motor.BaseVelocity = velocityQueue.Dequeue();
-        }
 
         // Motor.CharacterController = newState;
         Motor.CharacterController = curMovementState;
@@ -128,6 +116,6 @@ public class MoveStateManager : MonoBehaviour
 
     public void SetDefaultMovementState()
     {
-        SetMovementState(this.defaultMoveState);
+        SetMovementState(defaultMoveStateBehaviour.defaultMoveState);
     }
 }

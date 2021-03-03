@@ -8,7 +8,6 @@ public class PlayerUXEventSender : MonoBehaviour
 
     public MTCharacterController character;
     public BinaryCrossSceneReference OnPlayerLanded;
-    public BinaryCrossSceneReference OnPlayerJump;
     public BinaryCrossSceneReference OnPlayerDoubleJump;
 
     // Start is called before the first frame update
