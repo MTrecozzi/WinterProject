@@ -310,7 +310,7 @@ GameObject:
   - component: {fileID: 1332524591}
   - component: {fileID: 1332524593}
   m_Layer: 0
-  m_Name: Global Volume (1)
+  m_Name: Global Volume + Frame Rate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -359,6 +359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca6aeea7983437d4495de80e1ec37b4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fps: 60
 --- !u!1 &1455645971
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,11 +701,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
       propertyPath: groundPoundCanceledJump.velocityMagnitude.x
-      value: 25
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
       propertyPath: groundPoundCanceledJump.velocityMagnitude.y
-      value: -15
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 676850064577808993, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
       propertyPath: dashState
