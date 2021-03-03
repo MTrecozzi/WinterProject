@@ -745,6 +745,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MT_ExampleCharacter Animations
       objectReference: {fileID: 0}
+    - target: {fileID: 1977068582809779820, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: maxCharges
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1980012064651850360, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -935,15 +939,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3904855211881520329, guid: 7b43c269c30e89046898c75fbd052f79, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.23616397
+      value: 0.23616399
       objectReference: {fileID: 0}
     - target: {fileID: 3904855211881520329, guid: 7b43c269c30e89046898c75fbd052f79, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.1186739
+      value: 0.11867393
       objectReference: {fileID: 0}
     - target: {fileID: 3904855211881520329, guid: 7b43c269c30e89046898c75fbd052f79, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.029073104
+      value: -0.029073114
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b43c269c30e89046898c75fbd052f79, type: 3}
