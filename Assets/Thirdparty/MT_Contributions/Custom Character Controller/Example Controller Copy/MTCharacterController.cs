@@ -104,6 +104,8 @@ public class MTCharacterController : MonoBehaviour
 
     private void LateUpdate()
     {
+        return;
+
         // Handle rotating the camera along with physics movers
         if (CharacterCamera.RotateWithPhysicsMover && manager.Motor.AttachedRigidbody != null)
         {

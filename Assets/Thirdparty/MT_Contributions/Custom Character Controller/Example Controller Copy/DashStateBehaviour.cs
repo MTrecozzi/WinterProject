@@ -77,10 +77,13 @@ public class DashState : MovementState
     {
         if (wallReoriented == false)
         {
+
             base.UpdateRotation(ref currentRotation, deltaTime);
         } else
         {
-            currentRotation = Quaternion.LookRotation(surfaceParrallel);
+
+            base.UpdateRotation(ref currentRotation, deltaTime);
+            //currentRotation = Quaternion.LookRotation(surfaceParrallel);
         }
 
         
@@ -203,6 +206,8 @@ public class DashStateBehaviour : MonoBehaviour
 
     public DashState dashState;
 
+    public float customWallJumpCanceledDashEndMult = 0.7f;
+
     private void Awake()
     {
         MovementStateTransition wallJumpCanceledReorientedDash = new MovementStateTransition(dashState, WallJumpCanceledDash, dashState.defaultMoveState.defaultMoveState);
@@ -231,7 +236,7 @@ public class DashStateBehaviour : MonoBehaviour
             dashState.defaultMoveState.DampenAirAccel();
 
             // dash velocity = current movementum, halted less then usual
-            dashState.dashVelocity *= (0.7f);
+            dashState.dashVelocity *= (customWallJumpCanceledDashEndMult);
 
             // add to dash velocity a force from the normal of the wall
             dashState.dashVelocity += dashState.currentWallNormal.normalized * 10;

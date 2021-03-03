@@ -99,7 +99,9 @@ public class WallRunState : MovementState
 
     public override void UpdateRotation(ref Quaternion currentRotation, float deltaTime)
     {
-        currentRotation = Quaternion.LookRotation(surfaceParralel);
+        base.UpdateRotation(ref currentRotation, deltaTime);
+
+        //currentRotation = Quaternion.LookRotation(surfaceParralel);
     }
 
     public override void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
