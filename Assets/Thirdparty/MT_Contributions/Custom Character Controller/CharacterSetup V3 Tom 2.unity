@@ -530,6 +530,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1981138276905932762, guid: fc518067dbb333b4aad4bf396129bc29, type: 3}
+      propertyPath: bounceHeight
+      value: 23.03
+      objectReference: {fileID: 0}
     - target: {fileID: 6854862943784279177, guid: fc518067dbb333b4aad4bf396129bc29, type: 3}
       propertyPath: m_Name
       value: Bounce Mushroom Line Renderer
@@ -867,11 +871,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3904855210488352530, guid: 7b43c269c30e89046898c75fbd052f79, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.120678276
+      value: 0.12067829
       objectReference: {fileID: 0}
     - target: {fileID: 3904855210488352530, guid: 7b43c269c30e89046898c75fbd052f79, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.019118067
+      value: -0.01911807
       objectReference: {fileID: 0}
     - target: {fileID: 3904855210731685132, guid: 7b43c269c30e89046898c75fbd052f79, type: 3}
       propertyPath: m_Follow

@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5780427792403187689}
   - component: {fileID: 8843259011048844349}
-  - component: {fileID: 7514256904648719860}
-  - component: {fileID: 475959865015177555}
   m_Layer: 0
   m_Name: AppartmentCorner
   m_TagString: Untagged
@@ -26,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5780427792403187688}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.0000029504295}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -0, y: 6, z: 46.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -49,34 +47,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 7.4386444, y: 18.644852, z: 7.4668846}
-  m_Center: {x: -3.7561736, y: 8.822426, z: -0.76099443}
---- !u!65 &7514256904648719860
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5780427792403187688}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 8.135088, y: 0.57834053, z: 8.220272}
-  m_Center: {x: -3.5858307, y: 18.439167, z: -0.6167412}
---- !u!65 &475959865015177555
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5780427792403187688}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 8.03799, y: 0.51563644, z: 8.219719}
-  m_Center: {x: -3.3778892, y: 4.1798563, z: -0.3576765}
+  m_Size: {x: 7.4386444, y: 19.298512, z: 7.4668846}
+  m_Center: {x: -3.7561736, y: 9.149256, z: -0.76099443}
 --- !u!1001 &5780427790263971722
 PrefabInstance:
   m_ObjectHideFlags: 0

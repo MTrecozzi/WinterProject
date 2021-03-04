@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8988948675269916135}
   - component: {fileID: 8988948675269916137}
-  - component: {fileID: 8988948675269916136}
-  - component: {fileID: 1508984023}
   m_Layer: 0
   m_Name: AppartmentLineUp
   m_TagString: Untagged
@@ -59,34 +57,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 7.5384703, y: 18.150116, z: 37.38981}
-  m_Center: {x: -3.7492595, y: 9.109045, z: 0.8149071}
---- !u!65 &8988948675269916136
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8988948675269916134}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 8.20517, y: 0.6032562, z: 22.548027}
-  m_Center: {x: -3.5904598, y: 18.371628, z: 0.6916313}
---- !u!65 &1508984023
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8988948675269916134}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.77025473, y: 0.5600004, z: 19.15}
-  m_Center: {x: 0.45512748, y: 4.2, z: 0.8000002}
+  m_Size: {x: 7.5384703, y: 18.716766, z: 37.38981}
+  m_Center: {x: -3.7492595, y: 9.39237, z: 0.8149071}
 --- !u!1001 &8988948673848379529
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -520,7 +492,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Bld_Apartment_Roof_01 Variant (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8133889107720208915, guid: b1fc8f7b8b1f93849ba966e2356a9988, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b1fc8f7b8b1f93849ba966e2356a9988, type: 3}
 --- !u!4 &916410964579586819 stripped
 Transform:
@@ -897,7 +870,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Bld_Apartment_Roof_01 Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8133889107720208915, guid: b1fc8f7b8b1f93849ba966e2356a9988, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b1fc8f7b8b1f93849ba966e2356a9988, type: 3}
 --- !u!4 &916410965060586541 stripped
 Transform:
