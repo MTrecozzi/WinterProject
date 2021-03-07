@@ -934,9 +934,17 @@ PrefabInstance:
       propertyPath: dashState
       value: 
       objectReference: {fileID: 6264762221516790524}
+    - target: {fileID: 676850064577808993, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: defaultMoveState.doubleJumpCount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1977068582809779818, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
       propertyPath: m_Name
       value: MT_ExampleCharacter Animations
+      objectReference: {fileID: 0}
+    - target: {fileID: 1977068582809779820, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: maxCharges
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1980012064651850360, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
       propertyPath: m_RootOrder
@@ -1072,11 +1080,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3904855210488352530, guid: 7b43c269c30e89046898c75fbd052f79, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.12067827
+      value: 0.12067829
       objectReference: {fileID: 0}
     - target: {fileID: 3904855210488352530, guid: 7b43c269c30e89046898c75fbd052f79, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.019118067
+      value: -0.01911807
       objectReference: {fileID: 0}
     - target: {fileID: 3904855210731685132, guid: 7b43c269c30e89046898c75fbd052f79, type: 3}
       propertyPath: m_Follow
