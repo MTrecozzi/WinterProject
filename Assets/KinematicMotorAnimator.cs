@@ -37,6 +37,8 @@ public class KinematicMotorAnimator : MonoBehaviour
         }
 
 
+        anim.SetBool("CrouchHeld", controller.controls.Standard.GroundPound.ReadValue<float>() >= 0.5f);
+
 
         
 
