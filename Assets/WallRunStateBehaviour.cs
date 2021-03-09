@@ -17,6 +17,9 @@ public class WallRunState : MovementState
 
     public float gravity;
 
+    private bool missedLastFrame;
+    private bool missedThisFrame;
+
 
 
     [SerializeField]
@@ -122,7 +125,7 @@ public class WallRunState : MovementState
 
         if (curWallRunVelocityX > minWallRunVelocity)
         {
-            curWallRunVelocityX -= Time.deltaTime * 6f;
+            curWallRunVelocityX -= Time.deltaTime * wallRunDecayRate;
         }
         else
         {
@@ -145,7 +148,7 @@ public class WallRunState : MovementState
 
         if (!Physics.Raycast(controller.transform.position, surfaceNormal * -1, out hit, 2, mask))
         {
-            EndState();
+            missedThisFrame = true;
         }
         else if (Physics.Raycast(controller.transform.position, surfaceParralel, 2, mask))
         {
@@ -156,6 +159,22 @@ public class WallRunState : MovementState
 
         //else { Debug.Log("HIT " + hit.transform.gameObject.name); }
 
+    }
+
+    public override void AfterCharacterUpdate(float deltaTime)
+    {
+        base.AfterCharacterUpdate(deltaTime);
+
+        if (missedThisFrame && missedLastFrame)
+        {
+            EndState();
+        }
+
+        missedLastFrame = missedThisFrame;
+
+        missedThisFrame = false;
+
+        
     }
 }
 

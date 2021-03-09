@@ -98,6 +98,9 @@ public class GroundPoundStateBehaviour : MonoBehaviour
         // this is really cool, the MovementState is its own logical unity, the behaviour manages it and can be used to 
         // compose its transitions without interference.
 
+        // go from default move state to groundpound initial lag
+        controller.manager.AddTransition(controller.manager.defaultMoveStateBehaviour.defaultMoveState, GroundPoundInitiateCheck, initialLagState);
+
         Debug.LogWarning("Transition from groundPoundState to groundPoundLagState on grounded, instead of defaultState as is currently implemented");
         controller.manager.AddTransition(groundPoundState, IsGrounded, groundPoundLandingLag);
 
@@ -180,20 +183,10 @@ public class GroundPoundStateBehaviour : MonoBehaviour
         return controller.Jump.Buffered && !initialLagState.Motor.GroundingStatus.IsStableOnGround;
     }
 
-    // this badddd, CENTRALIZE INPUT IDIOT
-    private void FixedUpdate()
+    public bool GroundPoundInitiateCheck()
     {
-        if (controller.controls.Standard.GroundPound.triggered)
-        {
-
-            Debug.LogWarning("Replace with a LagTransition of duration 0.13, that queues into ground pound unless interrupted by inputs");
-
-
-            controller.manager.SetMovementState(initialLagState);
-
-
-            //groundPoundState.SetState();
-        }
+        var valid = controller.controls.Standard.GroundPound.triggered && !controller.manager.Motor.GroundingStatus.FoundAnyGround;
+        return valid;
     }
 
 }
