@@ -10707,6 +10707,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CubeCollectable prefab (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 8561190082196957876, guid: e9687c6bec0162f4888e5afbf36a3edc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8561190082196957879, guid: e9687c6bec0162f4888e5afbf36a3edc, type: 3}
       propertyPath: m_RootOrder
       value: 24
@@ -13049,6 +13053,10 @@ PrefabInstance:
     - target: {fileID: 8561190082196957876, guid: e9687c6bec0162f4888e5afbf36a3edc, type: 3}
       propertyPath: m_Name
       value: CubeCollectable prefab (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561190082196957876, guid: e9687c6bec0162f4888e5afbf36a3edc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8561190082196957879, guid: e9687c6bec0162f4888e5afbf36a3edc, type: 3}
       propertyPath: m_RootOrder
@@ -21064,6 +21072,10 @@ PrefabInstance:
     - target: {fileID: 8561190082196957876, guid: e9687c6bec0162f4888e5afbf36a3edc, type: 3}
       propertyPath: m_Name
       value: CubeCollectable prefab (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561190082196957876, guid: e9687c6bec0162f4888e5afbf36a3edc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8561190082196957879, guid: e9687c6bec0162f4888e5afbf36a3edc, type: 3}
       propertyPath: m_RootOrder
@@ -32372,6 +32384,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CubeCollectable prefab (26)
       objectReference: {fileID: 0}
+    - target: {fileID: 8561190082196957876, guid: e9687c6bec0162f4888e5afbf36a3edc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8561190082196957879, guid: e9687c6bec0162f4888e5afbf36a3edc, type: 3}
       propertyPath: m_RootOrder
       value: 26
@@ -39358,6 +39374,10 @@ PrefabInstance:
     - target: {fileID: 8561190082196957876, guid: e9687c6bec0162f4888e5afbf36a3edc, type: 3}
       propertyPath: m_Name
       value: CubeCollectable prefab (27)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561190082196957876, guid: e9687c6bec0162f4888e5afbf36a3edc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8561190082196957879, guid: e9687c6bec0162f4888e5afbf36a3edc, type: 3}
       propertyPath: m_RootOrder

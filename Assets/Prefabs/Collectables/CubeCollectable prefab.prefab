@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 140151264}
   - component: {fileID: 6463969052553445502}
   - component: {fileID: 6386844049411255232}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CubeCollectable prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
