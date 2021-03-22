@@ -3,22 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveStateBehaviour : MonoBehaviour
+public abstract class MoveStateBehaviour : MonoBehaviour
 {
+    public abstract MovementState[] GetManagedMoveStates();
 
-    public void SetReferences(MovementState _managedState, MTCharacterController _controller, DefaultMoveStateBehaviour _defaultMoveState, KinematicCharacterMotor _motor)
+    public void SetReferences(MTCharacterController _controller, DefaultMoveStateBehaviour _defaultMoveState, KinematicCharacterMotor _motor)
     {
-       
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+       foreach (var x in GetManagedMoveStates())
+        {
+            x.SetReferences(_controller, _defaultMoveState, _motor);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
