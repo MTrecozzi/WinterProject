@@ -1657,6 +1657,18 @@ PrefabInstance:
       propertyPath: maxCharges
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1977068582809779823, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: dashState.Motor
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1977068582809779823, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: dashState.controller
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1977068582809779823, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: dashState.defaultMoveState
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1980012064651850360, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
       propertyPath: m_RootOrder
       value: 7

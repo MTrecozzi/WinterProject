@@ -201,7 +201,7 @@ public class DashState : MovementState
     }
 }
 
-public class DashStateBehaviour : MonoBehaviour
+public class DashStateBehaviour : MoveStateBehaviour
 {
 
     public DashState dashState;
@@ -306,4 +306,8 @@ public class DashStateBehaviour : MonoBehaviour
         return validTransition;
     }
 
+    public override MovementState[] GetManagedMoveStates()
+    {
+        return new MovementState[] { dashState };
+    }
 }

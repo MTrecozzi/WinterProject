@@ -54,6 +54,14 @@ public class MTCharacterController : MonoBehaviour
         OnPlayerLanded?.Invoke();
     }
 
+    private void Awake()
+    {
+        foreach (var x in GetComponents<MoveStateBehaviour>())
+        {
+            x.SetReferences(this, manager.defaultMoveStateBehaviour, manager.Motor);
+        }
+    }
+
     private void Start()
     {
 
