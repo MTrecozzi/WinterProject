@@ -30,6 +30,12 @@ public abstract class MovementState : ICharacterController
     public DefaultMoveStateBehaviour defaultMoveState; // default move state
     public KinematicCharacterMotor Motor;
 
+    public void SetReferences(MTCharacterController _controller, DefaultMoveStateBehaviour _defaultMoveState, KinematicCharacterMotor _motor)
+    {
+        controller = _controller;
+        defaultMoveState = _defaultMoveState;
+        Motor = _motor;
+    }
 
 
     public MovementState()
