@@ -11,6 +11,10 @@ public class ScreenStateBehaviour : MoveStateBehaviour
 
     public LayerMask screenLayers;
 
+    public GameObject playerMesh;
+
+    public GameObject emojiMesh;
+
     public override MovementState[] GetManagedMoveStates()
     {
         return new MovementState[] { screenState };
@@ -23,6 +27,29 @@ public class ScreenStateBehaviour : MoveStateBehaviour
         MovementStateTransition LeftCollision = new MovementStateTransition(screenState, ExitCollision, screenState.controller.manager.defaultMoveStateBehaviour.defaultMoveState);
 
         screenState.controller.manager.AddTransition(LeftCollision);
+
+        screenState.StateEnterOrExit += HandleUX;
+    }
+
+    private void HandleUX(bool entering, Vector3 normal)
+    {
+        if (entering)
+        {
+            // disable mesh
+            playerMesh.SetActive(false);
+
+            emojiMesh.SetActive(true);
+
+            emojiMesh.transform.rotation = Quaternion.LookRotation(screenState.wallNormal, Vector3.up);
+        }
+
+        if (!entering)
+        {
+            // enableMesh
+            playerMesh.SetActive(true);
+
+            emojiMesh.SetActive(false);
+        }
     }
 
     private bool ExitCollision()
@@ -75,12 +102,33 @@ public class ScreenState : MovementState
 
     public float speed = 15f;
 
+    public event Action<bool, Vector3> StateEnterOrExit;
+
     public void SetUp(Vector3 _wallNormal)
     {
 
         Debug.Log("HIT NORMAL OF SCREEN STATE: " + wallNormal);
 
         wallNormal = _wallNormal;
+    }
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        StateEnterOrExit?.Invoke(true, wallNormal);
+    }
+
+    public override void CleanUp()
+    {
+        StateEnterOrExit?.Invoke(false, wallNormal);
+
+        controller.manager.defaultMoveStateBehaviour.defaultMoveState.ResetAbilities();
+    }
+
+    public override void UpdateRotation(ref Quaternion currentRotation, float deltaTime)
+    {
+        return;
     }
 
     public override void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
@@ -92,7 +140,12 @@ public class ScreenState : MovementState
 
         Vector3 vec3Input = new Vector3(rawInput.x, rawInput.y, 0);
 
-        Vector3 relative = Camera.main.transform.InverseTransformDirection(vec3Input);
+        Vector3 relative = Camera.main.transform.TransformDirection(vec3Input);
+
+        // Could probably Make Relativet to surface with surface normal right.input * surface Normal up.input [ !!!!!!!!! ]
+
+        // var simple vector = ....
+
 
        // Debug.Log("RELATIVE VECTOR: " + relative);
 

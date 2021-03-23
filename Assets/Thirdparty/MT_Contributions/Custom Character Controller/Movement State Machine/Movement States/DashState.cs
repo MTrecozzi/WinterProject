@@ -170,13 +170,13 @@ public class DashState : MovementState
     public override void OnMovementHit(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, ref HitStabilityReport hitStabilityReport)
     {
 
-        Debug.Log("Hit: " + hitCollider.name + " Dot Product = " + Vector3.Dot(-hitNormal, dashVelocity.normalized));
+        //Debug.Log("Hit: " + hitCollider.name + " Dot Product = " + Vector3.Dot(-hitNormal, dashVelocity.normalized));
 
         surfaceParrallel = dashVelocity - hitNormal * Vector3.Dot(dashVelocity, hitNormal);
 
         initialDotProduct = Vector3.Dot(-hitNormal, dashVelocity.normalized);
 
-        Debug.Log("INITIAL DOT PRODUCT: " + initialDotProduct);
+        //Debug.Log("INITIAL DOT PRODUCT: " + initialDotProduct);
 
         Debug.LogWarning("TEMP, SAME IMPLEMENTATION FOR HEAD ON AND SIDE WALL DASHES, not starting custom head on collision yet");
         // although the branching functionalit later on is changed by the fact that initialDotProduct is variable, it's checked on state end

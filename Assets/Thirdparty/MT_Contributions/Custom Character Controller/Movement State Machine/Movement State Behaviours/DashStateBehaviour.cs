@@ -24,7 +24,7 @@ public class DashStateBehaviour : MoveStateBehaviour
 
         Debug.LogWarning("Order of transitions matter! Note how timeEndedWallRun must come before timeEnded(generic)");
         dashState.controller.manager.AddTransition(wallJumpCanceledReorientedDash);
-        //dashState.controller.manager.AddTransition(dashEndedValidWallRun);
+        dashState.controller.manager.AddTransition(dashEndedValidWallRun);
         dashState.controller.manager.AddTransition(dashEnded);
         dashState.controller.manager.AddTransition(screenState);
     }
