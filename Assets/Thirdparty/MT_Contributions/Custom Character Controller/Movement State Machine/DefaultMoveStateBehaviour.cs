@@ -426,7 +426,7 @@ public class DefaultMoveState : MovementState
 }
 
 [RequireComponent(typeof(DashStateBehaviour))]
-public class DefaultMoveStateBehaviour : MonoBehaviour
+public class DefaultMoveStateBehaviour : MoveStateBehaviour
 {
 
     [SerializeField]
@@ -448,6 +448,11 @@ public class DefaultMoveStateBehaviour : MonoBehaviour
         
 
 
+    }
+
+    public override MovementState[] GetManagedMoveStates()
+    {
+        return new MovementState[] { defaultMoveState };
     }
 
     public bool CheckDash()

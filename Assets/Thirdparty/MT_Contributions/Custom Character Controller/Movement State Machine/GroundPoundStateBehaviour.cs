@@ -68,7 +68,7 @@ public class ConstantVelocityState : MovementState
 }
 
 [SerializeField]
-public class GroundPoundStateBehaviour : MonoBehaviour
+public class GroundPoundStateBehaviour : MoveStateBehaviour
 {
     
     public MTCharacterController controller;
@@ -130,6 +130,11 @@ public class GroundPoundStateBehaviour : MonoBehaviour
 
         // add transition from downward velocity to default state (to carry that velocity + control) after a frame has passed
         controller.manager.AddTransition(groundPoundCanceledJump, FrameHasPassed, controller.manager.defaultMoveStateBehaviour.defaultMoveState);
+    }
+
+    public override MovementState[] GetManagedMoveStates()
+    {
+        return new MovementState[] { groundPoundState, initialLagState, groundPoundCanceledJump, groundPoundLandingLag, groundPoundJump };
     }
 
     public bool InitialLagStateEnded()
