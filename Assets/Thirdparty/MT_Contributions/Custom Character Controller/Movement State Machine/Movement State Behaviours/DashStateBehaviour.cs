@@ -7,6 +7,8 @@ public class DashStateBehaviour : MoveStateBehaviour
 
     public DashState dashState;
 
+    public ScreenStateBehaviour screenStateBehaviour;
+
     public float customWallJumpCanceledDashEndMult = 0.7f;
 
     private void Awake()
@@ -18,10 +20,13 @@ public class DashStateBehaviour : MoveStateBehaviour
 
         MovementStateTransition dashEnded = new MovementStateTransition(dashState, DashStateEnded, dashState.defaultMoveState.defaultMoveState);
 
+        MovementStateTransition screenState = new MovementStateTransition(dashState, ScreenCollision, screenStateBehaviour.screenState);
+
         Debug.LogWarning("Order of transitions matter! Note how timeEndedWallRun must come before timeEnded(generic)");
         dashState.controller.manager.AddTransition(wallJumpCanceledReorientedDash);
-        dashState.controller.manager.AddTransition(dashEndedValidWallRun);
+        //dashState.controller.manager.AddTransition(dashEndedValidWallRun);
         dashState.controller.manager.AddTransition(dashEnded);
+        dashState.controller.manager.AddTransition(screenState);
     }
 
     public bool WallJumpCanceledDash()
@@ -68,6 +73,21 @@ public class DashStateBehaviour : MoveStateBehaviour
             Debug.Log("WALL ORIENTED: " + dashState.wallReoriented);
 
             dashState.wallRunState.StartState(dashState.surfaceParrallel, dashState.currentWallNormal);
+        }
+
+        return validTransition;
+    }
+
+    public bool ScreenCollision()
+    {
+        bool validTransition = false;
+
+        validTransition = dashState.wallReoriented && ((screenStateBehaviour.screenLayers.value & (1 << dashState._collLayer)) > 0)
+            || dashState.controller.manager.Motor.GroundingStatus.IsStableOnGround == true;
+
+        if (validTransition)
+        {
+            screenStateBehaviour.screenState.SetUp(dashState.currentWallNormal);
         }
 
         return validTransition;

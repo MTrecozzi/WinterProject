@@ -42,6 +42,7 @@ public class DashState : MovementState
 
     public float dotProductBonkCutOff = 0.7f;
 
+    public int _collLayer;
 
     public override void InformStatePropulsionForce(Vector3 newMomentum)
     {
@@ -81,6 +82,8 @@ public class DashState : MovementState
         {
 
             base.UpdateRotation(ref currentRotation, deltaTime);
+
+            // apply to model instead of actual physics object
             //currentRotation = Quaternion.LookRotation(surfaceParrallel);
         }
 
@@ -126,6 +129,8 @@ public class DashState : MovementState
         {
             defaultMoveState.defaultMoveState.passingThroughIgnoredColliders.Add(coll);
         }
+
+        _collLayer = coll.gameObject.layer;
 
         return valid;
     }
