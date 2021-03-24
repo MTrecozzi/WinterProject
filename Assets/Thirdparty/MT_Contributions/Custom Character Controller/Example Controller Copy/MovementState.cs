@@ -25,11 +25,19 @@ public class MovementStateTransition
 [System.Serializable]
 public abstract class MovementState : ICharacterController
 {
-
+    [HideInInspector]
     public MTCharacterController controller; // for input + state machine API
+    [HideInInspector]
     public DefaultMoveStateBehaviour defaultMoveState; // default move state
+    [HideInInspector]
     public KinematicCharacterMotor Motor;
 
+    public void SetReferences(MTCharacterController _controller, DefaultMoveStateBehaviour _defaultMoveState, KinematicCharacterMotor _motor)
+    {
+        controller = _controller;
+        defaultMoveState = _defaultMoveState;
+        Motor = _motor;
+    }
 
 
     public MovementState()

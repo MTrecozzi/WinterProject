@@ -1,6 +1,4 @@
-using KinematicCharacterController;
-using System.Collections;
-using System.Collections.Generic;
+﻿using KinematicCharacterController;
 using UnityEngine;
 
 [System.Serializable]
@@ -44,6 +42,7 @@ public class DashState : MovementState
 
     public float dotProductBonkCutOff = 0.7f;
 
+    public int _collLayer;
 
     public override void InformStatePropulsionForce(Vector3 newMomentum)
     {
@@ -83,6 +82,8 @@ public class DashState : MovementState
         {
 
             base.UpdateRotation(ref currentRotation, deltaTime);
+
+            // apply to model instead of actual physics object
             //currentRotation = Quaternion.LookRotation(surfaceParrallel);
         }
 
@@ -129,6 +130,8 @@ public class DashState : MovementState
             defaultMoveState.defaultMoveState.passingThroughIgnoredColliders.Add(coll);
         }
 
+        _collLayer = coll.gameObject.layer;
+
         return valid;
     }
 
@@ -167,13 +170,13 @@ public class DashState : MovementState
     public override void OnMovementHit(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, ref HitStabilityReport hitStabilityReport)
     {
 
-        Debug.Log("Hit: " + hitCollider.name + " Dot Product = " + Vector3.Dot(-hitNormal, dashVelocity.normalized));
+        //Debug.Log("Hit: " + hitCollider.name + " Dot Product = " + Vector3.Dot(-hitNormal, dashVelocity.normalized));
 
         surfaceParrallel = dashVelocity - hitNormal * Vector3.Dot(dashVelocity, hitNormal);
 
         initialDotProduct = Vector3.Dot(-hitNormal, dashVelocity.normalized);
 
-        Debug.Log("INITIAL DOT PRODUCT: " + initialDotProduct);
+        //Debug.Log("INITIAL DOT PRODUCT: " + initialDotProduct);
 
         Debug.LogWarning("TEMP, SAME IMPLEMENTATION FOR HEAD ON AND SIDE WALL DASHES, not starting custom head on collision yet");
         // although the branching functionalit later on is changed by the fact that initialDotProduct is variable, it's checked on state end
@@ -199,111 +202,4 @@ public class DashState : MovementState
         }
   
     }
-}
-
-public class DashStateBehaviour : MonoBehaviour
-{
-
-    public DashState dashState;
-
-    public float customWallJumpCanceledDashEndMult = 0.7f;
-
-    private void Awake()
-    {
-        MovementStateTransition wallJumpCanceledReorientedDash = new MovementStateTransition(dashState, WallJumpCanceledDash, dashState.defaultMoveState.defaultMoveState);
-
-        MovementStateTransition dashEndedValidWallRun = new MovementStateTransition(dashState, DashStateEndedIntoValidWallRun, dashState.defaultMoveState.defaultMoveState);
-        dashEndedValidWallRun.destinationHandled = true;
-
-        MovementStateTransition dashEnded = new MovementStateTransition(dashState, DashStateEnded, dashState.defaultMoveState.defaultMoveState);
-
-        Debug.LogWarning("Order of transitions matter! Note how timeEndedWallRun must come before timeEnded(generic)");
-        dashState.controller.manager.AddTransition(wallJumpCanceledReorientedDash);
-        dashState.controller.manager.AddTransition(dashEndedValidWallRun);
-        dashState.controller.manager.AddTransition(dashEnded);
-    }
-
-    public bool WallJumpCanceledDash()
-    {
-        bool validTransition = dashState.wallReoriented && dashState.currentWallNormal != Vector3.zero && dashState.controller.Jump.Buffered;
-
-        if (validTransition)
-        {
-            dashState.controller.Jump.EatInput();
-
-            // end dash removed, all it used to do was set state to default + invoke a UX event
-
-            dashState.defaultMoveState.DampenAirAccel();
-
-            // dash velocity = current movementum, halted less then usual
-            dashState.dashVelocity *= (customWallJumpCanceledDashEndMult);
-
-            // add to dash velocity a force from the normal of the wall
-            dashState.dashVelocity += dashState.currentWallNormal.normalized * 10;
-
-            // add a jump to the wall jump
-            dashState.dashVelocity.y += dashState.defaultMoveState.defaultMoveState.JumpUpSpeed;
-
-            Debug.Log("Current Wall Normal: " + dashState.currentWallNormal);
-
-            // currentVelocity = dashVelocity + wall Jump
-            dashState.defaultMoveState.Motor.BaseVelocity = dashState.dashVelocity;
-
-        }
-
-        // if true, we'll be initialized and the state machine will simply set us to the default move state, rather than us doing that ourselves,
-        // other than that change, we've reached parity.
-        return validTransition;
-    }
-
-    public bool DashStateEndedIntoValidWallRun()
-    {
-        Debug.LogWarning("Should Use a Bool property instead that read only returns whether t > time to reach");
-        bool validTransition = dashState.t >= dashState.timeToReach && dashState.wallReoriented
-            && dashState.initialDotProduct < dashState.dotProductBonkCutOff;
-
-        if (validTransition)
-        {
-            Debug.Log("WALL ORIENTED: " + dashState.wallReoriented);
-
-            dashState.wallRunState.StartState(dashState.surfaceParrallel, dashState.currentWallNormal);
-        }
-
-        return validTransition;
-    }
-
-    public bool DashStateEnded()
-    {
-        // set the valid transition equal to our conditional checks
-
-        Debug.LogWarning("Use a dash expired property instead");
-        bool validTransition = dashState.t >= dashState.timeToReach;
-
-        if (validTransition) // if our transition is valid, make any necessary on exit initializations
-        {
-            dashState.dashVelocity = dashState.controller.manager.Motor.BaseVelocity * dashState.dashEndMultiplier;
-
-            dashState.controller.manager.Motor.BaseVelocity = dashState.dashVelocity;
-        }
-
-        // alert the Move State Manager whether we're transitioning
-        return validTransition;
-    }
-
-
-
-    private bool dummyCheck()
-    {
-        // set the valid transition equal to our conditional checks
-        bool validTransition = false;
-
-        if (validTransition) // if our transition is valid, make any necessary on exit initializations
-        {
-
-        }
-
-        // alert the Move State Manager whether we're transitioning
-        return validTransition;
-    }
-
 }
