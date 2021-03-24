@@ -252,12 +252,12 @@ GameObject:
   - component: {fileID: 7119987707687262033}
   - component: {fileID: 3764920316457078187}
   - component: {fileID: 8125643758259839832}
-  - component: {fileID: 3764920316457078197}
-  - component: {fileID: 7119987707687262037}
-  - component: {fileID: 7119987707687262036}
   - component: {fileID: 7119987707687262038}
   - component: {fileID: 3764920316457078196}
   - component: {fileID: 8756796690775479565}
+  - component: {fileID: 3764920316457078197}
+  - component: {fileID: 7119987707687262037}
+  - component: {fileID: 7119987707687262036}
   - component: {fileID: 3764920316457078195}
   - component: {fileID: 7157289883682162721}
   - component: {fileID: 7119987707687262034}
@@ -316,6 +316,10 @@ MonoBehaviour:
   CameraFollowPoint: {fileID: 7123424157194382717}
   OrientationMethod: 1
   manager: {fileID: 3764920316457078187}
+  Jump:
+    bufferDuration: 0.2
+  Dash:
+    bufferDuration: 0.2
 --- !u!114 &3764920316457078187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,8 +332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5b0f8a39eb5ba344abf0ec252647a0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultMoveState: {fileID: 8125643758259839832}
-  curMovementState: {fileID: 0}
+  defaultMoveStateBehaviour: {fileID: 0}
   Motor: {fileID: 7157289883682162721}
 --- !u!114 &8125643758259839832
 MonoBehaviour:
@@ -343,33 +346,139 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85d5cee9395835a4ebfc5722dbf18309, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultMoveState:
+    controller: {fileID: 0}
+    defaultMoveState: {fileID: 0}
+    Motor: {fileID: 0}
+    jumpPool: {fileID: 0}
+    dashPool: {fileID: 0}
+    dampenedAirAccel: 0
+    dampTime: 3
+    MaxStableMoveSpeed: 10
+    StableMovementSharpness: 15
+    OrientationSharpness: 10
+    SprintSpeed: 15
+    MaxAirMoveSpeed: 15
+    AirAccelerationSpeed: 15
+    Drag: 0.1
+    AllowJumpingWhenSliding: 0
+    JumpUpSpeed: 10
+    JumpScalableForwardSpeed: 10
+    JumpPreGroundingGraceTime: 0
+    JumpPostGroundingGraceTime: 0
+    doubleJumpEnabled: 0
+    doubleJumpCount: 1
+    maxDoubleJumpCount: 1
+    passingThroughIgnoredColliders: []
+    BonusOrientationMethod: 0
+    BonusOrientationSharpness: 10
+    Gravity: {x: 0, y: -30, z: 0}
+    MeshRoot: {fileID: 0}
   controller: {fileID: 7119987707687262033}
-  defaultMoveState: {fileID: 8125643758259839832}
-  Motor: {fileID: 7157289883682162721}
-  jumpPool: {fileID: 7119987707687262037}
-  dashPool: {fileID: 7119987707687262036}
-  dampenedAirAccel: 20
-  dampTime: 0.5
-  MaxStableMoveSpeed: 9
-  StableMovementSharpness: 15
-  OrientationSharpness: 20
-  SprintSpeed: 9
-  MaxAirMoveSpeed: 9
-  AirAccelerationSpeed: 100
-  Drag: 0.05
-  AllowJumpingWhenSliding: 1
-  JumpUpSpeed: 15
-  JumpScalableForwardSpeed: 0
-  JumpPreGroundingGraceTime: 0.1
-  JumpPostGroundingGraceTime: 1
-  doubleJumpEnabled: 1
-  doubleJumpCount: 1
-  maxDoubleJumpCount: 1
-  passingThroughIgnoredColliders: []
-  BonusOrientationMethod: 0
-  BonusOrientationSharpness: 20
-  Gravity: {x: 0, y: -35, z: 0}
-  MeshRoot: {fileID: 7118993999966641895}
+--- !u!114 &7119987707687262038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7119987707687262035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87c237531b7ab55438f6ebc2251de55d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashState:
+    controller: {fileID: 0}
+    defaultMoveState: {fileID: 0}
+    Motor: {fileID: 0}
+    dashEndMultiplier: 0.5
+    distance: 0
+    timeToReach: 0
+    mushroomDashEndMult: 1
+    t: 0
+    wallRunState: {fileID: 0}
+    abilityEventReference: {fileID: 0}
+    ignoreLayers:
+      serializedVersion: 2
+      m_Bits: 0
+    dir: {x: 0, y: 0, z: 0}
+    currentWallNormal: {x: 0, y: 0, z: 0}
+    initiallyGrounded: 0
+    dashVelocity: {x: 0, y: 0, z: 0}
+    wallReoriented: 0
+    surfaceParrallel: {x: 0, y: 0, z: 0}
+    initialDotProduct: 0
+    dotProductBonkCutOff: 0.7
+  customWallJumpCanceledDashEndMult: 0.7
+--- !u!114 &3764920316457078196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7119987707687262035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a53f9c248f9ba748bcf3f802ed22cbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallRunState:
+    controller: {fileID: 0}
+    defaultMoveState: {fileID: 0}
+    Motor: {fileID: 0}
+    wallRunInitialVelocity: 16
+    minWallRunVelocity: 12
+    wallRunDecayRate: 6
+    InitialYVelocity: 2
+    gravity: 0
+    curWallRunVelocityX: 0
+    surfaceParralel: {x: 0, y: 0, z: 0}
+    mask:
+      serializedVersion: 2
+      m_Bits: 0
+--- !u!114 &8756796690775479565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7119987707687262035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 769d835a463ee39458bcc323dd10e344, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 7119987707687262033}
+  enableLongJump: 0
+  groundPoundState:
+    controller: {fileID: 0}
+    defaultMoveState: {fileID: 0}
+    Motor: {fileID: 0}
+    groundPoundVelocity: 0
+  initialLagState:
+    controller: {fileID: 0}
+    defaultMoveState: {fileID: 0}
+    Motor: {fileID: 0}
+    buffer:
+      duration: 1
+      t: 0
+  groundPoundCanceledJump:
+    controller: {fileID: 0}
+    defaultMoveState: {fileID: 0}
+    Motor: {fileID: 0}
+    velocityMagnitude: {x: 0, y: 0}
+  groundPoundLandingLag:
+    controller: {fileID: 0}
+    defaultMoveState: {fileID: 0}
+    Motor: {fileID: 0}
+    buffer:
+      duration: 1
+      t: 0
+  groundPoundJump:
+    controller: {fileID: 0}
+    defaultMoveState: {fileID: 0}
+    Motor: {fileID: 0}
+    velocityMagnitude: {x: 0, y: 0}
 --- !u!114 &3764920316457078197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -413,77 +522,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxCharges: 2
   currentCharges: 0
---- !u!114 &7119987707687262038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7119987707687262035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87c237531b7ab55438f6ebc2251de55d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 7119987707687262033}
-  defaultMoveState: {fileID: 8125643758259839832}
-  Motor: {fileID: 7157289883682162721}
-  dashEndMultiplier: 0.3
-  distance: 7
-  timeToReach: 0.25
-  mushroomDashEndMult: 0.6
-  wallRunState: {fileID: 3764920316457078196}
-  abilityEventReference: {fileID: 11400000, guid: 80b9afd015dc7fb4b9f347ac49e086fb, type: 2}
-  ignoreLayers:
-    serializedVersion: 2
-    m_Bits: 512
-  dotProductBonkCutOff: 0.95
---- !u!114 &3764920316457078196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7119987707687262035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a53f9c248f9ba748bcf3f802ed22cbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 7119987707687262033}
-  defaultMoveState: {fileID: 8125643758259839832}
-  Motor: {fileID: 7157289883682162721}
-  wallRunInitialVelocity: 18
-  minWallRunVelocity: 10
-  wallRunDecayRate: 8
-  InitialYVelocity: 5
-  gravity: 2.8
-  curWallRunVelocityX: 0
-  surfaceParralel: {x: 0, y: 0, z: 0}
-  mask:
-    serializedVersion: 2
-    m_Bits: 1
---- !u!114 &8756796690775479565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7119987707687262035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 769d835a463ee39458bcc323dd10e344, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 7119987707687262033}
-  defaultMoveState: {fileID: 8125643758259839832}
-  Motor: {fileID: 7157289883682162721}
-  groundPoundVelocity: 45
-  groundPoundJumpVelocity: 28
-  prePound:
-    duration: 0.13
-    t: 0
-    active: 0
 --- !u!114 &3764920316457078195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -581,7 +619,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 7119987707687262033}
   OnPlayerLanded: {fileID: 11400000, guid: 66460e655810d954fa1648e3f9ccd92a, type: 2}
-  OnPlayerJump: {fileID: 0}
   OnPlayerDoubleJump: {fileID: 11400000, guid: c0d1ee2feaaa3434bad143732a5d0ae4, type: 2}
 --- !u!114 &8160492240918828605
 MonoBehaviour:

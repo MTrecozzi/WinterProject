@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [System.Serializable]
 public class WallRunState : MovementState
@@ -176,13 +174,4 @@ public class WallRunState : MovementState
 
         
     }
-}
-
-public class WallRunStateBehaviour : MonoBehaviour
-{
-    [SerializeField]
-    public WallRunState wallRunState;
-
-    public void StartState(Vector3 _surfaceParrallel, Vector3 _curWallNormal) => wallRunState.StartState(_surfaceParrallel, _curWallNormal);
-
 }

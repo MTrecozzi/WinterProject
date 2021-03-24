@@ -2,73 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-// could literally be replaced with Constant Velocity State
-[System.Serializable]
-public class GroundPoundState : MovementState
-{
-    public float groundPoundVelocity = 0f;
-
-    public override void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
-    {
-
-        {
-            // Easing of this velocity, in partnership / communication with the pre pound buffer, would make this feel good
-            currentVelocity = new Vector3(0, -groundPoundVelocity, 0);
-        }
-
-    }
-}
-
-[System.Serializable]
-public class LagTransition : MovementState
-{
-    [SerializeField]
-    public StateBuffer buffer;
-
-    public override void Initialize()
-    {
-        buffer.SetStartTime();
-    }
-
-    public override void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
-    {
-        currentVelocity = Vector3.zero;
-    }
-
-}
-
-[System.Serializable]
-public class ConstantVelocityState : MovementState
-{
-    public Vector2 velocityMagnitude;
-
-
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        if (velocityMagnitude.y > 0)
-        {
-            controller.manager.Motor.ForceUnground();
-        }
-    }
-
-    public override void UpdateRotation(ref Quaternion currentRotation, float deltaTime)
-    {
-        return;
-    }
-
-    public override void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
-    {
-        
-        currentVelocity = controller.transform.forward.normalized *velocityMagnitude.x
-            + Vector3.up * velocityMagnitude.y;
-    }
-}
-
 [SerializeField]
-public class GroundPoundStateBehaviour : MonoBehaviour
+public class GroundPoundStateBehaviour : MoveStateBehaviour
 {
     
     public MTCharacterController controller;
@@ -80,13 +15,13 @@ public class GroundPoundStateBehaviour : MonoBehaviour
     public GroundPoundState groundPoundState;
 
     [SerializeField]
-    public LagTransition initialLagState;
+    public LagTransitionState initialLagState;
 
     [SerializeField]
     public ConstantVelocityState groundPoundCanceledJump;
 
     [SerializeField]
-    public LagTransition groundPoundLandingLag;
+    public LagTransitionState groundPoundLandingLag;
 
     [SerializeField]
     public ConstantVelocityState groundPoundJump;
@@ -130,6 +65,11 @@ public class GroundPoundStateBehaviour : MonoBehaviour
 
         // add transition from downward velocity to default state (to carry that velocity + control) after a frame has passed
         controller.manager.AddTransition(groundPoundCanceledJump, FrameHasPassed, controller.manager.defaultMoveStateBehaviour.defaultMoveState);
+    }
+
+    public override MovementState[] GetManagedMoveStates()
+    {
+        return new MovementState[] { groundPoundState, initialLagState, groundPoundCanceledJump, groundPoundLandingLag, groundPoundJump };
     }
 
     public bool InitialLagStateEnded()
