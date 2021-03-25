@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 126
   m_IsActive: 1
 --- !u!4 &45011186524974813
 Transform:
@@ -62,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8747370540053897000, guid: d39c4ae23ed229d41a797b08876804d0, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 8747370540054322994, guid: d39c4ae23ed229d41a797b08876804d0, type: 3}
       propertyPath: m_RootOrder
@@ -129,7 +129,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8747370540053897000, guid: d39c4ae23ed229d41a797b08876804d0, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 8747370540054322994, guid: d39c4ae23ed229d41a797b08876804d0, type: 3}
       propertyPath: m_RootOrder
@@ -196,7 +196,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4549529161486624035, guid: 3f5d12010c2e96c448774ea8a03ee973, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 4549529161486999631, guid: 3f5d12010c2e96c448774ea8a03ee973, type: 3}
       propertyPath: m_RootOrder
@@ -263,7 +263,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8747370540053897000, guid: d39c4ae23ed229d41a797b08876804d0, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 8747370540054322994, guid: d39c4ae23ed229d41a797b08876804d0, type: 3}
       propertyPath: m_RootOrder
@@ -374,7 +374,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7788137542748418892, guid: 18942fc4eddf56f4f859b46cb03f07dc, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 126
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1653034006, guid: 18942fc4eddf56f4f859b46cb03f07dc, type: 3}

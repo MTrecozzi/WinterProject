@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 126
   m_IsActive: 1
 --- !u!4 &5718160724683233193
 Transform:
@@ -62,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6826489377824868810, guid: f061fcd7d13369d48bbfdb5139bf234a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 6826489377825112014, guid: f061fcd7d13369d48bbfdb5139bf234a, type: 3}
       propertyPath: m_RootOrder
@@ -129,7 +129,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6826489377824868810, guid: f061fcd7d13369d48bbfdb5139bf234a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 6826489377825112014, guid: f061fcd7d13369d48bbfdb5139bf234a, type: 3}
       propertyPath: m_RootOrder
@@ -240,7 +240,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7788137542748418892, guid: 18942fc4eddf56f4f859b46cb03f07dc, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 126
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1653034006, guid: 18942fc4eddf56f4f859b46cb03f07dc, type: 3}
@@ -263,7 +263,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9095099219802931097, guid: c05a34ccf420b6847b8f1ade0849425b, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 9095099219803358383, guid: c05a34ccf420b6847b8f1ade0849425b, type: 3}
       propertyPath: m_RootOrder
@@ -330,7 +330,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6826489377824868810, guid: f061fcd7d13369d48bbfdb5139bf234a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 6826489377825112014, guid: f061fcd7d13369d48bbfdb5139bf234a, type: 3}
       propertyPath: m_RootOrder
