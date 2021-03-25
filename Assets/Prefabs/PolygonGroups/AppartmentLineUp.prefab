@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8988948675269916135
 Transform:
@@ -69,6 +69,10 @@ PrefabInstance:
     - target: {fileID: 4549529161486624035, guid: 3f5d12010c2e96c448774ea8a03ee973, type: 3}
       propertyPath: m_Name
       value: SM_Bld_Apartment_Roof_02 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4549529161486624035, guid: 3f5d12010c2e96c448774ea8a03ee973, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 4549529161486999631, guid: 3f5d12010c2e96c448774ea8a03ee973, type: 3}
       propertyPath: m_RootOrder
@@ -132,6 +136,10 @@ PrefabInstance:
     - target: {fileID: 5649292407690380419, guid: b5a58408aed6a124c98de2239c36cfbe, type: 3}
       propertyPath: m_Name
       value: SM_Bld_Apartment_Stack_01 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5649292407690380419, guid: b5a58408aed6a124c98de2239c36cfbe, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 5649292407690701229, guid: b5a58408aed6a124c98de2239c36cfbe, type: 3}
       propertyPath: m_RootOrder
@@ -240,6 +248,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Bld_Apartment_Door_02 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 7621343008375878485, guid: 189f6f72b8e30ab4aa3fcda4012290d8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1739965096, guid: 189f6f72b8e30ab4aa3fcda4012290d8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 189f6f72b8e30ab4aa3fcda4012290d8, type: 3}
@@ -302,6 +314,10 @@ PrefabInstance:
     - target: {fileID: 931965041667533368, guid: 88b824dcf9575564a900546110490ee8, type: 3}
       propertyPath: m_Name
       value: SM_Bld_Apartment_Stack_03 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 931965041667533368, guid: 88b824dcf9575564a900546110490ee8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1954155223, guid: 88b824dcf9575564a900546110490ee8, type: 3}
@@ -366,6 +382,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Bld_Apartment_Door_01 Variant (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7788137542748418892, guid: 18942fc4eddf56f4f859b46cb03f07dc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1653034006, guid: 18942fc4eddf56f4f859b46cb03f07dc, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 18942fc4eddf56f4f859b46cb03f07dc, type: 3}
@@ -384,6 +404,10 @@ PrefabInstance:
     - target: {fileID: 4549529161486624035, guid: 3f5d12010c2e96c448774ea8a03ee973, type: 3}
       propertyPath: m_Name
       value: SM_Bld_Apartment_Roof_02 Variant (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4549529161486624035, guid: 3f5d12010c2e96c448774ea8a03ee973, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 4549529161486999631, guid: 3f5d12010c2e96c448774ea8a03ee973, type: 3}
       propertyPath: m_RootOrder
@@ -492,6 +516,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Bld_Apartment_Roof_01 Variant (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8072869299080807503, guid: b1fc8f7b8b1f93849ba966e2356a9988, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8133889107720208915, guid: b1fc8f7b8b1f93849ba966e2356a9988, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b1fc8f7b8b1f93849ba966e2356a9988, type: 3}
@@ -555,6 +583,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Bld_Apartment_Door_01 Variant (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7788137542748418892, guid: 18942fc4eddf56f4f859b46cb03f07dc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1653034006, guid: 18942fc4eddf56f4f859b46cb03f07dc, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 18942fc4eddf56f4f859b46cb03f07dc, type: 3}
@@ -573,6 +605,10 @@ PrefabInstance:
     - target: {fileID: 5649292407690380419, guid: b5a58408aed6a124c98de2239c36cfbe, type: 3}
       propertyPath: m_Name
       value: SM_Bld_Apartment_Stack_01 Variant (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5649292407690380419, guid: b5a58408aed6a124c98de2239c36cfbe, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 5649292407690701229, guid: b5a58408aed6a124c98de2239c36cfbe, type: 3}
       propertyPath: m_RootOrder
@@ -637,6 +673,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Bld_Apartment_Stack_02 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 7448719048728794500, guid: 2f648996f802569488723d5f4786cbce, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 7448719048729115868, guid: 2f648996f802569488723d5f4786cbce, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -700,6 +740,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Bld_Apartment_Roof_03 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 9095099219802931097, guid: c05a34ccf420b6847b8f1ade0849425b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 9095099219803358383, guid: c05a34ccf420b6847b8f1ade0849425b, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -762,6 +806,10 @@ PrefabInstance:
     - target: {fileID: 7448719048728794500, guid: 2f648996f802569488723d5f4786cbce, type: 3}
       propertyPath: m_Name
       value: SM_Bld_Apartment_Stack_02 Variant (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448719048728794500, guid: 2f648996f802569488723d5f4786cbce, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 7448719048729115868, guid: 2f648996f802569488723d5f4786cbce, type: 3}
       propertyPath: m_RootOrder
@@ -870,6 +918,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Bld_Apartment_Roof_01 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 8072869299080807503, guid: b1fc8f7b8b1f93849ba966e2356a9988, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8133889107720208915, guid: b1fc8f7b8b1f93849ba966e2356a9988, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b1fc8f7b8b1f93849ba966e2356a9988, type: 3}
@@ -933,6 +985,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Bld_Apartment_Door_01 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 7788137542748418892, guid: 18942fc4eddf56f4f859b46cb03f07dc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1653034006, guid: 18942fc4eddf56f4f859b46cb03f07dc, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 18942fc4eddf56f4f859b46cb03f07dc, type: 3}
@@ -995,6 +1051,10 @@ PrefabInstance:
     - target: {fileID: 7621343008375878485, guid: 189f6f72b8e30ab4aa3fcda4012290d8, type: 3}
       propertyPath: m_Name
       value: SM_Bld_Apartment_Door_02 Variant (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7621343008375878485, guid: 189f6f72b8e30ab4aa3fcda4012290d8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1739965096, guid: 189f6f72b8e30ab4aa3fcda4012290d8, type: 3}
