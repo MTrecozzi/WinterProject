@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 126
   m_IsActive: 1
 --- !u!4 &2027310746364992907
 Transform:
@@ -83,6 +83,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Road_YellowLines_01 Variant (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 2516578826917132670, guid: 369486d616418474f891e5491cc24461, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 2516578826917386988, guid: 369486d616418474f891e5491cc24461, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -145,6 +149,10 @@ PrefabInstance:
     - target: {fileID: 241558250036770792, guid: 4cd2917394ceb8643a554378af6b48ed, type: 3}
       propertyPath: m_Name
       value: SM_Env_Sidewalk_Straight_01 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 241558250036770792, guid: 4cd2917394ceb8643a554378af6b48ed, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 241558250036987692, guid: 4cd2917394ceb8643a554378af6b48ed, type: 3}
       propertyPath: m_RootOrder
@@ -209,6 +217,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Road_YellowLines_01 Variant (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 2516578826917132670, guid: 369486d616418474f891e5491cc24461, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 2516578826917386988, guid: 369486d616418474f891e5491cc24461, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -271,6 +283,10 @@ PrefabInstance:
     - target: {fileID: 2516578826917132670, guid: 369486d616418474f891e5491cc24461, type: 3}
       propertyPath: m_Name
       value: SM_Env_Road_YellowLines_01 Variant (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2516578826917132670, guid: 369486d616418474f891e5491cc24461, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 2516578826917386988, guid: 369486d616418474f891e5491cc24461, type: 3}
       propertyPath: m_RootOrder
@@ -335,6 +351,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Sidewalk_Straight_01 Variant (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 241558250036770792, guid: 4cd2917394ceb8643a554378af6b48ed, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 241558250036987692, guid: 4cd2917394ceb8643a554378af6b48ed, type: 3}
       propertyPath: m_RootOrder
       value: 20
@@ -397,6 +417,10 @@ PrefabInstance:
     - target: {fileID: 241558250036770792, guid: 4cd2917394ceb8643a554378af6b48ed, type: 3}
       propertyPath: m_Name
       value: SM_Env_Sidewalk_Straight_01 Variant (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 241558250036770792, guid: 4cd2917394ceb8643a554378af6b48ed, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 241558250036987692, guid: 4cd2917394ceb8643a554378af6b48ed, type: 3}
       propertyPath: m_RootOrder
@@ -461,6 +485,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Sidewalk_Straight_01 Variant (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 241558250036770792, guid: 4cd2917394ceb8643a554378af6b48ed, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 241558250036987692, guid: 4cd2917394ceb8643a554378af6b48ed, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -523,6 +551,10 @@ PrefabInstance:
     - target: {fileID: 2516578826917132670, guid: 369486d616418474f891e5491cc24461, type: 3}
       propertyPath: m_Name
       value: SM_Env_Road_YellowLines_01 Variant (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2516578826917132670, guid: 369486d616418474f891e5491cc24461, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 2516578826917386988, guid: 369486d616418474f891e5491cc24461, type: 3}
       propertyPath: m_RootOrder
@@ -587,6 +619,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Road_YellowLines_01 Variant (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 2516578826917132670, guid: 369486d616418474f891e5491cc24461, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 2516578826917386988, guid: 369486d616418474f891e5491cc24461, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -649,6 +685,10 @@ PrefabInstance:
     - target: {fileID: 241558250036770792, guid: 4cd2917394ceb8643a554378af6b48ed, type: 3}
       propertyPath: m_Name
       value: SM_Env_Sidewalk_Straight_01 Variant (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 241558250036770792, guid: 4cd2917394ceb8643a554378af6b48ed, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 241558250036987692, guid: 4cd2917394ceb8643a554378af6b48ed, type: 3}
       propertyPath: m_RootOrder
@@ -713,6 +753,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Road_YellowLines_01 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 2516578826917132670, guid: 369486d616418474f891e5491cc24461, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 2516578826917386988, guid: 369486d616418474f891e5491cc24461, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -775,6 +819,10 @@ PrefabInstance:
     - target: {fileID: 2516578826917132670, guid: 369486d616418474f891e5491cc24461, type: 3}
       propertyPath: m_Name
       value: SM_Env_Road_YellowLines_01 Variant (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2516578826917132670, guid: 369486d616418474f891e5491cc24461, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 2516578826917386988, guid: 369486d616418474f891e5491cc24461, type: 3}
       propertyPath: m_RootOrder
@@ -839,6 +887,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Sidewalk_Straight_01 Variant (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 241558250036770792, guid: 4cd2917394ceb8643a554378af6b48ed, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 241558250036987692, guid: 4cd2917394ceb8643a554378af6b48ed, type: 3}
       propertyPath: m_RootOrder
       value: 23
@@ -901,6 +953,10 @@ PrefabInstance:
     - target: {fileID: 2516578826917132670, guid: 369486d616418474f891e5491cc24461, type: 3}
       propertyPath: m_Name
       value: SM_Env_Road_YellowLines_01 Variant (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2516578826917132670, guid: 369486d616418474f891e5491cc24461, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 2516578826917386988, guid: 369486d616418474f891e5491cc24461, type: 3}
       propertyPath: m_RootOrder
@@ -965,6 +1021,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Sidewalk_Straight_01 Variant (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 241558250036770792, guid: 4cd2917394ceb8643a554378af6b48ed, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 241558250036987692, guid: 4cd2917394ceb8643a554378af6b48ed, type: 3}
       propertyPath: m_RootOrder
       value: 26
@@ -1027,6 +1087,10 @@ PrefabInstance:
     - target: {fileID: 2516578826917132670, guid: 369486d616418474f891e5491cc24461, type: 3}
       propertyPath: m_Name
       value: SM_Env_Road_YellowLines_01 Variant (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2516578826917132670, guid: 369486d616418474f891e5491cc24461, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 2516578826917386988, guid: 369486d616418474f891e5491cc24461, type: 3}
       propertyPath: m_RootOrder
@@ -1091,6 +1155,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Sidewalk_Straight_01 Variant (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 241558250036770792, guid: 4cd2917394ceb8643a554378af6b48ed, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 241558250036987692, guid: 4cd2917394ceb8643a554378af6b48ed, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -1153,6 +1221,10 @@ PrefabInstance:
     - target: {fileID: 2516578826917132670, guid: 369486d616418474f891e5491cc24461, type: 3}
       propertyPath: m_Name
       value: SM_Env_Road_YellowLines_01 Variant (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2516578826917132670, guid: 369486d616418474f891e5491cc24461, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 2516578826917386988, guid: 369486d616418474f891e5491cc24461, type: 3}
       propertyPath: m_RootOrder
@@ -1217,6 +1289,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Road_YellowLines_01 Variant (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 2516578826917132670, guid: 369486d616418474f891e5491cc24461, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 2516578826917386988, guid: 369486d616418474f891e5491cc24461, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -1279,6 +1355,10 @@ PrefabInstance:
     - target: {fileID: 2516578826917132670, guid: 369486d616418474f891e5491cc24461, type: 3}
       propertyPath: m_Name
       value: SM_Env_Road_YellowLines_01 Variant (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2516578826917132670, guid: 369486d616418474f891e5491cc24461, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 2516578826917386988, guid: 369486d616418474f891e5491cc24461, type: 3}
       propertyPath: m_RootOrder
@@ -1343,6 +1423,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Sidewalk_Straight_01 Variant (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 241558250036770792, guid: 4cd2917394ceb8643a554378af6b48ed, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 241558250036987692, guid: 4cd2917394ceb8643a554378af6b48ed, type: 3}
       propertyPath: m_RootOrder
       value: 27
@@ -1405,6 +1489,10 @@ PrefabInstance:
     - target: {fileID: 2516578826917132670, guid: 369486d616418474f891e5491cc24461, type: 3}
       propertyPath: m_Name
       value: SM_Env_Road_YellowLines_01 Variant (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2516578826917132670, guid: 369486d616418474f891e5491cc24461, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 2516578826917386988, guid: 369486d616418474f891e5491cc24461, type: 3}
       propertyPath: m_RootOrder
@@ -1469,6 +1557,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Road_YellowLines_01 Variant (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 2516578826917132670, guid: 369486d616418474f891e5491cc24461, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 2516578826917386988, guid: 369486d616418474f891e5491cc24461, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -1531,6 +1623,10 @@ PrefabInstance:
     - target: {fileID: 241558250036770792, guid: 4cd2917394ceb8643a554378af6b48ed, type: 3}
       propertyPath: m_Name
       value: SM_Env_Sidewalk_Straight_01 Variant (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 241558250036770792, guid: 4cd2917394ceb8643a554378af6b48ed, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 241558250036987692, guid: 4cd2917394ceb8643a554378af6b48ed, type: 3}
       propertyPath: m_RootOrder
@@ -1595,6 +1691,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Sidewalk_Straight_01 Variant (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 241558250036770792, guid: 4cd2917394ceb8643a554378af6b48ed, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 241558250036987692, guid: 4cd2917394ceb8643a554378af6b48ed, type: 3}
       propertyPath: m_RootOrder
       value: 19
@@ -1657,6 +1757,10 @@ PrefabInstance:
     - target: {fileID: 241558250036770792, guid: 4cd2917394ceb8643a554378af6b48ed, type: 3}
       propertyPath: m_Name
       value: SM_Env_Sidewalk_Straight_01 Variant (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 241558250036770792, guid: 4cd2917394ceb8643a554378af6b48ed, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 241558250036987692, guid: 4cd2917394ceb8643a554378af6b48ed, type: 3}
       propertyPath: m_RootOrder
@@ -1721,6 +1825,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Sidewalk_Straight_01 Variant (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 241558250036770792, guid: 4cd2917394ceb8643a554378af6b48ed, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 241558250036987692, guid: 4cd2917394ceb8643a554378af6b48ed, type: 3}
       propertyPath: m_RootOrder
       value: 18
@@ -1783,6 +1891,10 @@ PrefabInstance:
     - target: {fileID: 241558250036770792, guid: 4cd2917394ceb8643a554378af6b48ed, type: 3}
       propertyPath: m_Name
       value: SM_Env_Sidewalk_Straight_01 Variant (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 241558250036770792, guid: 4cd2917394ceb8643a554378af6b48ed, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 241558250036987692, guid: 4cd2917394ceb8643a554378af6b48ed, type: 3}
       propertyPath: m_RootOrder

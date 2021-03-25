@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 126
   m_IsActive: 1
 --- !u!4 &6891694210886117834
 Transform:
@@ -63,6 +63,10 @@ PrefabInstance:
     - target: {fileID: 1828933423382878967, guid: 9ec2a679912614d429190b73989c6f5d, type: 3}
       propertyPath: m_Name
       value: SM_Env_Sidewalk_Corner_01 Variant (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1828933423382878967, guid: 9ec2a679912614d429190b73989c6f5d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 1828933423382984067, guid: 9ec2a679912614d429190b73989c6f5d, type: 3}
       propertyPath: m_RootOrder
@@ -127,6 +131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Sidewalk_Corner_01 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 1828933423382878967, guid: 9ec2a679912614d429190b73989c6f5d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 1828933423382984067, guid: 9ec2a679912614d429190b73989c6f5d, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -189,6 +197,10 @@ PrefabInstance:
     - target: {fileID: 8068162619551870876, guid: 64bddbaa9447cc9438a0954426b59d06, type: 3}
       propertyPath: m_Name
       value: SM_Env_Road_Crossing_01 Variant (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068162619551870876, guid: 64bddbaa9447cc9438a0954426b59d06, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 8068162619552051680, guid: 64bddbaa9447cc9438a0954426b59d06, type: 3}
       propertyPath: m_RootOrder
@@ -297,6 +309,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Road_Bare_01 Variant (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 340105607720537768, guid: b80264513239e3a4f8639f6b5955c104, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 311045033351543688, guid: b80264513239e3a4f8639f6b5955c104, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b80264513239e3a4f8639f6b5955c104, type: 3}
@@ -315,6 +331,10 @@ PrefabInstance:
     - target: {fileID: 8068162619551870876, guid: 64bddbaa9447cc9438a0954426b59d06, type: 3}
       propertyPath: m_Name
       value: SM_Env_Road_Crossing_01 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068162619551870876, guid: 64bddbaa9447cc9438a0954426b59d06, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 8068162619552051680, guid: 64bddbaa9447cc9438a0954426b59d06, type: 3}
       propertyPath: m_RootOrder
@@ -379,6 +399,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Sidewalk_Corner_01 Variant (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1828933423382878967, guid: 9ec2a679912614d429190b73989c6f5d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 1828933423382984067, guid: 9ec2a679912614d429190b73989c6f5d, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -441,6 +465,10 @@ PrefabInstance:
     - target: {fileID: 1828933423382878967, guid: 9ec2a679912614d429190b73989c6f5d, type: 3}
       propertyPath: m_Name
       value: SM_Env_Sidewalk_Corner_01 Variant (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1828933423382878967, guid: 9ec2a679912614d429190b73989c6f5d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 1828933423382984067, guid: 9ec2a679912614d429190b73989c6f5d, type: 3}
       propertyPath: m_RootOrder
@@ -505,6 +533,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Road_Crossing_01 Variant (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 8068162619551870876, guid: 64bddbaa9447cc9438a0954426b59d06, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 8068162619552051680, guid: 64bddbaa9447cc9438a0954426b59d06, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -567,6 +599,10 @@ PrefabInstance:
     - target: {fileID: 8068162619551870876, guid: 64bddbaa9447cc9438a0954426b59d06, type: 3}
       propertyPath: m_Name
       value: SM_Env_Road_Crossing_01 Variant (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068162619551870876, guid: 64bddbaa9447cc9438a0954426b59d06, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 8068162619552051680, guid: 64bddbaa9447cc9438a0954426b59d06, type: 3}
       propertyPath: m_RootOrder
