@@ -26,6 +26,8 @@ public class GroundPoundStateBehaviour : MoveStateBehaviour
     [SerializeField]
     public ConstantVelocityState groundPoundJump;
 
+    public ScreenStateBehaviour screenStateBehaviour;
+
     //private MovementStateTransition GroundPoundInitialJump;
 
     private void Awake()
@@ -46,12 +48,13 @@ public class GroundPoundStateBehaviour : MoveStateBehaviour
         controller.manager.AddTransition(groundPoundLandingLag, JumpInputBuffered, groundPoundJump);
         controller.manager.AddTransition(groundPoundJump, FrameHasPassed, controller.manager.defaultMoveStateBehaviour.defaultMoveState);
 
+
+        controller.manager.AddTransition(groundPoundLandingLag, ScreenCollision, screenStateBehaviour.screenState);
+
         // Can't do this! as currently movement states need monobehaviour references set through the inspector
         Debug.LogWarning("Need to create a 'bind movement state to manager' system that populates the state with the appropriate controller, default move state" +
             ", and manager");
         //groundPoundCanceledJump = new ConstantVelocityState();
-
-        
         
 
         if (enableLongJump)
@@ -65,6 +68,37 @@ public class GroundPoundStateBehaviour : MoveStateBehaviour
 
         // add transition from downward velocity to default state (to carry that velocity + control) after a frame has passed
         controller.manager.AddTransition(groundPoundCanceledJump, FrameHasPassed, controller.manager.defaultMoveStateBehaviour.defaultMoveState);
+    }
+
+    private bool ScreenCollision()
+    {
+
+        Debug.Log("SCREEN COLLISION CHECK");
+
+        bool validTransition = false;
+
+        RaycastHit closestHit;
+
+        RaycastHit[] hits = new RaycastHit[2];
+
+        var numbHits = controller.manager.Motor.CharacterCollisionsRaycast(transform.position, Vector3.down, 5f, out closestHit, hits, true);
+
+        Debug.Log("Num Hits: " + numbHits);
+
+        for (int i = 0; i < numbHits; i++)
+        {
+
+            Debug.Log("HIT " + hits[i].collider.gameObject.name);
+
+            validTransition = ((screenStateBehaviour.screenLayers.value & (1 << hits[i].collider.gameObject.layer)) > 0);
+
+            if (validTransition)
+            {
+                screenStateBehaviour.screenState.SetUp(hits[i].normal, true, 30f);
+            }
+        }
+
+        return validTransition;
     }
 
     public override MovementState[] GetManagedMoveStates()

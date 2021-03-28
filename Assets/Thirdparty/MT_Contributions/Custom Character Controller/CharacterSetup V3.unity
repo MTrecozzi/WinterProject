@@ -1577,6 +1577,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 10931687073774644, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: screenStateBehaviour
+      value: 
+      objectReference: {fileID: 3764920316457078186}
     - target: {fileID: 1977068582809779818, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
       propertyPath: m_Name
       value: MT_ExampleCharacter Animations
@@ -1632,6 +1636,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1977068582809779818, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
   m_PrefabInstance: {fileID: 3409324364546798530}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3764920316457078186 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3764920316457078199, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+  m_PrefabInstance: {fileID: 3409324364546798530}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3764920316457078184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50ca3bb22b784e04c8759372686f5998, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &3764920316457078198 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1980012064651850360, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
