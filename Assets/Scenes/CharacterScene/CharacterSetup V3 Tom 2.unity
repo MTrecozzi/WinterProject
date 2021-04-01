@@ -688,6 +688,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3764920316457078199, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
+      propertyPath: screenLayers.m_Bits
+      value: 8192
+      objectReference: {fileID: 0}
     - target: {fileID: 5593221607368533133, guid: c52854f44185bca43af5dbf667d9acd7, type: 3}
       propertyPath: wallRunState.gravity
       value: 6
