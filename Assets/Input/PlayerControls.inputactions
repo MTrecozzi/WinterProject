@@ -14,6 +14,14 @@
                     "interactions": "Press"
                 },
                 {
+                    "name": "JumpButtonUp",
+                    "type": "PassThrough",
+                    "id": "5d7c9d5b-b73e-4a44-a975-282c6fae4843",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)"
+                },
+                {
                     "name": "ControlStick",
                     "type": "Value",
                     "id": "ba2575ed-2402-46e0-b4b2-d61a3d94d3d9",
@@ -302,6 +310,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "GroundPound",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ca318974-70ca-4edb-841b-aed9f81d30fc",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "JumpButtonUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "befcff89-3baa-44e5-b07c-7a156d92fdea",
+                    "path": "<XInputController>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "JumpButtonUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "099300c6-a75d-40d9-860c-cba08e52993c",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "JumpButtonUp",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

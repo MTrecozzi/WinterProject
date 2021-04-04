@@ -31,7 +31,7 @@ public class KinematicMotorAnimator : MonoBehaviour
             return;
         } else
         {
-            anim.SetBool("GroundPound", controller.curMovementState.GetType() == typeof(GroundPoundState));
+            anim.SetBool("GroundPound", controller.curMovementState.GetType() == typeof(GroundPoundFallState));
             anim.SetBool("Dashing", controller.curMovementState.GetType() == typeof(DashState));
             anim.SetBool("WallRun", controller.curMovementState.GetType() == typeof(WallRunState));
         }

@@ -22,6 +22,8 @@ public class DefaultMoveStateBehaviour : MoveStateBehaviour
 
         controller.manager.AddTransition(transition);
 
+        defaultMoveState.SetGravity();
+
         
 
 

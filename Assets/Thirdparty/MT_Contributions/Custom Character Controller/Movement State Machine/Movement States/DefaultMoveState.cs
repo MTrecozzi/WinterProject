@@ -1,4 +1,5 @@
 ﻿using KinematicCharacterController;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,11 @@ public class DefaultMoveState : MovementState
 {
     public AbilityPool jumpPool;
     public AbilityPool dashPool;
+
+    public float jumpHeight;
+    public float timeToReachJumpArc;
+
+    public float maxFallSpeed = 10;
 
     [Header("Temp Buffer System")]
     public float dampenedAirAccel;
@@ -23,6 +29,12 @@ public class DefaultMoveState : MovementState
 
     [Header("Air Movement")]
     public float MaxAirMoveSpeed = 15f;
+
+    public void SetGravity()
+    {
+        this.Gravity = new Vector3(0, -(2 * jumpHeight / Mathf.Pow(timeToReachJumpArc, 2)), 0);
+    }
+
     public float AirAccelerationSpeed = 15f;
     public float Drag = 0.1f;
 
@@ -228,6 +240,8 @@ public class DefaultMoveState : MovementState
         if (controller.Jump.Buffered)
         {
 
+            //arc.JumpInput();
+
             //Debug.Log("Jump Requested: doubleJumpCount: " + doubleJumpCount + "!FoundAnyGround: " + !Motor.GroundingStatus.FoundAnyGround);
 
             if ((doubleJumpEnabled && jumpPool.IsChargesLeft() && !Motor.GroundingStatus.FoundAnyGround))
@@ -237,9 +251,9 @@ public class DefaultMoveState : MovementState
 
                 Motor.ForceUnground();
 
-                if (currentVelocity.y < JumpUpSpeed)
+                if (currentVelocity.y < (2 * jumpHeight / timeToReachJumpArc))
                 {
-                    currentVelocity.y = JumpUpSpeed;
+                    currentVelocity.y = (2 * jumpHeight * 0.75f / timeToReachJumpArc);
                 }
                 else
                 {
@@ -254,6 +268,9 @@ public class DefaultMoveState : MovementState
                 jumpPool.currentCharges--;
 
                 controller.Jump.EatInput();
+
+                
+
 
                 return;
             }
@@ -275,7 +292,7 @@ public class DefaultMoveState : MovementState
                 Motor.ForceUnground();
 
                 // Add to the return velocity and reset jump state
-                currentVelocity += (jumpDirection * JumpUpSpeed) - Vector3.Project(currentVelocity, Motor.CharacterUp);
+                currentVelocity += (jumpDirection * (2*jumpHeight/timeToReachJumpArc) - Vector3.Project(currentVelocity, Motor.CharacterUp));
                 currentVelocity += (controller.MoveInput * JumpScalableForwardSpeed);
 
                 controller.Jump.EatInput();
@@ -292,6 +309,21 @@ public class DefaultMoveState : MovementState
             _internalVelocityAdd = Vector3.zero;
         }
 
+        if (currentVelocity.y <= -maxFallSpeed)
+        {
+            currentVelocity.y = -maxFallSpeed;
+        }
+
+        if (controller.controls.Standard.JumpButtonUp.triggered)
+        {
+            if (currentVelocity.y <= ((2 * jumpHeight / timeToReachJumpArc)) && currentVelocity.y >= 0)
+            {
+                currentVelocity.y *= 0.7f;
+            }
+        }
+
+        //currentVelocity.y = arc.Tick(controller.manager.Motor.GroundingStatus.IsStableOnGround);
+
     }
 
   
@@ -307,6 +339,7 @@ public class DefaultMoveState : MovementState
 
 
     private Quaternion _tmpTransientRot;
+
 
 
     /// <summary>
@@ -421,5 +454,51 @@ public class DefaultMoveState : MovementState
     {
 
     }
+
+}
+
+[System.Serializable]
+public class JumpArc
+{
+    public float c;
+    public float z;
+    public float q;
+    public float p;
+    public float v;
+
+    private float t = 0;
+
+    public bool active;
+
+    public void JumpInput()
+    {
+        active = true;
+        t = 0;
+    }
+
+
+    public float Tick(bool grounded)
+    {
+
+        float yVelocity;
+
+        if (t <= 1.2f)
+        {
+            t += Time.deltaTime;
+        }
+
+        yVelocity = -c * p * z * Mathf.Pow(t - q, p - 1);
+
+        if (grounded)
+        {
+            yVelocity = 0;
+        }
+
+        return yVelocity;
+
+    }
+
+
+
 
 }
