@@ -6,6 +6,8 @@ public class GroundPoundJumpState : MovementState
     public float timeToReachTop;
     public float JumpHeight;
 
+    public float descentGravity;
+
     private Vector3 velocity;
     private Vector3 Gravity;
 
@@ -27,7 +29,7 @@ public class GroundPoundJumpState : MovementState
 
         if (velocity.y <= 0.5f)
         {
-            Gravity = new Vector3(0, -10, 0);
+            Gravity = new Vector3(0, -descentGravity, 0);
         }
 
         velocity.y += Gravity.y * deltaTime;
