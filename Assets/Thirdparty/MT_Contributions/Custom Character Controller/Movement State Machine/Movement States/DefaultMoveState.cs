@@ -9,6 +9,8 @@ public class DefaultMoveState : MovementState
     public AbilityPool jumpPool;
     public AbilityPool dashPool;
 
+    public Vector3 fallGravity = new Vector3(0, -35, 0);
+
     public float jumpHeight;
     public float timeToReachJumpArc;
 
@@ -231,7 +233,15 @@ public class DefaultMoveState : MovementState
             }
 
             // Gravity
-            currentVelocity += Gravity * deltaTime;
+            if (currentVelocity.y <= 0)
+            {
+                currentVelocity += fallGravity * deltaTime;
+            } else
+            {
+                currentVelocity += Gravity * deltaTime;
+            }
+
+            
 
             // Drag
             currentVelocity *= (1f / (1f + (Drag * deltaTime)));
