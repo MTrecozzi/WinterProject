@@ -70,6 +70,8 @@ public class DefaultMoveState : MovementState
 
     private bool __isPrinting = false;
 
+
+
     public void DampenAirAccel()
     {
         dampT = dampTime;

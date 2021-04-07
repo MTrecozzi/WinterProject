@@ -8,6 +8,8 @@ public class GroundPoundStateBehaviour : MoveStateBehaviour
     
     public MTCharacterController controller;
 
+    public KinematicMotorAnimator anim;
+
     public bool enableLongJump;
 
     [Header("Movement States")]
@@ -29,6 +31,11 @@ public class GroundPoundStateBehaviour : MoveStateBehaviour
     public ScreenStateBehaviour screenStateBehaviour;
 
     //private MovementStateTransition GroundPoundInitialJump;
+
+    private void Start()
+    {
+        anim.animStateDefs.Add(groundPoundInitialLag, "GroundPound");
+    }
 
     private void Awake()
     {
@@ -55,7 +62,8 @@ public class GroundPoundStateBehaviour : MoveStateBehaviour
         Debug.LogWarning("Need to create a 'bind movement state to manager' system that populates the state with the appropriate controller, default move state" +
             ", and manager");
         //groundPoundCanceledJump = new ConstantVelocityState();
-        
+
+        controller.manager.AddTransition(groundPoundJump, groundPoundJump.ElapsedTime, controller.manager.defaultMoveStateBehaviour.defaultMoveState);
 
         if (enableLongJump)
         {
