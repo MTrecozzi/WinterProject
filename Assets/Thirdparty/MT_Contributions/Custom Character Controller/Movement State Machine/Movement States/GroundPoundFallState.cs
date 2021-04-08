@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 // could literally be replaced with Constant Velocity State
 [System.Serializable]
-public class GroundPoundState : MovementState
+public class GroundPoundFallState : MovementState
 {
     public float groundPoundVelocity = 0f;
 

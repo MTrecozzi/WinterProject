@@ -39,7 +39,15 @@ public class MTCharacterController : MonoBehaviour
     public Vector3 LookInput => _lookInputVector;
 
     public void SetPropulsionForce(Vector3 vector3) => manager.SetPropulsionForce(vector3);
-    
+
+    public Vector3 GetInput()
+    {
+        Vector3 inputRight = Vector3.Cross(MoveInput, manager.Motor.CharacterUp);
+        Vector3 reorientedInput = Vector3.Cross(Vector3.up, inputRight).normalized * MoveInput.magnitude;
+
+        return reorientedInput;
+    }
+
 
     private Vector3 _moveInputVector;
     private Vector3 _lookInputVector;

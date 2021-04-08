@@ -8,14 +8,16 @@ public class GroundPoundStateBehaviour : MoveStateBehaviour
     
     public MTCharacterController controller;
 
+    public KinematicMotorAnimator anim;
+
     public bool enableLongJump;
 
     [Header("Movement States")]
 
-    public GroundPoundState groundPoundState;
+    public GroundPoundFallState groundPoundFallState;
 
     [SerializeField]
-    public LagTransitionState initialLagState;
+    public LagTransitionState groundPoundInitialLag;
 
     [SerializeField]
     public ConstantVelocityState groundPoundCanceledJump;
@@ -24,9 +26,16 @@ public class GroundPoundStateBehaviour : MoveStateBehaviour
     public LagTransitionState groundPoundLandingLag;
 
     [SerializeField]
-    public ConstantVelocityState groundPoundJump;
+    public GroundPoundJumpState groundPoundJump;
+
+    public ScreenStateBehaviour screenStateBehaviour;
 
     //private MovementStateTransition GroundPoundInitialJump;
+
+    private void Start()
+    {
+        anim.animStateDefs.Add(groundPoundInitialLag, "GroundPound");
+    }
 
     private void Awake()
     {
@@ -34,47 +43,92 @@ public class GroundPoundStateBehaviour : MoveStateBehaviour
         // compose its transitions without interference.
 
         // go from default move state to groundpound initial lag
-        controller.manager.AddTransition(controller.manager.defaultMoveStateBehaviour.defaultMoveState, GroundPoundInitiateCheck, initialLagState);
+        controller.manager.AddTransition(controller.manager.defaultMoveStateBehaviour.defaultMoveState, GroundPoundInitiateCheck, groundPoundInitialLag);
 
         Debug.LogWarning("Transition from groundPoundState to groundPoundLagState on grounded, instead of defaultState as is currently implemented");
-        controller.manager.AddTransition(groundPoundState, IsGrounded, groundPoundLandingLag);
+        controller.manager.AddTransition(groundPoundFallState, IsGrounded, groundPoundLandingLag);
 
         // add transition from ground pound landing lag to normal if t > 0
         controller.manager.AddTransition(groundPoundLandingLag, GroundPoundTimedOut, controller.manager.defaultMoveStateBehaviour.defaultMoveState);
 
         // add transition from ground pound landing lag to constant vel groundPoundJump
         controller.manager.AddTransition(groundPoundLandingLag, JumpInputBuffered, groundPoundJump);
-        controller.manager.AddTransition(groundPoundJump, FrameHasPassed, controller.manager.defaultMoveStateBehaviour.defaultMoveState);
+        controller.manager.AddTransition(groundPoundJump, GroundPoundJumpFadeOut, controller.manager.defaultMoveStateBehaviour.defaultMoveState);
+
+
+        controller.manager.AddTransition(groundPoundLandingLag, ScreenCollision, screenStateBehaviour.screenState);
 
         // Can't do this! as currently movement states need monobehaviour references set through the inspector
         Debug.LogWarning("Need to create a 'bind movement state to manager' system that populates the state with the appropriate controller, default move state" +
             ", and manager");
         //groundPoundCanceledJump = new ConstantVelocityState();
 
-        
-        
+        controller.manager.AddTransition(groundPoundJump, groundPoundJump.ElapsedTime, controller.manager.defaultMoveStateBehaviour.defaultMoveState);
 
         if (enableLongJump)
         {
-            controller.manager.AddTransition(initialLagState, JumpCanceledInitialGroundPound, groundPoundCanceledJump);
+            controller.manager.AddTransition(groundPoundInitialLag, JumpCanceledInitialGroundPound, groundPoundCanceledJump);
         }
 
         // add a transition from initial lag into downward momentum, if we get jump input during groundPound
-        controller.manager.AddTransition(initialLagState, InitialLagStateEnded, groundPoundState);
+        controller.manager.AddTransition(groundPoundInitialLag, InitialLagStateEnded, groundPoundFallState);
         
 
         // add transition from downward velocity to default state (to carry that velocity + control) after a frame has passed
         controller.manager.AddTransition(groundPoundCanceledJump, FrameHasPassed, controller.manager.defaultMoveStateBehaviour.defaultMoveState);
     }
 
+
+    private bool GroundPoundJumpFadeOut()
+    {
+        bool validTransition = false;
+
+        return controller.manager.Motor.GroundingStatus.IsStableOnGround;
+
+        //validTransition = controller.manager.Motor.BaseVelocity.y <= 0;
+
+        return validTransition;
+    }
+
+    private bool ScreenCollision()
+    {
+
+        Debug.Log("SCREEN COLLISION CHECK");
+
+        bool validTransition = false;
+
+        RaycastHit closestHit;
+
+        RaycastHit[] hits = new RaycastHit[2];
+
+        var numbHits = controller.manager.Motor.CharacterCollisionsRaycast(transform.position, Vector3.down, 5f, out closestHit, hits, true);
+
+        Debug.Log("Num Hits: " + numbHits);
+
+        for (int i = 0; i < numbHits; i++)
+        {
+
+            Debug.Log("HIT " + hits[i].collider.gameObject.name);
+
+            validTransition = ((screenStateBehaviour.screenLayers.value & (1 << hits[i].collider.gameObject.layer)) > 0);
+
+            if (validTransition)
+            {
+                screenStateBehaviour.screenState.SetUp(hits[i].normal, true, 30f);
+            }
+        }
+
+        return validTransition;
+    }
+
     public override MovementState[] GetManagedMoveStates()
     {
-        return new MovementState[] { groundPoundState, initialLagState, groundPoundCanceledJump, groundPoundLandingLag, groundPoundJump };
+        return new MovementState[] { groundPoundFallState, groundPoundInitialLag, groundPoundCanceledJump, groundPoundLandingLag, groundPoundJump };
     }
 
     public bool InitialLagStateEnded()
     {
-        bool validTransition = initialLagState.buffer.StateEned();
+        bool validTransition = groundPoundInitialLag.buffer.StateEned();
 
         return validTransition;
     }
@@ -120,7 +174,7 @@ public class GroundPoundStateBehaviour : MoveStateBehaviour
 
     public bool InitialGroundPoundJumpCheck()
     {
-        return controller.Jump.Buffered && !initialLagState.Motor.GroundingStatus.IsStableOnGround;
+        return controller.Jump.Buffered && !groundPoundInitialLag.Motor.GroundingStatus.IsStableOnGround;
     }
 
     public bool GroundPoundInitiateCheck()

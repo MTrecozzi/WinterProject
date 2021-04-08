@@ -27,6 +27,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": ""Press""
                 },
                 {
+                    ""name"": ""JumpButtonUp"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""5d7c9d5b-b73e-4a44-a975-282c6fae4843"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=1)""
+                },
+                {
                     ""name"": ""ControlStick"",
                     ""type"": ""Value"",
                     ""id"": ""ba2575ed-2402-46e0-b4b2-d61a3d94d3d9"",
@@ -317,6 +325,39 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""GroundPound"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ca318974-70ca-4edb-841b-aed9f81d30fc"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""JumpButtonUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""befcff89-3baa-44e5-b07c-7a156d92fdea"",
+                    ""path"": ""<XInputController>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""JumpButtonUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""099300c6-a75d-40d9-860c-cba08e52993c"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""JumpButtonUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -326,6 +367,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         // Standard
         m_Standard = asset.FindActionMap("Standard", throwIfNotFound: true);
         m_Standard_Jump = m_Standard.FindAction("Jump", throwIfNotFound: true);
+        m_Standard_JumpButtonUp = m_Standard.FindAction("JumpButtonUp", throwIfNotFound: true);
         m_Standard_ControlStick = m_Standard.FindAction("ControlStick", throwIfNotFound: true);
         m_Standard_Dash = m_Standard.FindAction("Dash", throwIfNotFound: true);
         m_Standard_AimStick = m_Standard.FindAction("AimStick", throwIfNotFound: true);
@@ -382,6 +424,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Standard;
     private IStandardActions m_StandardActionsCallbackInterface;
     private readonly InputAction m_Standard_Jump;
+    private readonly InputAction m_Standard_JumpButtonUp;
     private readonly InputAction m_Standard_ControlStick;
     private readonly InputAction m_Standard_Dash;
     private readonly InputAction m_Standard_AimStick;
@@ -393,6 +436,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         private @PlayerControls m_Wrapper;
         public StandardActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Jump => m_Wrapper.m_Standard_Jump;
+        public InputAction @JumpButtonUp => m_Wrapper.m_Standard_JumpButtonUp;
         public InputAction @ControlStick => m_Wrapper.m_Standard_ControlStick;
         public InputAction @Dash => m_Wrapper.m_Standard_Dash;
         public InputAction @AimStick => m_Wrapper.m_Standard_AimStick;
@@ -411,6 +455,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Jump.started -= m_Wrapper.m_StandardActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_StandardActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_StandardActionsCallbackInterface.OnJump;
+                @JumpButtonUp.started -= m_Wrapper.m_StandardActionsCallbackInterface.OnJumpButtonUp;
+                @JumpButtonUp.performed -= m_Wrapper.m_StandardActionsCallbackInterface.OnJumpButtonUp;
+                @JumpButtonUp.canceled -= m_Wrapper.m_StandardActionsCallbackInterface.OnJumpButtonUp;
                 @ControlStick.started -= m_Wrapper.m_StandardActionsCallbackInterface.OnControlStick;
                 @ControlStick.performed -= m_Wrapper.m_StandardActionsCallbackInterface.OnControlStick;
                 @ControlStick.canceled -= m_Wrapper.m_StandardActionsCallbackInterface.OnControlStick;
@@ -436,6 +483,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @JumpButtonUp.started += instance.OnJumpButtonUp;
+                @JumpButtonUp.performed += instance.OnJumpButtonUp;
+                @JumpButtonUp.canceled += instance.OnJumpButtonUp;
                 @ControlStick.started += instance.OnControlStick;
                 @ControlStick.performed += instance.OnControlStick;
                 @ControlStick.canceled += instance.OnControlStick;
@@ -461,6 +511,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     public interface IStandardActions
     {
         void OnJump(InputAction.CallbackContext context);
+        void OnJumpButtonUp(InputAction.CallbackContext context);
         void OnControlStick(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnAimStick(InputAction.CallbackContext context);

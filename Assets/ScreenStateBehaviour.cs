@@ -80,6 +80,8 @@ public class ScreenStateBehaviour : MoveStateBehaviour
             screenState.controller.Jump.EatInput();
             Debug.LogWarning("Should Use a Velocity State Instead of Crappy Jump Force");
             screenState.controller.manager.Motor.BaseVelocity.y = 15;
+
+            screenState.controller.manager.Motor.BaseVelocity += screenState.wallNormal * 10;
         }
 
         
@@ -100,16 +102,32 @@ public class ScreenState : MovementState
 {
     public Vector3 wallNormal;
 
-    public float speed = 15f;
+    public float baseSpeed = 15f;
+
+    private float _speed;
 
     public event Action<bool, Vector3> StateEnterOrExit;
 
-    public void SetUp(Vector3 _wallNormal)
+    private bool normalized = false;
+
+    public void SetUp(Vector3 _wallNormal, bool _normalized = false, float pSpeed = 0f)
     {
+
+        if (pSpeed != 0f)
+        {
+            _speed = pSpeed;
+        }
+
+        else
+        {
+            _speed = baseSpeed;
+        }
 
         Debug.Log("HIT NORMAL OF SCREEN STATE: " + wallNormal);
 
         wallNormal = _wallNormal;
+        normalized = _normalized;
+
     }
 
     public override void Initialize()
@@ -146,7 +164,6 @@ public class ScreenState : MovementState
 
         // var simple vector = ....
 
-
        // Debug.Log("RELATIVE VECTOR: " + relative);
 
         var projectedVector = Vector3.ProjectOnPlane(relative, wallNormal);
@@ -154,7 +171,7 @@ public class ScreenState : MovementState
         // CURRENTLY NOT RUNNING NORMALIZED
         var normalizedVector = projectedVector.normalized;
 
-        currentVelocity = projectedVector * speed;
+        currentVelocity = (normalized ? normalizedVector : projectedVector) * _speed;
     }
 
 }
