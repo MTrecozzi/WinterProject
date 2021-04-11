@@ -3,31 +3,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// [ ! ] - should seperate bonk state from long jump state, to make it so other states and systems can use it!
+
 [System.Serializable]
 public class LongJumpState : MovementState
 {
     [Header("Verticallity")]
     public float initialYVelocity = 0;
     public float maxFallSpeed = 10f;
-    public Vector3 gravity;
+    public Vector3 longJumpGravity;
 
     [Header("Horizontally")]
     public float launchSpeed;
     public float mainDirCancellationFactor = 20f;
-
     public float HorizontalDirAccelerationFactor = 15f;
 
+    [Header("BONK!")]
+    public Vector2 bonkVector;
+    public Vector3 bonkGravity;
+
+    [Header("Private Data")]
     public Vector3 launchDir;
     public Vector3 velocity;
+    public Vector3 gravity;
+    
 
 
     private Quaternion startRot;
     
-
-
     public override void Initialize()
     {
         base.Initialize();
+
+        gravity = longJumpGravity;
 
         launchDir = controller.manager.defaultMoveStateBehaviour.defaultMoveState.MeshRoot.transform.forward;
 
@@ -40,6 +48,11 @@ public class LongJumpState : MovementState
         startRot = controller.manager.Motor.TransientRotation;
     }
 
+    public override void CleanUp()
+    {
+        gravity = longJumpGravity;
+    }
+
     public override void UpdateRotation(ref Quaternion currentRotation, float deltaTime)
     {
         currentRotation = startRot;
@@ -49,11 +62,15 @@ public class LongJumpState : MovementState
     {
         if (!hitStabilityReport.IsStable && Vector3.Dot(-hitNormal, velocity.normalized) > 0.5f)
         {
-            velocity = hitNormal * 10;
 
-            hitNormal.y = 5;
+            Debug.Log("BONK");
+            // You can get bonked out of a bonk state! make it a net positive multiplier to BONK AROUND
 
-            gravity = new Vector2(0, 30);
+            velocity = hitNormal * bonkVector.x;
+
+            velocity.y = bonkVector.y;
+
+            gravity = bonkGravity;
         }
     }
 
