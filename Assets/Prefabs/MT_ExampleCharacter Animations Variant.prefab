@@ -25,11 +25,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5356501876329534227, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
       propertyPath: longJumpState.initialYVelocity
-      value: 2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 5356501876329534227, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
       propertyPath: longJumpState.mainDirCancellationFactor
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5356501876329534227, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: longJumpState.HorizontalDirAccelerationFactor
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7119987707687262035, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
       propertyPath: m_Name

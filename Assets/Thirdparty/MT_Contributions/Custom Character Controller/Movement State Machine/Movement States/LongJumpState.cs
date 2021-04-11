@@ -1,3 +1,4 @@
+using KinematicCharacterController;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -42,6 +43,18 @@ public class LongJumpState : MovementState
     public override void UpdateRotation(ref Quaternion currentRotation, float deltaTime)
     {
         currentRotation = startRot;
+    }
+
+    public override void OnMovementHit(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, ref HitStabilityReport hitStabilityReport)
+    {
+        if (!hitStabilityReport.IsStable && Vector3.Dot(-hitNormal, velocity.normalized) > 0.5f)
+        {
+            velocity = hitNormal * 10;
+
+            hitNormal.y = 5;
+
+            gravity = new Vector2(0, 30);
+        }
     }
 
     public override void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
