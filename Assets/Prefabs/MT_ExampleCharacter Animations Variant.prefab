@@ -20,12 +20,28 @@ PrefabInstance:
       value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 5356501876329534227, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: longJumpState.bonkVector.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5356501876329534227, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: longJumpState.bonkVector.y
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5356501876329534227, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
       propertyPath: longJumpState.maxFallSpeed
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5356501876329534227, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: longJumpState.bonkGravity.y
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 5356501876329534227, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
       propertyPath: longJumpState.initialYVelocity
       value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5356501876329534227, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: longJumpState.longJumpGravity.y
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5356501876329534227, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
       propertyPath: longJumpState.mainDirCancellationFactor
