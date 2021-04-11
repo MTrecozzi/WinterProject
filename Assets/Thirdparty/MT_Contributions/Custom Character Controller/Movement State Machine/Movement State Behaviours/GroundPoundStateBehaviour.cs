@@ -8,6 +8,8 @@ public class GroundPoundStateBehaviour : MoveStateBehaviour
     
     public MTCharacterController controller;
 
+    public LongJumpStateBehaviour longJumpStateBehaviour;
+
     public KinematicMotorAnimator anim;
 
     public bool enableLongJump;
@@ -42,6 +44,8 @@ public class GroundPoundStateBehaviour : MoveStateBehaviour
         // this is really cool, the MovementState is its own logical unity, the behaviour manages it and can be used to 
         // compose its transitions without interference.
 
+        controller.manager.AddTransition(groundPoundInitialLag, JumpInputBuffered, longJumpStateBehaviour.longJumpState);
+
         // go from default move state to groundpound initial lag
         controller.manager.AddTransition(controller.manager.defaultMoveStateBehaviour.defaultMoveState, GroundPoundInitiateCheck, groundPoundInitialLag);
 
@@ -53,6 +57,8 @@ public class GroundPoundStateBehaviour : MoveStateBehaviour
 
         // add transition from ground pound landing lag to constant vel groundPoundJump
         controller.manager.AddTransition(groundPoundLandingLag, JumpInputBuffered, groundPoundJump);
+        
+
         controller.manager.AddTransition(groundPoundJump, GroundPoundJumpFadeOut, controller.manager.defaultMoveStateBehaviour.defaultMoveState);
 
 

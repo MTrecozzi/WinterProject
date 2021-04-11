@@ -15,6 +15,8 @@ public class ScreenStateBehaviour : MoveStateBehaviour
 
     public GameObject emojiMesh;
 
+    public SkinnedMeshRenderer[] meshes;
+
     public override MovementState[] GetManagedMoveStates()
     {
         return new MovementState[] { screenState };
@@ -29,6 +31,8 @@ public class ScreenStateBehaviour : MoveStateBehaviour
         screenState.controller.manager.AddTransition(LeftCollision);
 
         screenState.StateEnterOrExit += HandleUX;
+
+        meshes = playerMesh.GetComponentsInChildren<SkinnedMeshRenderer>();
     }
 
     private void HandleUX(bool entering, Vector3 normal)
@@ -36,7 +40,11 @@ public class ScreenStateBehaviour : MoveStateBehaviour
         if (entering)
         {
             // disable mesh
-            playerMesh.SetActive(false);
+
+            foreach (var mesh in meshes)
+            {
+                mesh.enabled = false;
+            }
 
             emojiMesh.SetActive(true);
 
@@ -45,8 +53,10 @@ public class ScreenStateBehaviour : MoveStateBehaviour
 
         if (!entering)
         {
-            // enableMesh
-            playerMesh.SetActive(true);
+            foreach (var mesh in meshes)
+            {
+                mesh.enabled = true;
+            }
 
             emojiMesh.SetActive(false);
         }

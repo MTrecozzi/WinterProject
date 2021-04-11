@@ -52,6 +52,9 @@ public class KinematicMotorAnimator : MonoBehaviour
             if (controller.curMovementState == e.Key)
             {
                 anim.SetBool(e.Value, true);
+            } else
+            {
+                anim.SetBool(e.Value, false);
             }
         }
 
