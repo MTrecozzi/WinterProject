@@ -44,6 +44,14 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5356501876329534227, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: longJumpState.bonkState.bonkVector.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5356501876329534227, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
+      propertyPath: longJumpState.bonkState.bonkVector.y
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5356501876329534227, guid: ff5916c5430d0da40b1b0a1c294a7f0b, type: 3}
       propertyPath: longJumpState.mainDirCancellationFactor
       value: 30
       objectReference: {fileID: 0}

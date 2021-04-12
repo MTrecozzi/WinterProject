@@ -18,19 +18,17 @@ public class LongJumpState : MovementState
     public float mainDirCancellationFactor = 20f;
     public float HorizontalDirAccelerationFactor = 15f;
 
-    [Header("BONK!")]
-    public Vector2 bonkVector;
-    public Vector3 bonkGravity;
+    [Header("Bonk State")]
+    public BonkState bonkState;
 
     [Header("Private Data")]
     public Vector3 launchDir;
     public Vector3 velocity;
     public Vector3 gravity;
-    
-
 
     private Quaternion startRot;
-    
+
+
     public override void Initialize()
     {
         base.Initialize();
@@ -62,15 +60,8 @@ public class LongJumpState : MovementState
     {
         if (!hitStabilityReport.IsStable && Vector3.Dot(-hitNormal, velocity.normalized) > 0.5f)
         {
-
-            Debug.Log("BONK");
-            // You can get bonked out of a bonk state! make it a net positive multiplier to BONK AROUND
-
-            velocity = hitNormal * bonkVector.x;
-
-            velocity.y = bonkVector.y;
-
-            gravity = bonkGravity;
+            bonkState.SetUp(hitNormal);
+            controller.manager.SetMovementState(bonkState);
         }
     }
 

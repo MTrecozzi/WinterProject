@@ -8,7 +8,9 @@ public class EventParticles : MonoBehaviour
 {
 
     public MTCharacterController controller;
-    public ParticleSystem system;
+    public ParticleSystem landingParticles;
+
+    public ParticleSystem longJumpParticles;
 
     public MoveStateManager manager;
 
@@ -25,6 +27,8 @@ public class EventParticles : MonoBehaviour
         manager.OnStateChanged += HandleStateChanged;
     }
 
+
+    // [ ! ] create an particle state def class, and a list of them managed in this class, just like with animations
     private void HandleStateChanged(Type newState, Type oldState)
     {
 
@@ -32,11 +36,21 @@ public class EventParticles : MonoBehaviour
         {
             PlayParticle();
         }
+
+        if (newState == typeof(LongJumpState))
+        {
+
+            if (longJumpParticles != null)
+            {
+                longJumpParticles.Play();
+            }
+           
+        }
     }
 
     private void PlayParticle()
     {
-        system.Play();
+        landingParticles.Play();
     }
 
 }
